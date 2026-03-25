@@ -2,10 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\ModuloConoscenzaController;
 use App\Http\Controllers\Api\ElencoAllieviClasseController;
 use App\Http\Controllers\Api\ElencoModuliClasseController;
-use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\Api\ComuneController;
+
 
 
 

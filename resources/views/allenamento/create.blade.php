@@ -597,7 +597,7 @@
                                                         class="control-label required">Provincia</label>
 
                                                     <select class="form-control required"
-                                                        data-url="https://kodek.it/api/comuni"
+                                                        data-url="https://app.kodek.it/api/comuni"
                                                         required="required" id="t_r_provincia" name="t_r_provincia">
                                                         <option value="" selected="selected">Seleziona un valore
                                                         </option>
@@ -753,7 +753,7 @@
                                                     <label for="t_d_provincia" class="control-label">Provincia</label>
 
                                                     <select class="form-control"
-                                                        data-url="https://kodek.it/api/comuni"
+                                                        data-url="https://app.kodek.it/api/comuni"
                                                         id="t_d_provincia" name="t_d_provincia">
                                                         <option value="" selected="selected">Seleziona un valore
                                                         </option>
