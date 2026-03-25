@@ -12,3 +12,4 @@ use Illuminate\Support\Facades\Storage;
 Route::get('/elenco-allievi-classe/{classeId}', [ElencoAllieviClasseController::class, 'execute']);
 Route::get('/elenco-moduli-classe/{classeId}', [ElencoModuliClasseController::class, 'execute']);
 
+Route::get('/comuni', [ComuneController::class, 'getComuniByProvincia'])->name('api.comuni');

@@ -218,7 +218,7 @@
                                                     <label for="t_n_provincia"
                                                         class="control-label required">Provincia di nascita</label>
                                                     <select class="form-control required"
-                                                        data-url="https://kodek.it/api/comuni"
+                                                        data-url="https://app.kodek.it/api/comuni"
                                                         required="required" id="t_n_provincia" name="t_n_provincia">
                                                         <option value="" selected="selected">Seleziona un valore
                                                         </option>
