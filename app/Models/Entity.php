@@ -31,16 +31,6 @@ class Entity extends Model
         'cir',
     ];
 
-    public function contratti()
-    {
-        return $this->hasMany(Contract::class);
-    }
-
-    public function colonna()
-    {
-        return $this->morphMany(InfoTable::class, 'infoTable');
-    }
-
     public function comuneEnte()
     {
         return $this->belongsTo(Comune::class, 'comune_id');
