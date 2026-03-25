@@ -5,7 +5,7 @@
 
 @section('content')
     <div class="container">
-                            <livewire:eweb.eweb-enti />
+        <livewire:eweb.eweb-enti />
     </div>
 
 @endsection
