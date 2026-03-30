@@ -14,25 +14,25 @@ class ElencoModuliClasseController extends Controller
         $moduli = json_decode(<<<'JSON'
         [
                     {
-                        "nomeConoscenza": "Conoscenza 1",
+                        "nomeConoscenza": "Elementi di osservazione e comunicazione",
                         "oreConoscenza": 10,
                         "oreFadConoscenza": 5,
                         "nomeModuli": "1 - Assistere la persona nella soddisfazione dei bisogni primari e nella gestione degli interventi igienico-sanitari"
                     },
                     {
-                        "nomeConoscenza": "Conoscenza 2",
+                        "nomeConoscenza": "I bisogni primari: tecniche di base",
                         "oreConoscenza": 8,
                         "oreFadConoscenza": 4,
                         "nomeModuli": "1 - Assistere la persona nella soddisfazione dei bisogni primari e nella gestione degli interventi igienico-sanitari"
                     },
                     {
-                        "nomeConoscenza": "Conoscenza 3",
+                        "nomeConoscenza": "Sicurezza e prevenzione",
                         "oreConoscenza": 12,
                         "oreFadConoscenza": 6,
                         "nomeModuli": "2 - Gestire le attività di supporto alla persona nella vita quotidiana"
                     },
                     {
-                        "nomeConoscenza": "Conoscenza 4",
+                        "nomeConoscenza": "Tecniche di mobilizzazione",
                         "oreConoscenza": 9,
                         "oreFadConoscenza": 3,
                         "nomeModuli": "2 - Gestire le attività di supporto alla persona nella vita quotidiana"

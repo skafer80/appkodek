@@ -46,7 +46,7 @@
                                         <select name="tipo" id="tipo"
                                             class="form-select @error('tipo') is-invalid @enderror">
                                             <option value="0" selected>Allievi</option>
-                                            <option value="1" {{ old('tipo') == '1' ? 'selected' : '' }}>Moduli</option>
+                                            <option value="MODULI" {{ old('tipo') == 'MODULI' ? 'selected' : '' }}>Moduli</option>
                                         </select>
                                     </div>
                                     <button type="submit" class="btn btn-success">Inizio Allenamento</button>
