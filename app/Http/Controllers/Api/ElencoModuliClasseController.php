@@ -134,7 +134,73 @@ class ElencoModuliClasseController extends Controller
         "oreConoscenza": 20,
         "oreFadConoscenza": 5,
         "nomeModuli": "3 - Gestire dinamiche di relazione d'aiuto"
-    }
+    },
+    {
+    "nomeConoscenza": "Elementi di osservazione e comunicazione",
+    "oreConoscenza": 10,
+    "oreFadConoscenza": 5,
+    "nomeModuli": "4 - Fornire assistenza sociale alla persona al fine di promuovere lo sviluppo e l'autonomia"
+},
+{
+    "nomeConoscenza": "Teorie e tecniche di comunicazione",
+    "oreConoscenza": 10,
+    "oreFadConoscenza": 5,
+    "nomeModuli": "4 - Fornire assistenza sociale alla persona al fine di promuovere lo sviluppo e l'autonomia"
+},
+{
+    "nomeConoscenza": "Strategie di apprendimento",
+    "oreConoscenza": 8,
+    "oreFadConoscenza": 4,
+    "nomeModuli": "4 - Fornire assistenza sociale alla persona al fine di promuovere lo sviluppo e l'autonomia"
+},
+{
+    "nomeConoscenza": "Teorie e tecniche di gestione di conflitti",
+    "oreConoscenza": 8,
+    "oreFadConoscenza": 4,
+    "nomeModuli": "4 - Fornire assistenza sociale alla persona al fine di promuovere lo sviluppo e l'autonomia"
+},
+{
+    "nomeConoscenza": "Tecniche di ascolto e comunicazione",
+    "oreConoscenza": 10,
+    "oreFadConoscenza": 5,
+    "nomeModuli": "4 - Fornire assistenza sociale alla persona al fine di promuovere lo sviluppo e l'autonomia"
+},
+{
+    "nomeConoscenza": "Elementi di psicologia relazione",
+    "oreConoscenza": 8,
+    "oreFadConoscenza": 4,
+    "nomeModuli": "4 - Fornire assistenza sociale alla persona al fine di promuovere lo sviluppo e l'autonomia"
+},
+{
+    "nomeConoscenza": "Funzioni, organizzazione e articolazione territoriale dei servizi",
+    "oreConoscenza": 8,
+    "oreFadConoscenza": 4,
+    "nomeModuli": "4 - Fornire assistenza sociale alla persona al fine di promuovere lo sviluppo e l'autonomia"
+},
+{
+    "nomeConoscenza": "Risorse territoriali (enti, associazioni ed altro)",
+    "oreConoscenza": 6,
+    "oreFadConoscenza": 3,
+    "nomeModuli": "4 - Fornire assistenza sociale alla persona al fine di promuovere lo sviluppo e l'autonomia"
+},
+{
+    "nomeConoscenza": "Teorie e tecniche di relazione e socializzazione",
+    "oreConoscenza": 8,
+    "oreFadConoscenza": 4,
+    "nomeModuli": "4 - Fornire assistenza sociale alla persona al fine di promuovere lo sviluppo e l'autonomia"
+},
+{
+    "nomeConoscenza": "Elementi di psicologia sociale",
+    "oreConoscenza": 8,
+    "oreFadConoscenza": 4,
+    "nomeModuli": "4 - Fornire assistenza sociale alla persona al fine di promuovere lo sviluppo e l'autonomia"
+},
+{
+    "nomeConoscenza": "Elementi di etica e deontologia delle professioni sociali e sanitarie",
+    "oreConoscenza": 6,
+    "oreFadConoscenza": 3,
+    "nomeModuli": "4 - Fornire assistenza sociale alla persona al fine di promuovere lo sviluppo e l'autonomia"
+}
 
 ]
 JSON, true);
