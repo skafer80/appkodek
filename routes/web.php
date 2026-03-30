@@ -32,7 +32,7 @@ Route::get('/allenamento/moduli/{id}', [allenamentoController::class, 'showModul
 
 //Route::view('/', 'welcome')->name('home');
 
-Route::redirect('/', '/allenamento')->name('home');
+Route::redirect('/', '/click')->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('dashboard', 'dashboard')->name('dashboard');
