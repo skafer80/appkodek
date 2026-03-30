@@ -17,44 +17,44 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet"
         type="text/css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link href="https://fse.regione.sicilia.it/avviso72023/assets/plugins/bootstrap/css/bootstrap.min.css"
+    <link href="https://https://fse.regione.sicilia.it/avviso72023/assets/plugins/bootstrap/css/bootstrap.min.css"
         rel="stylesheet" type="text/css" />
-    <link href="https://fse.regione.sicilia.it/avviso72023/assets/plugins/uniform/css/uniform.default.css"
+    <link href="https://https://fse.regione.sicilia.it/avviso72023/assets/plugins/uniform/css/uniform.default.css"
         rel="stylesheet" type="text/css" />
     <!-- END GLOBAL MANDATORY STYLES -->
 
     <!-- BEGIN PAGE LEVEL STYLES -->
     <link rel="stylesheet" type="text/css"
-        href="https://fse.regione.sicilia.it/avviso72023/assets/plugins/clockface/css/clockface.css" />
+        href="https://https://fse.regione.sicilia.it/avviso72023/assets/plugins/clockface/css/clockface.css" />
     <link rel="stylesheet" type="text/css"
-        href="https://fse.regione.sicilia.it/avviso72023/assets/plugins/bootstrap-datepicker/css/datepicker.css" />
+        href="https://https://fse.regione.sicilia.it/avviso72023/assets/plugins/bootstrap-datepicker/css/datepicker.css" />
     <link rel="stylesheet" type="text/css"
-        href="https://fse.regione.sicilia.it/avviso72023/assets/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" />
+        href="https://https://fse.regione.sicilia.it/avviso72023/assets/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" />
     <link rel="stylesheet" type="text/css"
-        href="https://fse.regione.sicilia.it/avviso72023/assets/plugins/bootstrap-colorpicker/css/colorpicker.css" />
+        href="https://https://fse.regione.sicilia.it/avviso72023/assets/plugins/bootstrap-colorpicker/css/colorpicker.css" />
     <link rel="stylesheet" type="text/css"
-        href="https://fse.regione.sicilia.it/avviso72023/assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" />
+        href="https://https://fse.regione.sicilia.it/avviso72023/assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" />
     <link rel="stylesheet" type="text/css"
-        href="https://fse.regione.sicilia.it/avviso72023/assets/plugins/bootstrap-datetimepicker/css/datetimepicker.css" />
+        href="https://https://fse.regione.sicilia.it/avviso72023/assets/plugins/bootstrap-datetimepicker/css/datetimepicker.css" />
     <!-- END PAGE LEVEL STYLES -->
 
     <!-- BEGIN THEME STYLES -->
-    <link href="https://fse.regione.sicilia.it/avviso72023/assets/css/style-metronic.css" rel="stylesheet"
+    <link href="https://https://fse.regione.sicilia.it/avviso72023/assets/css/style-metronic.css" rel="stylesheet"
         type="text/css" />
-    <link href="https://fse.regione.sicilia.it/avviso72023/assets/css/style.css" rel="stylesheet" type="text/css" />
-    <link href="https://fse.regione.sicilia.it/avviso72023/assets/css/style-responsive.css" rel="stylesheet"
+    <link href="https://https://fse.regione.sicilia.it/avviso72023/assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="https://https://fse.regione.sicilia.it/avviso72023/assets/css/style-responsive.css" rel="stylesheet"
         type="text/css" />
-    <link href="https://fse.regione.sicilia.it/avviso72023/assets/css/plugins.css" rel="stylesheet" type="text/css" />
-    <!--link href="https://fse.regione.sicilia.it/avviso72023/assets/css/pages/tasks.css" rel="stylesheet" type="text/css"/-->
-    <link href="https://fse.regione.sicilia.it/avviso72023/assets/css/themes/default.css" rel="stylesheet"
+    <link href="https://https://fse.regione.sicilia.it/avviso72023/assets/css/plugins.css" rel="stylesheet" type="text/css" />
+    <!--link href="https://https://fse.regione.sicilia.it/avviso72023/assets/css/pages/tasks.css" rel="stylesheet" type="text/css"/-->
+    <link href="https://https://fse.regione.sicilia.it/avviso72023/assets/css/themes/default.css" rel="stylesheet"
         type="text/css" id="style_color" />
-    <link href="https://fse.regione.sicilia.it/avviso72023/assets/css/custom.css" rel="stylesheet" type="text/css" />
-    <link href="https://fse.regione.sicilia.it/avviso72023/assets/css/animate.css" rel="stylesheet" type="text/css" />
+    <link href="https://https://fse.regione.sicilia.it/avviso72023/assets/css/custom.css" rel="stylesheet" type="text/css" />
+    <link href="https://https://fse.regione.sicilia.it/avviso72023/assets/css/animate.css" rel="stylesheet" type="text/css" />
 
     <link rel="stylesheet"
-        href="https://fse.regione.sicilia.it/avviso72023/assets/plugins/data-tables/DT_bootstrap.css" />
+        href="https://https://fse.regione.sicilia.it/avviso72023/assets/plugins/data-tables/DT_bootstrap.css" />
     <!-- END THEME STYLES -->
-    <link rel="shortcut icon" href="https://fse.regione.sicilia.it/avviso72023/images/favicon.ico" />
+    <link rel="shortcut icon" href="https://https://fse.regione.sicilia.it/avviso72023/images/favicon.ico" />
 
 </head>
 
@@ -87,7 +87,7 @@
                     <a href=""
                         style="white-space:nowrap;display:inline-block;text-decoration:none;line-height:2rem;">
                         <img id="logo-regione-siciliana"
-                            src="fse.regione.sicilia.it/avviso72023/media/images/logo-regione-siciliana.png"
+                            src="https://fse.regione.sicilia.it/avviso72023/media/images/logo-regione-siciliana.png"
                             style="display:inline-block;height:4rem;margin:0 0.5rem 0 0;" />
                         <span style="display:inline-block;vertical-align:middle;font-size:16px;">Regione
                             Siciliana<br /><i style="display:block;font-size:12px;vertical-align:bottom;">Catalogo
@@ -993,55 +993,55 @@
                                 <script src="https://kodek.it/modulo-conoscenza/assets/plugins/respond.min.js"></script>
                                 <script src="https://kodek.it/modulo-conoscenza/assets/plugins/excanvas.min.js"></script>
                                 <![endif]-->
-    <script src="fse.regione.sicilia.it/avviso72023/assets/plugins/jquery-3.6.1.min.js" type="text/javascript">
+    <script src="https://fse.regione.sicilia.it/avviso72023/assets/plugins/jquery-3.6.1.min.js" type="text/javascript">
     </script>
-    <script src="fse.regione.sicilia.it/avviso72023/assets/plugins/jquery-migrate-1.4.1.min.js"
+    <script src="https://fse.regione.sicilia.it/avviso72023/assets/plugins/jquery-migrate-1.4.1.min.js"
         type="text/javascript"></script>
-    <script src="fse.regione.sicilia.it/avviso72023/assets/plugins/bootstrap/js/bootstrap.min.js"
+    <script src="https://fse.regione.sicilia.it/avviso72023/assets/plugins/bootstrap/js/bootstrap.min.js"
         type="text/javascript"></script>
-    <script src="fse.regione.sicilia.it/avviso72023/assets/plugins/bootstrap/js/bootstrap2-typeahead.min.js"
+    <script src="https://fse.regione.sicilia.it/avviso72023/assets/plugins/bootstrap/js/bootstrap2-typeahead.min.js"
         type="text/javascript"></script>
     <script
-        src="fse.regione.sicilia.it/avviso72023/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"
+        src="https://fse.regione.sicilia.it/avviso72023/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"
         type="text/javascript"></script>
-    <script src="fse.regione.sicilia.it/avviso72023/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"
+    <script src="https://fse.regione.sicilia.it/avviso72023/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"
         type="text/javascript"></script>
-    <script src="fse.regione.sicilia.it/avviso72023/assets/plugins/jquery.blockui.min.js"
+    <script src="https://fse.regione.sicilia.it/avviso72023/assets/plugins/jquery.blockui.min.js"
         type="text/javascript"></script>
-    <script src="fse.regione.sicilia.it/avviso72023/assets/plugins/jquery.cokie.min.js" type="text/javascript">
+    <script src="https://fse.regione.sicilia.it/avviso72023/assets/plugins/jquery.cokie.min.js" type="text/javascript">
     </script>
-    <script src="fse.regione.sicilia.it/avviso72023/assets/plugins/uniform/jquery.uniform.min.js"
+    <script src="https://fse.regione.sicilia.it/avviso72023/assets/plugins/uniform/jquery.uniform.min.js"
         type="text/javascript"></script>
     <!-- BEGIN PAGE LEVEL PLUGINS -->
     <script type="text/javascript"
-        src="fse.regione.sicilia.it/avviso72023/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js">
+        src="https://fse.regione.sicilia.it/avviso72023/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js">
     </script>
     <script type="text/javascript"
-        src="fse.regione.sicilia.it/avviso72023/assets/plugins/bootstrap-datepicker/js/locales/bootstrap-datepicker.it.js">
+        src="https://fse.regione.sicilia.it/avviso72023/assets/plugins/bootstrap-datepicker/js/locales/bootstrap-datepicker.it.js">
     </script>
     <script type="text/javascript"
-        src="fse.regione.sicilia.it/avviso72023/assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js">
+        src="https://fse.regione.sicilia.it/avviso72023/assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js">
     </script>
     <script type="text/javascript"
-        src="fse.regione.sicilia.it/avviso72023/assets/plugins/clockface/js/clockface.js"></script>
+        src="https://fse.regione.sicilia.it/avviso72023/assets/plugins/clockface/js/clockface.js"></script>
     <script type="text/javascript"
-        src="fse.regione.sicilia.it/avviso72023/assets/plugins/bootstrap-daterangepicker/moment.min.js">
+        src="https://fse.regione.sicilia.it/avviso72023/assets/plugins/bootstrap-daterangepicker/moment.min.js">
     </script>
     <script type="text/javascript"
-        src="fse.regione.sicilia.it/avviso72023/assets/plugins/bootstrap-daterangepicker/daterangepicker.js">
+        src="https://fse.regione.sicilia.it/avviso72023/assets/plugins/bootstrap-daterangepicker/daterangepicker.js">
     </script>
     <script type="text/javascript"
-        src="fse.regione.sicilia.it/avviso72023/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js">
+        src="https://fse.regione.sicilia.it/avviso72023/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js">
     </script>
     <script type="text/javascript"
-        src="fse.regione.sicilia.it/avviso72023/assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js">
+        src="https://fse.regione.sicilia.it/avviso72023/assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js">
     </script>
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- BEGIN PAGE LEVEL SCRIPTS -->
-    <script src="fse.regione.sicilia.it/avviso72023/assets/scripts/core/app.js"></script>
-    <script src="fse.regione.sicilia.it/avviso72023/assets/scripts/custom/components-pickers.js"></script>
+    <script src="https://fse.regione.sicilia.it/avviso72023/assets/scripts/core/app.js"></script>
+    <script src="https://fse.regione.sicilia.it/avviso72023/assets/scripts/custom/components-pickers.js"></script>
     <script type="text/javascript"
-        src="fse.regione.sicilia.it/avviso72023/assets/plugins/data-tables/jquery.dataTables.js"></script>
+        src="https://fse.regione.sicilia.it/avviso72023/assets/plugins/data-tables/jquery.dataTables.js"></script>
     <!-- END PAGE LEVEL SCRIPTS -->
 
     <script>
