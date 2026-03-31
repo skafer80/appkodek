@@ -130,7 +130,7 @@
         <div class="page-content-wrapper">
             <div class="page-content" style="background-color: #f5f5f5!important;">
                 <form method="POST"
-                    action="{{ route('allenamento.storeDestinatario') }}"
+                    action="{{ route('click.storeDestinatario') }}"
                     accept-charset="UTF-8" class="form-horizontal form-row-seperated" enctype="multipart/form-data">
                     @csrf
 {{--                     <input name="_token" type="hidden" value="Jo49hVfXHCToCeM7JNR4rMiCz2ehPr0VwjomZp4o"> --}}
@@ -146,7 +146,7 @@
                                 <!--BEGIN SAVE MENU -->
                                 <div class="portlet-title">
                                     <div class="actions btn-set">
-                                        <a href="{{ route('allenamento.showClasse', $player_id) }}"
+                                        <a href="{{ route('click.showClasse', $player_id) }}"
                                             class="btn blue">Indietro</a>&nbsp;
                                         <button class="btn blue" type="submit">
                                             <i class="fa fa-check-circle"></i>&nbsp;Salva
