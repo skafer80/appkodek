@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang='en'>
 
-<!-- Mirrored from file://///192.168.1.230/clickday2025/Sw Alunni/Avviso n. 7_2023 dettagli.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 23 Sep 2025 09:19:28 GMT -->
-
 <head>
     <title>Avviso n. 7/2023 </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,10 +9,10 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="description">
     <meta content="" name="author">
-    <meta name="csrf-token" content="OFlopDlos3rtQZvE7bKHN4hMpJYUW0dAYiLtls1q">
+    <meta name="csrf-token" content="Jo49hVfXHCToCeM7JNR4rMiCz2ehPr0VwjomZp4o">
 
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=all" rel="stylesheet"
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet"
         type="text/css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="https://fse.regione.sicilia.it/avviso72023/assets/plugins/bootstrap/css/bootstrap.min.css"
@@ -44,15 +42,12 @@
     <link href="https://fse.regione.sicilia.it/avviso72023/assets/css/style.css" rel="stylesheet" type="text/css" />
     <link href="https://fse.regione.sicilia.it/avviso72023/assets/css/style-responsive.css" rel="stylesheet"
         type="text/css" />
-    <link href="https://fse.regione.sicilia.it/avviso72023/assets/css/plugins.css" rel="stylesheet"
-        type="text/css" />
+    <link href="https://fse.regione.sicilia.it/avviso72023/assets/css/plugins.css" rel="stylesheet" type="text/css" />
     <!--link href="https://fse.regione.sicilia.it/avviso72023/assets/css/pages/tasks.css" rel="stylesheet" type="text/css"/-->
     <link href="https://fse.regione.sicilia.it/avviso72023/assets/css/themes/default.css" rel="stylesheet"
         type="text/css" id="style_color" />
-    <link href="https://fse.regione.sicilia.it/avviso72023/assets/css/custom.css" rel="stylesheet"
-        type="text/css" />
-    <link href="https://fse.regione.sicilia.it/avviso72023/assets/css/animate.css" rel="stylesheet"
-        type="text/css" />
+    <link href="https://fse.regione.sicilia.it/avviso72023/assets/css/custom.css" rel="stylesheet" type="text/css" />
+    <link href="https://fse.regione.sicilia.it/avviso72023/assets/css/animate.css" rel="stylesheet" type="text/css" />
 
     <link rel="stylesheet"
         href="https://fse.regione.sicilia.it/avviso72023/assets/plugins/data-tables/DT_bootstrap.css" />
@@ -135,7 +130,7 @@
         <div class="page-content-wrapper">
             <div class="page-content" style="background-color: #f5f5f5!important;">
                 <form method="POST"
-                    action="{{ route('click.storeDestinatario') }}"
+                    action="{{ route('allenamento.storeDestinatario') }}"
                     accept-charset="UTF-8" class="form-horizontal form-row-seperated" enctype="multipart/form-data">
                     @csrf
 {{--                     <input name="_token" type="hidden" value="Jo49hVfXHCToCeM7JNR4rMiCz2ehPr0VwjomZp4o"> --}}
@@ -151,7 +146,7 @@
                                 <!--BEGIN SAVE MENU -->
                                 <div class="portlet-title">
                                     <div class="actions btn-set">
-                                        <a href="{{ route('click.showClasse', $player_id) }}"
+                                        <a href="{{ route('allenamento.showClasse', $player_id) }}"
                                             class="btn blue">Indietro</a>&nbsp;
                                         <button class="btn blue" type="submit">
                                             <i class="fa fa-check-circle"></i>&nbsp;Salva
@@ -223,7 +218,7 @@
                                                     <label for="t_n_provincia"
                                                         class="control-label required">Provincia di nascita</label>
                                                     <select class="form-control required"
-                                                        data-url="https://kodek.it/api/comuni"
+                                                        data-url="https://app.kodek.it/api/comuni"
                                                         required="required" id="t_n_provincia" name="t_n_provincia">
                                                         <option value="" selected="selected">Seleziona un valore
                                                         </option>
@@ -602,7 +597,7 @@
                                                         class="control-label required">Provincia</label>
 
                                                     <select class="form-control required"
-                                                        data-url="https://kodek.it/api/comuni"
+                                                        data-url="https://app.kodek.it/api/comuni"
                                                         required="required" id="t_r_provincia" name="t_r_provincia">
                                                         <option value="" selected="selected">Seleziona un valore
                                                         </option>
@@ -758,7 +753,7 @@
                                                     <label for="t_d_provincia" class="control-label">Provincia</label>
 
                                                     <select class="form-control"
-                                                        data-url="https://kodek.it/api/comuni"
+                                                        data-url="https://app.kodek.it/api/comuni"
                                                         id="t_d_provincia" name="t_d_provincia">
                                                         <option value="" selected="selected">Seleziona un valore
                                                         </option>
