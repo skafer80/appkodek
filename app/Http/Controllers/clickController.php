@@ -23,14 +23,11 @@ class clickController extends Controller
         // Media dei partecipanti e tempo per giocate con nome uguale (tipo 0 - studenti)
         $giocateConMedia = Player::whereNotNull('end_time')
             ->where('tipo', 0)
-            ->selectRaw("
-    nome,
-    AVG((SELECT COUNT(*) FROM click_students
-        WHERE click_students.player_id = players.id)) as media_partecipanti,
-    AVG(strftime('%s', end_time) - strftime('%s', start_time)) as tempo_medio_secondi,
-    COUNT(*) as numero_giocate
-")
-            ->groupBy('nome')
+ ->selectRaw('nome,
+                AVG((SELECT COUNT(*) FROM click_students WHERE click_students.player_id = players.id)) as media_partecipanti,
+                AVG(TIMESTAMPDIFF(SECOND, start_time, end_time)) as tempo_medio_secondi,
+                COUNT(*) as numero_giocate')
+                ->groupBy('nome')
             ->orderBy('tempo_medio_secondi', 'ASC')
             ->get();
 
