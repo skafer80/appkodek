@@ -57,6 +57,11 @@ class clickController extends Controller
         return view('click.ewebEnti');
     }
 
+    public function tabellaSelezione()
+    {
+        return view('click.tabellaSelezione');
+    }
+
     public function store(Request $request)
     {
         $request->validate([

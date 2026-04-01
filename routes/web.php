@@ -18,6 +18,7 @@ Route::get('/click/createPersonale/{id}', [clickController::class, 'createPerson
 Route::post('/click/storePersonale', [clickController::class, 'storePersonale'])->name('click.storePersonale');
 Route::get('/eweb/config', [clickController::class, 'ewebShow'])->name('click.eweb');
 Route::get('/eweb/enti', [clickController::class, 'ewebEnti'])->name('click.ewebEnti');
+Route::get('/click/tabella-selezione', [clickController::class, 'tabellaSelezione'])->name('click.tabellaSelezione');
 
 
 /* Route::get('/allenamento', [allenamentoController::class, 'index'])->name('allenamento.index');
