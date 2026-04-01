@@ -94,20 +94,16 @@
             z-index: 1;
         }
 
-        tr.row-ok td {
-            background: var(--ok);
-        }
-
-        tr.row-warn td {
-            background: var(--warn);
-        }
-
-        tr.row-bad td {
-            background: var(--bad);
-        }
-
         .cf-cell {
             white-space: nowrap;
+        }
+
+        .copy-cell {
+            white-space: nowrap;
+        }
+
+        .cell-copied {
+            background: #d8f3dc;
         }
 
         .copy-btn {
@@ -155,7 +151,7 @@
             <div class="card-header">
                 <div>
                     <h1>Tabella destinatari selezione</h1>
-                    <p class="hint">Clicca l'icona accanto al codice fiscale per copiarlo negli appunti.</p>
+                    <p class="hint">Clicca l'icona accanto al valore per copiarlo negli appunti (dove disponibile).</p>
                 </div>
                 <div>
                     <strong x-text="rows.length"></strong> record
@@ -184,23 +180,59 @@
                     </thead>
                     <tbody>
                         <template x-for="(row, index) in rows" :key="index">
-                            <tr :class="row.rowClass">
-                                <td x-text="row.data_selezione"></td>
-                                <td x-text="row.nome"></td>
-                                <td x-text="row.cognome"></td>
-                                <td x-text="row.sesso"></td>
-                                <td x-text="row.disabilita"></td>
-                                <td x-text="row.data_nascita"></td>
-                                <td x-text="row.prov_nascita"></td>
-                                <td x-text="row.comune_nascita"></td>
-                                <td class="cf-cell">
-                                    <span x-text="row.codice_fiscale"></span>
-                                    <button type="button" class="copy-btn" :class="{ copied: copiedCf === row.codice_fiscale }"
-                                        @click="copyCf(row.codice_fiscale)" title="Copia codice fiscale" aria-label="Copia codice fiscale">
-                                        <i class="fa" :class="copiedCf === row.codice_fiscale ? 'fa-check' : 'fa-copy'"></i>
+                            <tr>
+                                <td class="copy-cell" :class="{ 'cell-copied': isCopied(index, 'data_selezione') }">
+                                    <span x-text="row.data_selezione"></span>
+                                    <button type="button" class="copy-btn" :class="{ copied: copiedKey === `${index}-data_selezione` }"
+                                        @click="copyValue('data_selezione', row.data_selezione, index)" title="Copia valore" aria-label="Copia valore">
+                                        <i class="fa" :class="copiedKey === `${index}-data_selezione` ? 'fa-check' : 'fa-copy'"></i>
                                     </button>
                                 </td>
-                                <td x-text="row.cittadinanza"></td>
+                                <td class="copy-cell" :class="{ 'cell-copied': isCopied(index, 'nome') }">
+                                    <span x-text="row.nome"></span>
+                                    <button type="button" class="copy-btn" :class="{ copied: copiedKey === `${index}-nome` }"
+                                        @click="copyValue('nome', row.nome, index)" title="Copia valore" aria-label="Copia valore">
+                                        <i class="fa" :class="copiedKey === `${index}-nome` ? 'fa-check' : 'fa-copy'"></i>
+                                    </button>
+                                </td>
+                                <td class="copy-cell" :class="{ 'cell-copied': isCopied(index, 'cognome') }">
+                                    <span x-text="row.cognome"></span>
+                                    <button type="button" class="copy-btn" :class="{ copied: copiedKey === `${index}-cognome` }"
+                                        @click="copyValue('cognome', row.cognome, index)" title="Copia valore" aria-label="Copia valore">
+                                        <i class="fa" :class="copiedKey === `${index}-cognome` ? 'fa-check' : 'fa-copy'"></i>
+                                    </button>
+                                </td>
+                                <td x-text="row.sesso"></td>
+                                <td class="copy-cell" :class="{ 'cell-copied': isCopied(index, 'disabilita') }">
+                                    <span x-text="row.disabilita"></span>
+                                    <button type="button" class="copy-btn" :class="{ copied: copiedKey === `${index}-disabilita` }"
+                                        @click="copyValue('disabilita', row.disabilita, index)" title="Copia valore" aria-label="Copia valore">
+                                        <i class="fa" :class="copiedKey === `${index}-disabilita` ? 'fa-check' : 'fa-copy'"></i>
+                                    </button>
+                                </td>
+                                <td class="copy-cell" :class="{ 'cell-copied': isCopied(index, 'data_nascita') }">
+                                    <span x-text="row.data_nascita"></span>
+                                    <button type="button" class="copy-btn" :class="{ copied: copiedKey === `${index}-data_nascita` }"
+                                        @click="copyValue('data_nascita', row.data_nascita, index)" title="Copia valore" aria-label="Copia valore">
+                                        <i class="fa" :class="copiedKey === `${index}-data_nascita` ? 'fa-check' : 'fa-copy'"></i>
+                                    </button>
+                                </td>
+                                <td x-text="row.prov_nascita"></td>
+                                <td x-text="row.comune_nascita"></td>
+                                <td class="cf-cell copy-cell" :class="{ 'cell-copied': isCopied(index, 'codice_fiscale') }">
+                                    <span x-text="row.codice_fiscale"></span>
+                                    <button type="button" class="copy-btn" :class="{ copied: copiedKey === `${index}-codice_fiscale` }"
+                                        @click="copyValue('codice_fiscale', row.codice_fiscale, index)" title="Copia valore" aria-label="Copia valore">
+                                        <i class="fa" :class="copiedKey === `${index}-codice_fiscale` ? 'fa-check' : 'fa-copy'"></i>
+                                    </button>
+                                </td>
+                                <td class="copy-cell" :class="{ 'cell-copied': isCopied(index, 'cittadinanza') }">
+                                    <span x-text="row.cittadinanza"></span>
+                                    <button type="button" class="copy-btn" :class="{ copied: copiedKey === `${index}-cittadinanza` }"
+                                        @click="copyValue('cittadinanza', row.cittadinanza, index)" title="Copia valore" aria-label="Copia valore">
+                                        <i class="fa" :class="copiedKey === `${index}-cittadinanza` ? 'fa-check' : 'fa-copy'"></i>
+                                    </button>
+                                </td>
                                 <td x-text="row.prov_residenza"></td>
                                 <td x-text="row.comune_residenza"></td>
                                 <td x-text="row.titolo_studio"></td>
@@ -221,8 +253,9 @@
     <script>
         function tabellaSelezione() {
             return {
-                copiedCf: null,
-                message: 'Nessun codice fiscale copiato.',
+                copiedKey: null,
+                copiedCells: {},
+                message: 'Nessun valore copiato.',
                 rows: [
                     {
                         data_selezione: '04/09/2025',
@@ -480,20 +513,26 @@
                         rowClass: 'row-warn'
                     }
                 ],
-                async copyCf(value) {
+                async copyValue(field, value, index) {
+                    const copyText = (value ?? '').toString();
+                    const key = `${index}-${field}`;
                     try {
-                        await navigator.clipboard.writeText(value);
-                        this.copiedCf = value;
-                        this.message = 'Codice fiscale copiato: ' + value;
+                        await navigator.clipboard.writeText(copyText);
+                        this.copiedKey = key;
+                        this.copiedCells[key] = true;
+                        this.message = 'Valore copiato: ' + copyText;
                         setTimeout(() => {
-                            if (this.copiedCf === value) {
-                                this.copiedCf = null;
-                                this.message = 'Nessun codice fiscale copiato.';
+                            if (this.copiedKey === key) {
+                                this.copiedKey = null;
+                                this.message = 'Nessun valore copiato.';
                             }
                         }, 1400);
                     } catch (error) {
                         this.message = 'Copia non riuscita. Verifica i permessi del browser.';
                     }
+                },
+                isCopied(index, field) {
+                    return Boolean(this.copiedCells[`${index}-${field}`]);
                 }
             };
         }

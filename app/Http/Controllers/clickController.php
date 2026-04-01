@@ -3,17 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Allenamento\ClickPersonale;
+use App\Models\Allenamento\ClickStudent as student;
 use App\Models\Allenamento\ClickSubject;
 use App\Models\Allenamento\Player;
-use App\Models\Allenamento\ClickStudent as student;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class clickController extends Controller
 {
     public function index()
     {
-        $players = player::all();
+        $players = Player::all();
         $giocate = Player::whereNotNull('end_time')
             ->where('tipo', 0)
             ->orderBy('start_time', 'DESC') // Ordino per data più recente prima
@@ -22,27 +23,28 @@ class clickController extends Controller
         // Media dei partecipanti e tempo per giocate con nome uguale (tipo 0 - studenti)
         $giocateConMedia = Player::whereNotNull('end_time')
             ->where('tipo', 0)
-            ->selectRaw('nome,
-                AVG((SELECT COUNT(*) FROM click_students WHERE click_students.player_id = players.id)) as media_partecipanti,
-                AVG(TIMESTAMPDIFF(SECOND, start_time, end_time)) as tempo_medio_secondi,
-                COUNT(*) as numero_giocate')
+            ->selectRaw("
+    nome,
+    AVG((SELECT COUNT(*) FROM click_students
+        WHERE click_students.player_id = players.id)) as media_partecipanti,
+    AVG(strftime('%s', end_time) - strftime('%s', start_time)) as tempo_medio_secondi,
+    COUNT(*) as numero_giocate
+")
             ->groupBy('nome')
             ->orderBy('tempo_medio_secondi', 'ASC')
             ->get();
 
-           // dd($giocateConMedia);
+        // dd($giocateConMedia);
 
         $giocateModuli = Player::whereNotNull('end_time')
             ->where('tipo', 1)
             ->orderBy('start_time', 'DESC') // Ordino per data più recente prima
             ->get();
 
-                    $giocatePersonale = Player::whereNotNull('end_time')
+        $giocatePersonale = Player::whereNotNull('end_time')
             ->where('tipo', 2)
             ->orderBy('start_time', 'DESC') // Ordino per data più recente prima
             ->get();
-
-
 
         return view('click.index', compact('players', 'giocate', 'giocateModuli', 'giocatePersonale', 'giocateConMedia'));
     }
@@ -72,6 +74,7 @@ class clickController extends Controller
             'nome' => $request->nome,
             'start_time' => now(),
             'tipo' => $request->tipo === 'MODULI' ? 1 : ($request->tipo === 'PERSONALE' ? 2 : 0),
+            'tabella' => $request->tabella ?? null,
         ]);
 
         if ($request->tipo === 'MODULI') {
@@ -128,7 +131,7 @@ class clickController extends Controller
     public function showClasse($id)
     {
         $player = Player::findOrFail($id);
-        $students = Student::where('player_id', $player->id)->get();
+        $students = student::where('player_id', $player->id)->get();
 
         return view('click.showClasse', compact('player', 'students'));
     }
@@ -239,9 +242,9 @@ class clickController extends Controller
         $data['b_disabile'] = $request->b_disabile === 'Y' ? 1 : 0;
 
         // Inserisci nel database
-        Student::create($data);
+        student::create($data);
 
-        $contaStudenti = Student::where('player_id', $request->player_id)->count();
+        $contaStudenti = student::where('player_id', $request->player_id)->count();
 
         if ($contaStudenti >= 15) {
             $player = Player::findOrFail($request->player_id);
@@ -278,7 +281,7 @@ class clickController extends Controller
                 'ruolo' => 'required|string|max:50',
                 'player_id' => 'required|exists:players,id',
             ]);
-        } catch (\Illuminate\Validation\ValidationException $e) {
+        } catch (ValidationException $e) {
             dd('Errori di validazione:', $e->errors(), 'Request data:', $request->all());
         }
 

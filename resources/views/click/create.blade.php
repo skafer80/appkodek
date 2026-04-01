@@ -148,9 +148,6 @@
                                     <div class="actions btn-set">
                                         <a href="{{ route('click.showClasse', $player_id) }}"
                                             class="btn blue">Indietro</a>&nbsp;
-                                        <a href="{{ route('click.tabellaSelezione') }}" class="btn default" target="_blank">
-                                            <i class="fa fa-table"></i>&nbsp;Apri tabella selezione
-                                        </a>&nbsp;
                                         <button class="btn blue" type="submit">
                                             <i class="fa fa-check-circle"></i>&nbsp;Salva
                                         </button>

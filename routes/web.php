@@ -5,7 +5,7 @@ use App\Http\Controllers\clickController;
 use App\Http\Controllers\allenamentoController;
 
 Route::get('/click', [clickController::class, 'index'])->name('click.index');
-Route::get('/click/{id}', [clickController::class, 'show'])->name('click.show');
+//Route::get('/click/{id}', [clickController::class, 'show'])->name('click.show');
 Route::post('/click', [clickController::class, 'store'])->name('click.store');
 Route::get('/click/classe/{id}', [clickController::class, 'showClasse'])->name('click.showClasse');
 Route::get('/click/create/{id}', [clickController::class, 'createDestinatario'])->name('click.createDestinatario');

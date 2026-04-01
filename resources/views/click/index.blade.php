@@ -10,62 +10,124 @@
         {{-- Form per creare un player --}}
         <div class="row justify-content-center mb-5">
             <div class="col-md-8">
-                <div class="card shadow-sm">
-                    <div class="card shadow-lg border-0 rounded-4">
-                        <div class="card-body p-4">
-                            <h5 class="card-title text-primary mb-3">
-                                <i class="bi bi-play-circle-fill"></i> Inizio Allenamento
-                            </h5>
-                            <p class="card-text">
-                                <strong>Appena clicchi su “Inizio Allenamento”, il timer parte.</strong>
-                            </p>
-                            <ul class="list-group list-group-flush mb-3">
-                                <li class="list-group-item">
-                                    <span class="fw-bold text-success">Modalità Allievo:</span>
-                                    inserisci <strong>15 allievi</strong> nel minor tempo possibile.
-                                </li>
-                                <li class="list-group-item">
-                                    <span class="fw-bold text-info">Modalità Modulo:</span>
-                                    carica tutte le <strong>conoscenze della classe</strong>, facendo in modo che le
-                                    <strong>ore coincidano correttamente</strong>.
-                                </li>
-                                <li class="list-group-item">
-                                    <span class="fw-bold text-warning">Modalità Personale non docente:</span>
-                                    carica tutte le <strong>4 risorse del personale non docente</strong>.
-                                </li>
-                                <li class="list-group-item">
-                                    <span class="text-danger">Assicurati di avere tutti i dati da caricare pronti prima di
-                                        iniziare. Per non perdere tempo</span>
-                                </li>
-                            </ul>
-                            <form action="{{ route('click.store') }}" method="POST">
-                                @csrf
-                                <div class="mb-3 bg-warning p-3 rounded">
-                                    <div class="mb-3">
-                                        <label for="nome" class="form-label">Nome Partecipante</label>
+                <div class="card shadow-lg border-0 rounded-4">
+                    <div class="card-body p-4 p-md-5">
+                        <h5 class="card-title text-primary mb-3">
+                            <i class="bi bi-play-circle-fill"></i> Inizio Allenamento
+                        </h5>
+                        <p class="card-text mb-3">
+                            <strong>Appena clicchi su "Inizio Allenamento", il timer parte.</strong>
+                        </p>
+                        <ul class="list-group list-group-flush mb-4">
+                            <li class="list-group-item px-0">
+                                <span class="fw-bold text-success">Modalita Allievo:</span>
+                                inserisci <strong>15 allievi</strong> nel minor tempo possibile.
+                            </li>
+                            <li class="list-group-item px-0">
+                                <span class="fw-bold text-info">Modalita Modulo:</span>
+                                carica tutte le <strong>conoscenze della classe</strong>, facendo in modo che le
+                                <strong>ore coincidano correttamente</strong>.
+                            </li>
+                            <li class="list-group-item px-0">
+                                <span class="fw-bold text-warning">Modalita Personale non docente:</span>
+                                carica tutte le <strong>4 risorse del personale non docente</strong>.
+                            </li>
+                            <li class="list-group-item px-0">
+                                <span class="text-danger">Prepara tutti i dati prima di iniziare, cosi non perdi tempo.</span>
+                            </li>
+                        </ul>
+
+                        <form action="{{ route('click.store') }}" method="POST" novalidate>
+                            @csrf
+
+                            @if ($errors->any())
+                                <div class="alert alert-danger py-2" role="alert">
+                                    Controlla i campi evidenziati prima di iniziare.
+                                </div>
+                            @endif
+
+                            <div class="bg-warning-subtle border border-warning rounded-3 p-3 p-md-4">
+                                <div class="row g-3">
+                                    <div class="col-12">
+                                        <label for="nome" class="form-label fw-semibold">Nome Partecipante</label>
                                         <input type="text" name="nome" id="nome"
                                             class="form-control @error('nome') is-invalid @enderror"
-                                            placeholder="Inserisci il nome">
+                                            placeholder="Inserisci il nome" value="{{ old('nome') }}" maxlength="100"
+                                            required autofocus>
                                         @error('nome')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="tipo" class="form-label">Selezione tipo di allenamento</label>
+
+                                    <div class="col-md-6">
+                                        <label for="tipo" class="form-label fw-semibold">Tipo di allenamento</label>
                                         <select name="tipo" id="tipo"
-                                            class="form-select @error('tipo') is-invalid @enderror">
-                                            <option value="0" selected>Allievi</option>
+                                            class="form-select @error('tipo') is-invalid @enderror" required>
+                                            <option value="0" {{ old('tipo', '0') == '0' ? 'selected' : '' }}>Allievi</option>
                                             <option value="MODULI" {{ old('tipo') == 'MODULI' ? 'selected' : '' }}>Moduli
                                             </option>
                                             <option value="PERSONALE" {{ old('tipo') == 'PERSONALE' ? 'selected' : '' }}>
                                                 Personale non docente
                                             </option>
                                         </select>
+                                        @error('tipo')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
-                                    <button type="submit" class="btn btn-success">Inizio Allenamento</button>
+
+                                    <div class="col-md-6">
+                                        <label for="tabella" class="form-label fw-semibold">Origine dati</label>
+                                        <select name="tabella" id="tabella"
+                                            class="form-select @error('tabella') is-invalid @enderror" required>
+                                            <option value="excel" {{ old('tabella', 'excel') == 'excel' ? 'selected' : '' }}>
+                                                Excel
+                                            </option>
+                                            <option value="sperimentale"
+                                                {{ old('tabella') == 'sperimentale' ? 'selected' : '' }}>
+                                                Sperimentale
+                                            </option>
+                                        </select>
+                                        @error('tabella')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-12">
+                                        <a href="{{ route('click.tabellaSelezione') }}"
+                                            class="btn btn-outline-secondary d-none" id="tabellaLink" target="_blank"
+                                            rel="noopener noreferrer">
+                                            <i class="fa-solid fa-table-list"></i> Apri tabella sperimentale in un'altra
+                                            finestra
+                                        </a>
+                                    </div>
+
+                                    <div class="col-12 d-grid d-md-flex justify-content-md-end">
+                                        <button type="submit" class="btn btn-success btn-lg px-4">
+                                            Inizio Allenamento
+                                        </button>
+                                    </div>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
+
+                        <script>
+                            (function() {
+                                const tabella = document.getElementById('tabella');
+                                const tabellaLink = document.getElementById('tabellaLink');
+
+                                if (!tabella || !tabellaLink) {
+                                    return;
+                                }
+
+                                const aggiornaVisibilitaLink = () => {
+                                    const mostra = tabella.value === 'sperimentale';
+                                    tabellaLink.classList.toggle('d-none', !mostra);
+                                };
+
+                                aggiornaVisibilitaLink();
+                                tabella.addEventListener('change', aggiornaVisibilitaLink);
+                            })();
+                        </script>
                     </div>
 
                 </div>
@@ -111,9 +173,8 @@
                         </button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="media-tab" data-bs-toggle="tab"
-                            data-bs-target="#media-tab-pane" type="button" role="tab"
-                            aria-controls="media-tab-pane" aria-selected="false">
+                        <button class="nav-link" id="media-tab" data-bs-toggle="tab" data-bs-target="#media-tab-pane"
+                            type="button" role="tab" aria-controls="media-tab-pane" aria-selected="false">
                             <i class="fa-solid fa-book"></i> Classifica Media Allievi
                         </button>
                     </li>
@@ -697,8 +758,7 @@ $giocatePerGiornoPersonale = $giocatePersonale->groupBy(function ($item) {
         </div>
 
         {{-- Tab Media --}}
-        <div class="tab-pane fade" id="media-tab-pane" role="tabpanel" aria-labelledby="media-tab"
-            tabindex="0">
+        <div class="tab-pane fade" id="media-tab-pane" role="tabpanel" aria-labelledby="media-tab" tabindex="0">
             <div class="mt-3">
                 @php
                     // Raggruppa per giorni e mantieni l'ordine cronologico inverso (più recente prima)
@@ -706,37 +766,38 @@ $giocatePerGiornoMedia = $giocateConMedia->groupBy(function ($item) {
     return $item->start_time ? $item->start_time->format('d/m/Y') : 'Senza data';
                     });
                 @endphp
-                                            <div class="table-responsive">
-                                                <table class="table table-striped table-hover align-middle mb-0">
-                                                    <thead class="table-dark">
-                                                        <tr>
-                                                            <th>#</th>
-                                                            <th>Nome</th>
-                                                            <th>Numero Giocate</th>
-                                                            <th>Tempo Medio</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover align-middle mb-0">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>#</th>
+                                <th>Nome</th>
+                                <th>Numero Giocate</th>
+                                <th>Tempo Medio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                        @foreach ($giocateConMedia as $giocata)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $giocata->nome }}</td>
-                            <td>{{ $giocata->numero_giocate }}</td>
-                            <td>
-                                {{ floor($giocata->tempo_medio_secondi / 60) }} minuti {{ $giocata->tempo_medio_secondi % 60 }} secondi
-                            </td>
-                        @endforeach
-                    </ul>
+                            @foreach ($giocateConMedia as $giocata)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $giocata->nome }}</td>
+                                    <td>{{ $giocata->numero_giocate }}</td>
+                                    <td>
+                                        {{ floor($giocata->tempo_medio_secondi / 60) }} minuti
+                                        {{ $giocata->tempo_medio_secondi % 60 }} secondi
+                                    </td>
+                            @endforeach
+                            </ul>
 
-                                                    </tbody>
-                                                </table>
+                        </tbody>
+                    </table>
 
+                </div>
             </div>
+
+
         </div>
-
-
-    </div>
     </div>
     </div>
     </div>
