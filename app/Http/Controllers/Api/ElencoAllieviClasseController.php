@@ -276,8 +276,6 @@ class ElencoAllieviClasseController extends Controller
     ]
 JSON, true);
 
-
         return response()->json($allievi);
     }
 }
-

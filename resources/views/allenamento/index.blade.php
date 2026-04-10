@@ -46,7 +46,8 @@
                                         <select name="tipo" id="tipo"
                                             class="form-select @error('tipo') is-invalid @enderror">
                                             <option value="0" selected>Allievi</option>
-                                            <option value="MODULI" {{ old('tipo') == 'MODULI' ? 'selected' : '' }}>Moduli</option>
+                                            <option value="MODULI" {{ old('tipo') == 'MODULI' ? 'selected' : '' }}>Moduli
+                                            </option>
                                         </select>
                                     </div>
                                     <button type="submit" class="btn btn-success">Inizio Allenamento</button>
@@ -163,7 +164,8 @@ $giocatePerGiorno = $giocate->groupBy(function ($item) {
                                                                                     style="color: bronze;"></span>
                                                                             @endif
                                                                         </td>
-                                                                        <td><a href="{{ route('allenamento.showClasse', ['id' => $giocata->id]) }}">{{ $giocata->nome }}</a>
+                                                                        <td><a
+                                                                                href="{{ route('allenamento.showClasse', ['id' => $giocata->id]) }}">{{ $giocata->nome }}</a>
                                                                             @if ($giocata->software === 1)
                                                                                 <span class="fa-solid fa-plane"
                                                                                     style="color: bronze;"></span>

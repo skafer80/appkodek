@@ -6,17 +6,21 @@ use App\Http\Controllers\Api\ElencoAllieviClasseController;
 use App\Http\Controllers\Api\ElencoModuliClasseController;
 use App\Http\Controllers\Api\ComuneController;
 use App\Http\Controllers\Api\ModuloConoscenzaController;
+use App\Http\Controllers\Api\DatiClasseController;
 
 
 
 
 Route::get('/elenco-allievi-classe/{classeId}', [ElencoAllieviClasseController::class, 'execute']);
 Route::get('/elenco-moduli-classe/{classeId}', [ElencoModuliClasseController::class, 'execute']);
+Route::get('/dati-classe/{classeId}', [DatiClasseController::class, 'execute']);
 
 Route::get('/comuni', [ComuneController::class, 'getComuniByProvincia'])->name('api.comuni');
 
 Route::get('/modulo-conoscenza/{id}', [ModuloConoscenzaController::class, 'show'])->name('api.modulo_conoscenza.show');
 
 Route::post('/modulo-conoscenza', [ModuloConoscenzaController::class, 'store']);
+
+
 
 Route::post('/moduloother', [ModuloConoscenzaController::class, 'storeOther']);
