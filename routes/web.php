@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\clickController;
 use App\Http\Controllers\allenamentoController;
+use App\Http\Controllers\datiProgettazioneController;
 
 Route::get('/click', [clickController::class, 'index'])->name('click.index');
 //Route::get('/click/{id}', [clickController::class, 'show'])->name('click.show');
@@ -19,6 +20,7 @@ Route::post('/click/storePersonale', [clickController::class, 'storePersonale'])
 Route::get('/eweb/config', [clickController::class, 'ewebShow'])->name('click.eweb');
 Route::get('/eweb/enti', [clickController::class, 'ewebEnti'])->name('click.ewebEnti');
 Route::get('/click/tabella-selezione', [clickController::class, 'tabellaSelezione'])->name('click.tabellaSelezione');
+Route::get('/progettazione', [datiProgettazioneController::class, 'datiProgettazione'])->name('progettazione.dati');
 
 
 /* Route::get('/allenamento', [allenamentoController::class, 'index'])->name('allenamento.index');

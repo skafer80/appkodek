@@ -33,6 +33,34 @@
         </div>
     </nav>
 
+        <style>
+        :root {
+            --card: #ffffff;
+            --line: #d9dee3;
+            --text: #1f2933;
+            --head: #eef2f6;
+            --copy: #174ea6;
+            --copy-ok: #1f7a39;
+        }
+        .pg-wrapper { max-width: 1600px; margin: 24px auto; padding: 0 16px; }
+        .pg-card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 10px 30px rgba(15,23,42,.08); overflow: hidden; }
+        .pg-card-header { padding: 16px 20px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+        .pg-card-header h1 { margin: 0; font-size: 20px; font-weight: 700; }
+        .pg-hint { margin: 0; font-size: 13px; color: #52606d; }
+        .pg-selects { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+        .pg-selects select { padding: 7px 12px; border: 1px solid var(--line); border-radius: 8px; font-size: 14px; color: var(--text); background: #fff; min-width: 220px; }
+        .pg-selects select:disabled { opacity: .5; cursor: not-allowed; }
+        .pg-table-wrap { width: 100%; overflow: auto; }
+        .pg-table { width: 100%; border-collapse: collapse; min-width: 1400px; }
+        .pg-table th, .pg-table td { border: 1px solid #1f2933; padding: 8px 10px; font-size: 13px; text-align: center; vertical-align: middle; }
+        .pg-table th { background: var(--head); font-weight: 700; position: sticky; top: 0; z-index: 1; }
+        .pg-copy-cell { white-space: nowrap; }
+        .pg-cell-copied { background: #d8f3dc !important; }
+        .pg-copy-btn { border: 0; background: transparent; color: var(--copy); margin-left: 6px; cursor: pointer; padding: 2px 4px; border-radius: 4px; }
+        .pg-copy-btn:hover { background: rgba(23,78,166,.1); }
+        .pg-copy-btn.copied { color: var(--copy-ok); }
+    </style>
+
     <main class="container">
         @yield('content')
     </main>
