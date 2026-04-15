@@ -3,9 +3,6 @@
 @section('title', 'Progettazione Dati')
 
 @section('content')
-
-    <div class="container">
-        <livewire:progettazione-home />
-    </div>
+    <livewire:progettazione-home />
 
 @endsection
