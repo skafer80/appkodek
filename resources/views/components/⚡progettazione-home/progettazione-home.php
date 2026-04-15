@@ -7,7 +7,9 @@ new class extends Component {
     public array $enti = [];
     public string $enteSelezionato = '';
     public $classeSelezionata = null;
-    public string $tabAttiva = 'allievi';
+    public string $tabAttiva = 'moduli';
+    public string $passwordSelettori = '';
+    public bool $selettoriSbloccati = false;
 
     public function mount(ClassiApiService $classiService)
     {
@@ -16,6 +18,11 @@ new class extends Component {
 
     public function updatedEnteSelezionato(): void
     {
+        if (! $this->selettoriSbloccati) {
+            $this->enteSelezionato = '';
+            return;
+        }
+
         $this->classeSelezionata = null;
 
         if ($this->tabAttiva !== 'personale') {
@@ -25,11 +32,20 @@ new class extends Component {
 
     public function updatedClasseSelezionata(): void
     {
+        if (! $this->selettoriSbloccati) {
+            $this->classeSelezionata = null;
+            return;
+        }
+
         $this->tabAttiva = 'allievi';
     }
 
     public function selezionaTab(string $tab): void
     {
+        if (! $this->selettoriSbloccati) {
+            return;
+        }
+
         $tabsDisponibili = ['dettagli', 'allievi', 'moduli', 'personale', 'stage'];
 
         if (!in_array($tab, $tabsDisponibili, true)) {
@@ -37,6 +53,18 @@ new class extends Component {
         }
 
         $this->tabAttiva = $tab;
+    }
+
+    public function sbloccaSelettori(): void
+    {
+        if (mb_strtolower(trim($this->passwordSelettori)) !== 'juventus') {
+            $this->addError('passwordSelettori', 'Password non valida.');
+            return;
+        }
+
+        $this->selettoriSbloccati = true;
+        $this->passwordSelettori = '';
+        $this->resetErrorBag('passwordSelettori');
     }
 
     public function getClassiEnteSelezionato(): array
