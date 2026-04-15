@@ -57,7 +57,7 @@
                                 type="button"
                                 class="nav-link py-1 px-2 {{ $tabAttiva === 'personale' ? 'active' : '' }}"
                                 wire:click="selezionaTab('personale')"
-                                @disabled(!$classeSelezionata)
+                                @disabled(!$enteSelezionato)
                             >
                                 Personale
                             </button>
@@ -73,11 +73,31 @@
                             </button>
                         </li>
                     </ul>
+
+                    @if ($classeSelezionata)
+                        <a
+                            href="{{ route('progettazione.stampa', ['classeId' => $classeSelezionata]) }}"
+                            target="_blank"
+                            class="btn btn-outline-secondary btn-sm"
+                            title="Apri versione stampabile della classe"
+                        >
+                            <i class="fa fa-print"></i> Stampa classe
+                        </a>
+                    @else
+                        <button type="button" class="btn btn-outline-secondary btn-sm" disabled>
+                            <i class="fa fa-print"></i> Stampa classe
+                        </button>
+                    @endif
                 </div>
             </div>
         </div>
 
-        @if ($classeSelezionata)
+        @if ($tabAttiva === 'personale')
+            <livewire:progettazione-personale
+                :ente-selezionato="$enteSelezionato"
+                :key="'progettazione-personale-' . ($enteSelezionato ?: 'none')"
+            />
+        @elseif ($classeSelezionata)
             @if ($tabAttiva === 'allievi')
                 <livewire:progettazione-allievi
                     :classe-selezionata="$classeSelezionata"
@@ -89,21 +109,19 @@
                     :key="'progettazione-moduli-' . ($classeSelezionata ?: 'none')"
                 />
             @elseif ($tabAttiva === 'dettagli')
-                <div class="pg-card" style="margin-top: 12px;">
-                    <div style="padding: 16px 20px;">Componente Dettagli in preparazione.</div>
-                </div>
-            @elseif ($tabAttiva === 'personale')
-                <div class="pg-card" style="margin-top: 12px;">
-                    <div style="padding: 16px 20px;">Componente Personale in preparazione.</div>
-                </div>
+                <livewire:progettazione-dettagli
+                    :classe-selezionata="$classeSelezionata"
+                    :key="'progettazione-dettagli-' . ($classeSelezionata ?: 'none')"
+                />
             @elseif ($tabAttiva === 'stage')
-                <div class="pg-card" style="margin-top: 12px;">
-                    <div style="padding: 16px 20px;">Componente Stage in preparazione.</div>
-                </div>
+                <livewire:progettazione-stage
+                    :classe-selezionata="$classeSelezionata"
+                    :key="'progettazione-stage-' . ($classeSelezionata ?: 'none')"
+                />
             @endif
         @else
             <div class="pg-card" style="margin-top: 12px;">
-                <div style="padding: 16px 20px;">Seleziona una classe per attivare i tab: Dettagli, Allievi, Moduli, Personale e Stage.</div>
+                <div style="padding: 16px 20px;">Seleziona una classe per attivare i tab: Dettagli, Allievi, Moduli e Stage. Per il tab Personale basta selezionare l'ente.</div>
             </div>
         @endif
     </div>

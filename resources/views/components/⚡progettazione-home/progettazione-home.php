@@ -17,7 +17,10 @@ new class extends Component {
     public function updatedEnteSelezionato(): void
     {
         $this->classeSelezionata = null;
-        $this->tabAttiva = 'allievi';
+
+        if ($this->tabAttiva !== 'personale') {
+            $this->tabAttiva = 'allievi';
+        }
     }
 
     public function updatedClasseSelezionata(): void

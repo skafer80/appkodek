@@ -67,5 +67,25 @@
 
     <!-- Bootstrap JS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        async function pgCopy(btn, value) {
+            const text = (value ?? '').toString();
+            const td = btn.closest('td');
+            try {
+                await navigator.clipboard.writeText(text);
+                td.classList.add('pg-cell-copied');
+                btn.classList.add('copied');
+                btn.querySelector('i').className = 'fa fa-check';
+                setTimeout(() => {
+                    td.classList.remove('pg-cell-copied');
+                    btn.classList.remove('copied');
+                    btn.querySelector('i').className = 'fa fa-copy';
+                }, 1400);
+            } catch {
+                alert('Copia non riuscita. Verifica i permessi del browser.');
+            }
+        }
+    </script>
 </body>
 </html>

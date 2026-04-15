@@ -53,12 +53,28 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($modulo->conoscenze as $index => $conoscenza)
+                                        @php
+                                            $oreAula = (int) ($conoscenza->oreConoscenza ?? 0);
+                                            $oreFad  = (int) ($conoscenza->oreFadConoscenza ?? 0);
+                                        @endphp
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
-                                            <td style="text-align: left;">{{ $conoscenza->nomeConoscenza }}</td>
-                                            <td>{{ $conoscenza->oreConoscenza ?? 0 }}</td>
-                                            <td>{{ $conoscenza->oreFadConoscenza ?? 0 }}</td>
-                                            <td>{{ (int) ($conoscenza->oreConoscenza ?? 0) + (int) ($conoscenza->oreFadConoscenza ?? 0) }}</td>
+                                            <td class="pg-copy-cell" style="text-align: left;">
+                                                {{ $conoscenza->nomeConoscenza }}
+                                                <button type="button" class="pg-copy-btn" onclick="pgCopy(this, {{ json_encode($conoscenza->nomeConoscenza) }})"><i class="fa fa-copy"></i></button>
+                                            </td>
+                                            <td class="pg-copy-cell">
+                                                {{ $oreAula }}
+                                                <button type="button" class="pg-copy-btn" onclick="pgCopy(this, {{ json_encode((string) $oreAula) }})"><i class="fa fa-copy"></i></button>
+                                            </td>
+                                            <td class="pg-copy-cell">
+                                                {{ $oreFad }}
+                                                <button type="button" class="pg-copy-btn" onclick="pgCopy(this, {{ json_encode((string) $oreFad) }})"><i class="fa fa-copy"></i></button>
+                                            </td>
+                                            <td class="pg-copy-cell">
+                                                {{ $oreAula + $oreFad }}
+                                                <button type="button" class="pg-copy-btn" onclick="pgCopy(this, {{ json_encode((string) ($oreAula + $oreFad)) }})"><i class="fa fa-copy"></i></button>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
