@@ -50,6 +50,17 @@
         .pg-selects { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
         .pg-selects select { padding: 7px 12px; border: 1px solid var(--line); border-radius: 8px; font-size: 14px; color: var(--text); background: #fff; min-width: 220px; }
         .pg-selects select:disabled { opacity: .5; cursor: not-allowed; }
+        .pg-toolbar { display: flex; flex-direction: column; gap: 10px; min-width: min(760px, 100%); }
+        .pg-controls-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+        .pg-selects-compact { gap: 10px; }
+        .pg-control-block { display: flex; flex-direction: column; gap: 4px; }
+        .pg-control-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: #52606d; margin: 0; }
+        .pg-print-wrap { margin-left: auto; }
+        .pg-tabs-row { border-bottom: 0; gap: 6px; margin: 0; }
+        .pg-tabs-row .nav-link { border-radius: 8px; border: 1px solid #d5dde5; background: #f8fafc; color: #334155; }
+        .pg-tabs-row .nav-link:hover:not(:disabled) { background: #eef3f9; }
+        .pg-tabs-row .nav-link.active { background: #174ea6; color: #fff; border-color: #174ea6; }
+        .pg-tabs-row .nav-link:disabled { opacity: .5; }
         .pg-table-wrap { width: 100%; overflow-x: auto; overflow-y: visible; }
         .pg-table { width: 100%; border-collapse: collapse; min-width: 1180px; }
         .pg-table th, .pg-table td { border: 1px solid #1f2933; padding: 7px 8px; font-size: 12px; text-align: center; vertical-align: middle; }
@@ -59,6 +70,16 @@
         .pg-copy-btn { border: 0; background: transparent; color: var(--copy); margin-left: 6px; cursor: pointer; padding: 2px 4px; border-radius: 4px; }
         .pg-copy-btn:hover { background: rgba(23,78,166,.1); }
         .pg-copy-btn.copied { color: var(--copy-ok); }
+
+        @media (max-width: 992px) {
+            .pg-toolbar { min-width: 100%; width: 100%; }
+            .pg-controls-row { align-items: stretch; }
+            .pg-control-block { width: 100%; }
+            .pg-selects-compact { width: 100%; }
+            .pg-selects-compact select { width: 100%; min-width: 0; }
+            .pg-print-wrap { width: 100%; margin-left: 0; }
+            .pg-print-wrap .btn { width: 100%; }
+        }
     </style>
 
     <main class="container-fluid px-0">

@@ -3,25 +3,63 @@
         <div class="pg-card">
             <div class="pg-card-header">
                 <div>
+
                     <h1>Progettazione dati</h1>
-                    <p class="pg-hint">Seleziona ente e classe, poi scegli il tab da visualizzare.</p>
+                    @if ($classeCorrente)
+                        <p class="pg-hint" style="margin-top: 4px;">
+                            <strong>Ente:</strong> {{ $enteSelezionato }} |
+                            <strong>Classe:</strong> {{ $classeCorrente->nome }} |
+                            <strong>Priorita:</strong> {{ $classeCorrente->ordine+1 }} |
+                            <strong>Sede:</strong> {{ $classeCorrente->sede }} |
+                            <strong>Descrizione:</strong> {{ $classeCorrente->descrizione ?: '-' }}
+                        </p>
+                    @else
+                        <p class="pg-hint">Seleziona ente e classe, poi scegli il tab da visualizzare.</p>
+                    @endif
                 </div>
-                <div class="pg-selects">
-                    <select wire:model.live="enteSelezionato">
-                        <option value="">Seleziona ente</option>
-                        @foreach ($enti as $ente)
-                            <option value="{{ $ente->ente }}">{{ $ente->ente }}</option>
-                        @endforeach
-                    </select>
+                <div class="pg-toolbar">
+                    <div class="pg-controls-row">
+                        <div class="pg-selects pg-selects-compact">
+                            <div class="pg-control-block">
+                                <label class="pg-control-label">Ente</label>
+                                <select wire:model.live="enteSelezionato">
+                                    <option value="">Seleziona ente</option>
+                                    @foreach ($enti as $ente)
+                                        <option value="{{ $ente->ente }}">{{ $ente->ente }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
 
-                    <select wire:model.live="classeSelezionata" @disabled(!$enteSelezionato)>
-                        <option value="">Seleziona classe</option>
-                        @foreach ($this->getClassiEnteSelezionato() as $classe)
-                            <option value="{{ $classe->id }}">{{ $classe->nome }} – {{ $classe->sede }}</option>
-                        @endforeach
-                    </select>
+                            <div class="pg-control-block">
+                                <label class="pg-control-label">Classe</label>
+                                <select wire:model.live="classeSelezionata" @disabled(!$enteSelezionato)>
+                                    <option value="">Seleziona classe</option>
+                                    @foreach ($this->getClassiEnteSelezionato() as $classe)
+                                        <option value="{{ $classe->id }}">{{ $loop->iteration }}. {{ $classe->nome }} – {{ $classe->sede }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
 
-                    <ul class="nav nav-tabs" style="border-bottom: 0; gap: 6px; margin: 0;">
+                        <div class="pg-print-wrap">
+                            @if ($classeSelezionata)
+                                <a
+                                    href="{{ route('progettazione.stampa', ['classeId' => $classeSelezionata]) }}"
+                                    target="_blank"
+                                    class="btn btn-outline-secondary btn-sm"
+                                    title="Apri versione stampabile della classe"
+                                >
+                                    <i class="fa fa-print"></i> Stampa classe
+                                </a>
+                            @else
+                                <button type="button" class="btn btn-outline-secondary btn-sm" disabled>
+                                    <i class="fa fa-print"></i> Stampa classe
+                                </button>
+                            @endif
+                        </div>
+                    </div>
+
+                    <ul class="nav nav-tabs pg-tabs-row">
                         <li class="nav-item">
                             <button
                                 type="button"
@@ -73,21 +111,6 @@
                             </button>
                         </li>
                     </ul>
-
-                    @if ($classeSelezionata)
-                        <a
-                            href="{{ route('progettazione.stampa', ['classeId' => $classeSelezionata]) }}"
-                            target="_blank"
-                            class="btn btn-outline-secondary btn-sm"
-                            title="Apri versione stampabile della classe"
-                        >
-                            <i class="fa fa-print"></i> Stampa classe
-                        </a>
-                    @else
-                        <button type="button" class="btn btn-outline-secondary btn-sm" disabled>
-                            <i class="fa fa-print"></i> Stampa classe
-                        </button>
-                    @endif
                 </div>
             </div>
         </div>
