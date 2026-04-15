@@ -4,6 +4,11 @@
             <div class="pg-card-header">
                 <div>
 
+                    @php
+                        $classeCorrente = collect($this->getClassiEnteSelezionato())
+                            ->first(fn ($classe) => (string) $classe->id === (string) $this->classeSelezionata);
+                    @endphp
+
                     <h1>Progettazione dati</h1>
                     @if ($classeCorrente)
                         <p class="pg-hint" style="margin-top: 4px;">
