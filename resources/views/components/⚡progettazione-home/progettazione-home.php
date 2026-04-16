@@ -26,7 +26,7 @@ new class extends Component {
         $this->classeSelezionata = null;
 
         if ($this->tabAttiva !== 'personale') {
-            $this->tabAttiva = 'allievi';
+            $this->tabAttiva = 'personale';
         }
     }
 
@@ -37,7 +37,7 @@ new class extends Component {
             return;
         }
 
-        $this->tabAttiva = 'allievi';
+        $this->tabAttiva = 'moduli';
     }
 
     public function selezionaTab(string $tab): void
