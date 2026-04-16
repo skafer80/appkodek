@@ -212,7 +212,7 @@
 
                             <tr id="is-{{ $subjects->where('id_subject', 155863)->first()->id }}"">
                                 <td class="text-right"><i class="fa fa-level-up fa-rotate-90 me-3"></i>MD155863</td>
-                                <td class="ps-5-i">Elementi di osservazione e comunicazione</td>
+                                <td class="ps-5-i">MACCHINE, ATTREZZI E IL LORO FUNZIONAMENTO NELL’IMPIEGO IN PROCESSI PRODUTTIVI</td>
                                 <td>{{ $subjects->where('id_subject', 155863)->first()->ore_conoscenza ?? 0 }}</td>
                                 <td>{{ $subjects->where('id_subject', 155863)->first()->ore_fad_conoscenza ?? 0 }}</td>
 
@@ -228,7 +228,7 @@
 
                             <tr id="is-{{ $subjects->where('id_subject', 155864)->first()->id }}"">
                                 <td class="text-right"><i class="fa fa-level-up fa-rotate-90 me-3"></i>MD155864</td>
-                                <td class="ps-5-i">I bisogni primari: tecniche di base</td>
+                                <td class="ps-5-i">TECNICHE DI APPRONTAMENTO</td>
                                 <td>{{ $subjects->where('id_subject', 155864)->first()->ore_conoscenza ?? 0 }}</td>
                                 <td>{{ $subjects->where('id_subject', 155864)->first()->ore_fad_conoscenza ?? 0 }}</td>
 
@@ -244,7 +244,7 @@
 
                             <tr id="is-{{ $subjects->where('id_subject', 155865)->first()->id }}"">
                                 <td class="text-right"><i class="fa fa-level-up fa-rotate-90 me-3"></i>MD155865</td>
-                                <td class="ps-5-i">Sicurezza e prevenzione</td>
+                                <td class="ps-5-i">TECNICHE E METODI D'USO DELLE MACCHINE E ATTREZZI</td>
                                 <td>{{ $subjects->where('id_subject', 155865)->first()->ore_conoscenza ?? 0 }}</td>
                                 <td>{{ $subjects->where('id_subject', 155865)->first()->ore_fad_conoscenza ?? 0 }}</td>
 
@@ -260,7 +260,7 @@
 
                             <tr id="is-{{ $subjects->where('id_subject', 155866)->first()->id }}"">
                                 <td class="text-right"><i class="fa fa-level-up fa-rotate-90 me-3"></i>MD155866</td>
-                                <td class="ps-5-i">Tecniche di mobilizzazione</td>
+                                <td class="ps-5-i">BASI TECNICHE PER EFFETTUARE PICCOLE RIPARAZIONI ALLE MACCHINE, IMPIANTI E STRUTTURE</td>
                                 <td>{{ $subjects->where('id_subject', 155866)->first()->ore_conoscenza ?? 0 }}</td>
                                 <td>{{ $subjects->where('id_subject', 155866)->first()->ore_fad_conoscenza ?? 0 }}</td>
 
@@ -276,7 +276,7 @@
 
                             <tr id="is-{{ $subjects->where('id_subject', 155867)->first()->id }}"">
                                 <td class="text-right"><i class="fa fa-level-up fa-rotate-90 me-3"></i>MD155867</td>
-                                <td class="ps-5-i">Elementi di primo soccorso</td>
+                                <td class="ps-5-i">ELEMENTI DI IDRAULICA LEGATI AL SETTORE</td>
                                 <td>{{ $subjects->where('id_subject', 155867)->first()->ore_conoscenza ?? 0 }}</td>
                                 <td>{{ $subjects->where('id_subject', 155867)->first()->ore_fad_conoscenza ?? 0 }}</td>
 
@@ -292,8 +292,7 @@
 
                             <tr id="is-{{ $subjects->where('id_subject', 155868)->first()->id }}"">
                                 <td class="text-right"><i class="fa fa-level-up fa-rotate-90 me-3"></i>MD155868</td>
-                                <td class="ps-5-i">Tecniche di prevenzione e di cura delle complicanze delle principali
-                                    patologie degenerative</td>
+                                <td class="ps-5-i">ELEMENTI DI MECCANICA LEGATI AL SETTORE</td>
                                 <td>{{ $subjects->where('id_subject', 155868)->first()->ore_conoscenza ?? 0 }}</td>
                                 <td>{{ $subjects->where('id_subject', 155868)->first()->ore_fad_conoscenza ?? 0 }}</td>
 
@@ -309,7 +308,7 @@
 
                             <tr id="is-{{ $subjects->where('id_subject', 155869)->first()->id }}"">
                                 <td class="text-right"><i class="fa fa-level-up fa-rotate-90 me-3"></i>MD155869</td>
-                                <td class="ps-5-i">Elementi di igiene personale</td>
+                                <td class="ps-5-i">FORME DI ALLOGGIAMENTO</td>
                                 <td>{{ $subjects->where('id_subject', 155869)->first()->ore_conoscenza ?? 0 }}</td>
                                 <td>{{ $subjects->where('id_subject', 155869)->first()->ore_fad_conoscenza ?? 0 }}</td>
 
@@ -325,7 +324,7 @@
 
                             <tr id="is-{{ $subjects->where('id_subject', 155870)->first()->id }}">
                                 <td class="text-right"><i class="fa fa-level-up fa-rotate-90 me-3"></i>MD155870</td>
-                                <td class="ps-5-i">Tecniche di automedicazione e di assunzione dei farmaci</td>
+                                <td class="ps-5-i">FORME DI RICOVERI</td>
                                 <td>{{ $subjects->where('id_subject', 155870)->first()->ore_conoscenza ?? 0 }}</td>
                                 <td>{{ $subjects->where('id_subject', 155870)->first()->ore_fad_conoscenza ?? 0 }}</td>
 
@@ -341,7 +340,7 @@
 
                             <tr id="is-{{ $subjects->where('id_subject', 155871)->first()->id }}"">
                                 <td class="text-right"><i class="fa fa-level-up fa-rotate-90 me-3"></i>MD155871</td>
-                                <td class="ps-5-i">Conservazione dei farmaci e loro smaltimento</td>
+                                <td class="ps-5-i">ELEMENTI DI ERGONOMIA</td>
                                 <td>{{ $subjects->where('id_subject', 155871)->first()->ore_conoscenza ?? 0 }}</td>
                                 <td>{{ $subjects->where('id_subject', 155871)->first()->ore_fad_conoscenza ?? 0 }}</td>
 
@@ -394,8 +393,7 @@
 
                             <tr id="is-{{ $subjects->where('id_subject', 155872)->first()->id }}">
                                 <td class="text-right"><i class="fa fa-level-up fa-rotate-90 me-3"></i>MD155872</td>
-                                <td class="ps-5-i">Elementi di igiene ambientale a domicilio: pulizia della casa e cura
-                                    della biancheria</td>
+                                <td class="ps-5-i">PROCEDURE, PROTOCOLLI, TECNICHE DI IGIENE, PULIZIE E RIORDINO</td>
                                 <td>{{ $subjects->where('id_subject', 155872)->first()->ore_conoscenza ?? 0 }}</td>
                                 <td>{{ $subjects->where('id_subject', 155872)->first()->ore_fad_conoscenza ?? 0 }}</td>
 
@@ -411,7 +409,7 @@
 
                             <tr id="is-{{ $subjects->where('id_subject', 155873)->first()->id }}">
                                 <td class="text-right"><i class="fa fa-level-up fa-rotate-90 me-3"></i>MD155873</td>
-                                <td class="ps-5-i">Elementi di economia domestica e di gestione del bilancio domestico
+                                <td class="ps-5-i">ELEMENTI FERTILIZZANTI DEL SUOLO
                                 </td>
                                 <td>{{ $subjects->where('id_subject', 155873)->first()->ore_conoscenza ?? 0 }}</td>
                                 <td>{{ $subjects->where('id_subject', 155873)->first()->ore_fad_conoscenza ?? 0 }}</td>
@@ -428,7 +426,7 @@
 
                             <tr id="is-{{ $subjects->where('id_subject', 155874)->first()->id }}">
                                 <td class="text-right"><i class="fa fa-level-up fa-rotate-90 me-3"></i>MD155874</td>
-                                <td class="ps-5-i">Preparazione dei pasti</td>
+                                <td class="ps-5-i">ESIGENZE DI SITO E CONDIZIONI CLIMATICHE LEGATE ALLE DIVERSE COLTIVAZIONI</td>
                                 <td>{{ $subjects->where('id_subject', 155874)->first()->ore_conoscenza ?? 0 }}</td>
                                 <td>{{ $subjects->where('id_subject', 155874)->first()->ore_fad_conoscenza ?? 0 }}</td>
 
@@ -444,7 +442,7 @@
 
                             <tr id="is-{{ $subjects->where('id_subject', 155875)->first()->id }}">
                                 <td class="text-right"><i class="fa fa-level-up fa-rotate-90 me-3"></i>MD155875</td>
-                                <td class="ps-5-i">Prevenzione incidenti domestici</td>
+                                <td class="ps-5-i">ESIGENZE NUTRIZIONALI</td>
                                 <td>{{ $subjects->where('id_subject', 155875)->first()->ore_conoscenza ?? 0 }}</td>
                                 <td>{{ $subjects->where('id_subject', 155875)->first()->ore_fad_conoscenza ?? 0 }}</td>
 
@@ -460,7 +458,7 @@
 
                             <tr id="is-{{ $subjects->where('id_subject', 155876)->first()->id }}">
                                 <td class="text-right"><i class="fa fa-level-up fa-rotate-90 me-3"></i>MD155876</td>
-                                <td class="ps-5-i">Elementi di igiene alimentare</td>
+                                <td class="ps-5-i">FERTILIZZANTI E CONCIMI</td>
                                 <td>{{ $subjects->where('id_subject', 155876)->first()->ore_conoscenza ?? 0 }}</td>
                                 <td>{{ $subjects->where('id_subject', 155876)->first()->ore_fad_conoscenza ?? 0 }}</td>
 
@@ -512,7 +510,7 @@
 
                             <tr id="is-{{ $subjects->where('id_subject', 155877)->first()->id }}">
                                 <td class="text-right"><i class="fa fa-level-up fa-rotate-90 me-3"></i>MD155877</td>
-                                <td class="ps-5-i">Tipologia di utenza</td>
+                                <td class="ps-5-i">METODI, FORME E TECNICHE DELLA LOTTA CONTRO PARASSITI, MALATTIE, DISTURBI FITOPATOLOGICI</td>
                                 <td>{{ $subjects->where('id_subject', 155877)->first()->ore_conoscenza ?? 0 }}</td>
                                 <td>{{ $subjects->where('id_subject', 155877)->first()->ore_fad_conoscenza ?? 0 }}</td>
 
@@ -528,7 +526,7 @@
 
                             <tr id="is-{{ $subjects->where('id_subject', 155878)->first()->id }}">
                                 <td class="text-right"><i class="fa fa-level-up fa-rotate-90 me-3"></i>MD155878</td>
-                                <td class="ps-5-i">La relazione di aiuto: strategie e tecniche</td>
+                                <td class="ps-5-i">PRINCIPALI SISTEMI E FORME DI PRODUZIONI</td>
                                 <td>{{ $subjects->where('id_subject', 155878)->first()->ore_conoscenza ?? 0 }}</td>
                                 <td>{{ $subjects->where('id_subject', 155878)->first()->ore_fad_conoscenza ?? 0 }}</td>
 
@@ -544,7 +542,7 @@
 
                             <tr id="is-{{ $subjects->where('id_subject', 155879)->first()->id }}">
                                 <td class="text-right"><i class="fa fa-level-up fa-rotate-90 me-3"></i>MD155879</td>
-                                <td class="ps-5-i">Tecniche di osservazione</td>
+                                <td class="ps-5-i">PRINCIPALI TECNICHE DI PIANTUMAZIONE, PRODUZIONE E MANUTENZIONE DELLE PIANTE</td>
                                 <td>{{ $subjects->where('id_subject', 155879)->first()->ore_conoscenza ?? 0 }}</td>
                                 <td>{{ $subjects->where('id_subject', 155879)->first()->ore_fad_conoscenza ?? 0 }}</td>
 
@@ -560,7 +558,7 @@
 
                             <tr id="is-{{ $subjects->where('id_subject', 155880)->first()->id }}">
                                 <td class="text-right"><i class="fa fa-level-up fa-rotate-90 me-3"></i>MD155880</td>
-                                <td class="ps-5-i">Teorie e tecniche di comunicazione</td>
+                                <td class="ps-5-i">PRINCIPALI TECNICHE DI RACCOLTA DEI PRODOTTI</td>
                                 <td>{{ $subjects->where('id_subject', 155880)->first()->ore_conoscenza ?? 0 }}</td>
                                 <td>{{ $subjects->where('id_subject', 155880)->first()->ore_fad_conoscenza ?? 0 }}</td>
 
@@ -576,7 +574,7 @@
 
                             <tr id="is-{{ $subjects->where('id_subject', 155881)->first()->id }}">
                                 <td class="text-right"><i class="fa fa-level-up fa-rotate-90 me-3"></i>MD155881</td>
-                                <td class="ps-5-i">Ruoli e funzioni nei gruppi di lavoro</td>
+                                <td class="ps-5-i">IGIENE E SICUREZZA SUL LUOGO DI LAVORO</td>
                                 <td>{{ $subjects->where('id_subject', 155881)->first()->ore_conoscenza ?? 0 }}</td>
                                 <td>{{ $subjects->where('id_subject', 155881)->first()->ore_fad_conoscenza ?? 0 }}</td>
 
@@ -592,7 +590,7 @@
 
                             <tr id="is-{{ $subjects->where('id_subject', 155882)->first()->id }}">
                                 <td class="text-right"><i class="fa fa-level-up fa-rotate-90 me-3"></i>MD155882</td>
-                                <td class="ps-5-i">Etica e deontologia professionale</td>
+                                <td class="ps-5-i">ALFABETIZZAZIONE INFORMATICA</td>
                                 <td>{{ $subjects->where('id_subject', 155882)->first()->ore_conoscenza ?? 0 }}</td>
                                 <td>{{ $subjects->where('id_subject', 155882)->first()->ore_fad_conoscenza ?? 0 }}</td>
 
