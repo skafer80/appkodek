@@ -1,77 +1,97 @@
 {
-  "classeId": "997",
+  "classeId": "789",
   "moduli": [
     {
       "nomeModuli": "Modulo 1",
       "conoscenze": [
         {
-          "nomeConoscenza": "ELEMENTI DI OSSERVAZIONE E COMUNICAZIONE",
+          "nomeConoscenza": "MACCHINE, ATTREZZI E IL LORO FUNZIONAMENTO NELL’IMPIEGO IN PROCESSI PRODUTTIVI",
           "oreConoscenza": 18,
           "oreFadConoscenza": 0
         },
         {
-          "nomeConoscenza": "I BISOGNI PRIMARI: TECNICHE DI BASE",
+          "nomeConoscenza": "TECNICHE DI APPRONTAMENTO",
+          "oreConoscenza": 30,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "TECNICHE E METODI D'USO DELLE MACCHINE E ATTREZZI",
           "oreConoscenza": 18,
           "oreFadConoscenza": 0
         },
         {
-          "nomeConoscenza": "SICUREZZA E PREVENZIONE",
+          "nomeConoscenza": "BASI TECNICHE PER EFFETTUARE PICCOLE RIPARAZIONI ALLE MACCHINE, IMPIANTI E STRUTTURE",
           "oreConoscenza": 12,
           "oreFadConoscenza": 0
         },
         {
-          "nomeConoscenza": "TECNICHE DI MOBILIZZAZIONE",
+          "nomeConoscenza": "ELEMENTI DI IDRAULICA LEGATI AL SETTORE",
           "oreConoscenza": 18,
           "oreFadConoscenza": 0
         },
         {
-          "nomeConoscenza": "ELEMENTI DI PRIMO SOCCORSO",
-          "oreConoscenza": 18,
-          "oreFadConoscenza": 0
-        },
-        {
-          "nomeConoscenza": "ELEMENTI DI IGIENE PERSONALE",
+          "nomeConoscenza": "ELEMENTI DI MECCANICA LEGATI AL SETTORE",
           "oreConoscenza": 12,
           "oreFadConoscenza": 0
         },
         {
-          "nomeConoscenza": "TECNICHE DI PREVENZIONE E DI CURA DELLE COMPLICANZE DELLE PRINCIPALI PATOLOGIE DEGENERATIVE",
+          "nomeConoscenza": "FORME DI ALLOGGIAMENTO",
+          "oreConoscenza": 14,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "FORME DI RICOVERI",
           "oreConoscenza": 12,
           "oreFadConoscenza": 0
         },
         {
-          "nomeConoscenza": "TECNICHE DI AUTOMEDICAZIONE E DI ASSUNZIONE DEI FARMACI",
+          "nomeConoscenza": "ELEMENTI DI ERGONOMIA",
           "oreConoscenza": 12,
           "oreFadConoscenza": 0
         },
         {
-          "nomeConoscenza": "CONSERVAZIONE DEI FARMACI E LORO SMALTIMENTO",
-          "oreConoscenza": 6,
-          "oreFadConoscenza": 0
-        },
-        {
-          "nomeConoscenza": "ELEMENTI DI IGIENE AMBIENTALE A DOMICILIO: PULIZIA DELLA CASA E CURA DELLA BIANCHERIA",
+          "nomeConoscenza": "PROCEDURE, PROTOCOLLI, TECNICHE DI IGIENE, PULIZIE E RIORDINO",
           "oreConoscenza": 12,
           "oreFadConoscenza": 0
         },
         {
-          "nomeConoscenza": "ELEMENTI DI ECONOMIA DOMESTICA E DI GESTIONE DEL BILANCIO DOMESTICO",
+          "nomeConoscenza": "ELEMENTI FERTILIZZANTI DEL SUOLO",
           "oreConoscenza": 18,
           "oreFadConoscenza": 0
         },
         {
-          "nomeConoscenza": "PREPARAZIONE DEI PASTI",
-          "oreConoscenza": 18,
+          "nomeConoscenza": "ESIGENZE DI SITO E CONDIZIONI CLIMATICHE LEGATE ALLE DIVERSE COLTIVAZIONI",
+          "oreConoscenza": 24,
           "oreFadConoscenza": 0
         },
         {
-          "nomeConoscenza": "PREVENZIONE DEGLI INCIDENTI DOMESTICI",
-          "oreConoscenza": 18,
+          "nomeConoscenza": "ESIGENZE NUTRIZIONALI",
+          "oreConoscenza": 12,
           "oreFadConoscenza": 0
         },
         {
-          "nomeConoscenza": "ELEMENTI DI IGIENE ALIMENTARE",
-          "oreConoscenza": 18,
+          "nomeConoscenza": "FERTILIZZANTI E CONCIMI",
+          "oreConoscenza": 24,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "METODI, FORME E TECNICHE DELLA LOTTA CONTRO PARASSITI, MALATTIE, DISTURBI FITOPATOLOGICI",
+          "oreConoscenza": 24,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "PRINCIPALI SISTEMI E FORME DI PRODUZIONI",
+          "oreConoscenza": 30,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "PRINCIPALI TECNICHE DI PIANTUMAZIONE, PRODUZIONE E MANUTENZIONE DELLE PIANTE",
+          "oreConoscenza": 30,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "PRINCIPALI TECNICHE DI RACCOLTA DEI PRODOTTI",
+          "oreConoscenza": 30,
           "oreFadConoscenza": 0
         },
         {
@@ -91,7 +111,7 @@
         },
         {
           "nomeConoscenza": "STAGE",
-          "oreConoscenza": 90,
+          "oreConoscenza": 150,
           "oreFadConoscenza": 0
         }
       ]
