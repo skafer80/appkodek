@@ -679,7 +679,7 @@
                                 @php
                                     $warning = 'bg-green';
                                     if (
-                                        $subjects->sum('ore_conoscenza') != 404 ||
+                                        $subjects->sum('ore_conoscenza') != 350 ||
                                         $subjects->sum('ore_fad_conoscenza') != 0
                                     ) {
                                         $warning = 'bg-red';
