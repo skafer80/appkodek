@@ -57,7 +57,7 @@ new class extends Component {
 
     public function sbloccaSelettori(): void
     {
-        if (mb_strtolower(trim($this->passwordSelettori)) !== 'juventus') {
+        if (mb_strtolower(trim($this->passwordSelettori)) !== 'gargarozzo') {
             $this->addError('passwordSelettori', 'Password non valida.');
             return;
         }
