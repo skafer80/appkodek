@@ -243,7 +243,7 @@ class clickController extends Controller
 
         $contaStudenti = student::where('player_id', $request->player_id)->count();
 
-        if ($contaStudenti >= 15) {
+        if ($contaStudenti >= 10) {
             $player = Player::findOrFail($request->player_id);
             $player->end_time = now();
             $player->save();
