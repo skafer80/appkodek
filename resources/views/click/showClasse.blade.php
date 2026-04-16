@@ -229,10 +229,10 @@
                             <div class="portlet-body">
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                        @if (count($students) < 15)
+                                        @if (count($students) < 10)
                                             <div class="warning">
                                                 <p>Non è stato raggiunto il numero minimo di Destinatari verificati
-                                                    necessari: 15</p>
+                                                    necessari: 10</p>
                                             </div>
                                         @else
                                             <div class="success">
