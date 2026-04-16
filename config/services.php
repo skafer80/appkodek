@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    'progettazione' => [
+        'password_reale' => env('PROGETTAZIONE_PASSWORD_REALE', 'gargarozzo'),
+        'password_fake' => env('PROGETTAZIONE_PASSWORD_FAKE', 'prova'),
+    ],
+
 ];

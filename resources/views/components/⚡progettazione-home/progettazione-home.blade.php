@@ -122,6 +122,13 @@
                                 Stage
                             </button>
                         </li>
+                        <li class="nav-item">
+                            <button type="button"
+                                class="nav-link py-1 px-2 {{ $tabAttiva === 'fasce' ? 'active' : '' }}"
+                                wire:click="selezionaTab('fasce')" @disabled(!$classeSelezionata)>
+                                Fasce
+                            </button>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -138,6 +145,8 @@
                 <livewire:progettazione-dettagli :classe-selezionata="$classeSelezionata" :key="'progettazione-dettagli-' . ($classeSelezionata ?: 'none')" />
             @elseif ($tabAttiva === 'stage')
                 <livewire:progettazione-stage :classe-selezionata="$classeSelezionata" :key="'progettazione-stage-' . ($classeSelezionata ?: 'none')" />
+            @elseif ($tabAttiva === 'fasce')
+                <livewire:progettazione-fasce :classe-selezionata="$classeSelezionata" :key="'progettazione-fasce-' . ($classeSelezionata ?: 'none')" />
             @endif
         @else
             <div class="pg-card" style="margin-top: 12px;">

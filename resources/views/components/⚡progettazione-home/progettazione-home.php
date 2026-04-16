@@ -46,7 +46,7 @@ new class extends Component {
             return;
         }
 
-        $tabsDisponibili = ['dettagli', 'allievi', 'moduli', 'personale', 'stage'];
+        $tabsDisponibili = ['dettagli', 'allievi', 'moduli', 'personale', 'stage', 'fasce'];
 
         if (!in_array($tab, $tabsDisponibili, true)) {
             return;
@@ -57,7 +57,7 @@ new class extends Component {
 
     public function sbloccaSelettori(): void
     {
-        if (mb_strtolower(trim($this->passwordSelettori)) !== 'gargarozzo') {
+        if (! hash_equals($this->getPasswordSelettoriAttesa(), trim($this->passwordSelettori))) {
             $this->addError('passwordSelettori', 'Password non valida.');
             return;
         }
@@ -76,5 +76,16 @@ new class extends Component {
         $ente = collect($this->enti)->first(fn ($e) => $e->ente === $this->enteSelezionato);
 
         return $ente ? $ente->classi : [];
+    }
+
+    private function getPasswordSelettoriAttesa(): string
+    {
+        $modalitaFake = (bool) session('fake_api_mode', false);
+        $servicesConfig = (array) config('services', []);
+        $config = (array) ($servicesConfig['progettazione'] ?? []);
+
+        return $modalitaFake
+            ? (string) ($config['password_fake'] ?? 'prova')
+            : (string) ($config['password_reale'] ?? 'gargarozzo');
     }
 };
