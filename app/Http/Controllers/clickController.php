@@ -105,7 +105,7 @@ class clickController extends Controller
                 ]);
             }
 
-            for ($i = 155873; $i <= 155883; $i++) {
+            for ($i = 155873; $i <= 155880; $i++) {
                 ClickSubject::create([
                     'id_subject' => $i,
                     'ore_conoscenza' => 0,
@@ -198,7 +198,7 @@ class clickController extends Controller
                     ->orWhere('ore_conoscenza', 0);
             })->count();
 
-        if ($MD36345 === 66 && $MD36346 === 68 && $MD36347 >= 24 && $MD36348 === 192 && $subject_zero === 0) {
+        if ($MD36345 === 66 && $MD36346 === 68 && $MD36347 === 24 && $MD36348 === 192 && $subject_zero === 0) {
             $player = Player::findOrFail($request->player_id);
             $player->end_time = now();
             $player->save();
