@@ -1,97 +1,77 @@
 {
-  "classeId": "789",
+  "classeId": "997",
   "moduli": [
     {
       "nomeModuli": "Modulo 1",
       "conoscenze": [
         {
-          "nomeConoscenza": "MACCHINE, ATTREZZI E IL LORO FUNZIONAMENTO NELL’IMPIEGO IN PROCESSI PRODUTTIVI",
+          "nomeConoscenza": "ELEMENTI DI OSSERVAZIONE E COMUNICAZIONE",
           "oreConoscenza": 18,
           "oreFadConoscenza": 0
         },
         {
-          "nomeConoscenza": "TECNICHE DI APPRONTAMENTO",
-          "oreConoscenza": 30,
-          "oreFadConoscenza": 0
-        },
-        {
-          "nomeConoscenza": "TECNICHE E METODI D'USO DELLE MACCHINE E ATTREZZI",
+          "nomeConoscenza": "I BISOGNI PRIMARI: TECNICHE DI BASE",
           "oreConoscenza": 18,
           "oreFadConoscenza": 0
         },
         {
-          "nomeConoscenza": "BASI TECNICHE PER EFFETTUARE PICCOLE RIPARAZIONI ALLE MACCHINE, IMPIANTI E STRUTTURE",
+          "nomeConoscenza": "SICUREZZA E PREVENZIONE",
           "oreConoscenza": 12,
           "oreFadConoscenza": 0
         },
         {
-          "nomeConoscenza": "ELEMENTI DI IDRAULICA LEGATI AL SETTORE",
+          "nomeConoscenza": "TECNICHE DI MOBILIZZAZIONE",
           "oreConoscenza": 18,
           "oreFadConoscenza": 0
         },
         {
-          "nomeConoscenza": "ELEMENTI DI MECCANICA LEGATI AL SETTORE",
-          "oreConoscenza": 12,
-          "oreFadConoscenza": 0
-        },
-        {
-          "nomeConoscenza": "FORME DI ALLOGGIAMENTO",
-          "oreConoscenza": 14,
-          "oreFadConoscenza": 0
-        },
-        {
-          "nomeConoscenza": "FORME DI RICOVERI",
-          "oreConoscenza": 12,
-          "oreFadConoscenza": 0
-        },
-        {
-          "nomeConoscenza": "ELEMENTI DI ERGONOMIA",
-          "oreConoscenza": 12,
-          "oreFadConoscenza": 0
-        },
-        {
-          "nomeConoscenza": "PROCEDURE, PROTOCOLLI, TECNICHE DI IGIENE, PULIZIE E RIORDINO",
-          "oreConoscenza": 12,
-          "oreFadConoscenza": 0
-        },
-        {
-          "nomeConoscenza": "ELEMENTI FERTILIZZANTI DEL SUOLO",
+          "nomeConoscenza": "ELEMENTI DI PRIMO SOCCORSO",
           "oreConoscenza": 18,
           "oreFadConoscenza": 0
         },
         {
-          "nomeConoscenza": "ESIGENZE DI SITO E CONDIZIONI CLIMATICHE LEGATE ALLE DIVERSE COLTIVAZIONI",
-          "oreConoscenza": 24,
-          "oreFadConoscenza": 0
-        },
-        {
-          "nomeConoscenza": "ESIGENZE NUTRIZIONALI",
+          "nomeConoscenza": "ELEMENTI DI IGIENE PERSONALE",
           "oreConoscenza": 12,
           "oreFadConoscenza": 0
         },
         {
-          "nomeConoscenza": "FERTILIZZANTI E CONCIMI",
-          "oreConoscenza": 24,
+          "nomeConoscenza": "TECNICHE DI PREVENZIONE E DI CURA DELLE COMPLICANZE DELLE PRINCIPALI PATOLOGIE DEGENERATIVE",
+          "oreConoscenza": 12,
           "oreFadConoscenza": 0
         },
         {
-          "nomeConoscenza": "METODI, FORME E TECNICHE DELLA LOTTA CONTRO PARASSITI, MALATTIE, DISTURBI FITOPATOLOGICI",
-          "oreConoscenza": 24,
+          "nomeConoscenza": "TECNICHE DI AUTOMEDICAZIONE E DI ASSUNZIONE DEI FARMACI",
+          "oreConoscenza": 12,
           "oreFadConoscenza": 0
         },
         {
-          "nomeConoscenza": "PRINCIPALI SISTEMI E FORME DI PRODUZIONI",
-          "oreConoscenza": 30,
+          "nomeConoscenza": "CONSERVAZIONE DEI FARMACI E LORO SMALTIMENTO",
+          "oreConoscenza": 6,
           "oreFadConoscenza": 0
         },
         {
-          "nomeConoscenza": "PRINCIPALI TECNICHE DI PIANTUMAZIONE, PRODUZIONE E MANUTENZIONE DELLE PIANTE",
-          "oreConoscenza": 30,
+          "nomeConoscenza": "ELEMENTI DI IGIENE AMBIENTALE A DOMICILIO: PULIZIA DELLA CASA E CURA DELLA BIANCHERIA",
+          "oreConoscenza": 12,
           "oreFadConoscenza": 0
         },
         {
-          "nomeConoscenza": "PRINCIPALI TECNICHE DI RACCOLTA DEI PRODOTTI",
-          "oreConoscenza": 30,
+          "nomeConoscenza": "ELEMENTI DI ECONOMIA DOMESTICA E DI GESTIONE DEL BILANCIO DOMESTICO",
+          "oreConoscenza": 18,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "PREPARAZIONE DEI PASTI",
+          "oreConoscenza": 18,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "PREVENZIONE DEGLI INCIDENTI DOMESTICI",
+          "oreConoscenza": 18,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "ELEMENTI DI IGIENE ALIMENTARE",
+          "oreConoscenza": 18,
           "oreFadConoscenza": 0
         },
         {
@@ -111,7 +91,7 @@
         },
         {
           "nomeConoscenza": "STAGE",
-          "oreConoscenza": 150,
+          "oreConoscenza": 90,
           "oreFadConoscenza": 0
         }
       ]

@@ -5,63 +5,93 @@
       "nomeModuli": "Modulo 1",
       "conoscenze": [
         {
-          "nomeConoscenza": "ATTREZZATURE DI SERVIZIO",
+          "nomeConoscenza": "MACCHINE, ATTREZZI E IL LORO FUNZIONAMENTO NELL’IMPIEGO IN PROCESSI PRODUTTIVI",
           "oreConoscenza": 18,
           "oreFadConoscenza": 0
         },
         {
-          "nomeConoscenza": "NORMATIVE DI SICUREZZA, IGIENE, SALVAGUARDIA AMBIENTALE DI SETTORE",
+          "nomeConoscenza": "TECNICHE DI APPRONTAMENTO",
           "oreConoscenza": 30,
           "oreFadConoscenza": 0
         },
         {
-          "nomeConoscenza": "NORMATIVE E DISPOSITIVI IGIENICO-SANITARI NEI PROCESSI DI PREPARAZIONE E DISTRIBUZIONE PASTI",
-          "oreConoscenza": 24,
-          "oreFadConoscenza": 0
-        },
-        {
-          "nomeConoscenza": "PRINCIPALI TERMINOLOGIE TECNICHE DI SETTORE",
-          "oreConoscenza": 12,
-          "oreFadConoscenza": 0
-        },
-        {
-          "nomeConoscenza": "PROCESSI E CICLI DI LAVORO DEL PROCESSO RISTORATIVO",
+          "nomeConoscenza": "TECNICHE E METODI D'USO DELLE MACCHINE E ATTREZZI",
           "oreConoscenza": 18,
           "oreFadConoscenza": 0
         },
         {
-          "nomeConoscenza": "TECNICHE DI COMUNICAZIONE ORGANIZZATIVA",
-          "oreConoscenza": 36,
-          "oreFadConoscenza": 0
-        },
-        {
-          "nomeConoscenza": "TECNICHE DI PIANIFICAZIONE",
+          "nomeConoscenza": "BASI TECNICHE PER EFFETTUARE PICCOLE RIPARAZIONI ALLE MACCHINE, IMPIANTI E STRUTTURE",
           "oreConoscenza": 12,
           "oreFadConoscenza": 0
         },
         {
-          "nomeConoscenza": "ELEMENTI DI GASTRONOMIA",
-          "oreConoscenza": 54,
+          "nomeConoscenza": "ELEMENTI DI IDRAULICA LEGATI AL SETTORE",
+          "oreConoscenza": 18,
           "oreFadConoscenza": 0
         },
         {
-          "nomeConoscenza": "ELEMENTI DI MERCEOLOGIA RELATIVI ALLE MATERIE PRIME: VARIETà E DERIVATI, PRODOTTI ENOGASTRONOMICI REGIONALI, PROPRIETà ORGANOLETTICHE E IMPIEGHI",
-          "oreConoscenza": 54,
+          "nomeConoscenza": "ELEMENTI DI MECCANICA LEGATI AL SETTORE",
+          "oreConoscenza": 12,
           "oreFadConoscenza": 0
         },
         {
-          "nomeConoscenza": "STANDARD DI QUALITà DEI PRODOTTI ALIMENTARI",
+          "nomeConoscenza": "FORME DI ALLOGGIAMENTO",
+          "oreConoscenza": 14,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "FORME DI RICOVERI",
+          "oreConoscenza": 12,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "ELEMENTI DI ERGONOMIA",
+          "oreConoscenza": 12,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "PROCEDURE, PROTOCOLLI, TECNICHE DI IGIENE, PULIZIE E RIORDINO",
+          "oreConoscenza": 12,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "ELEMENTI FERTILIZZANTI DEL SUOLO",
+          "oreConoscenza": 18,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "ESIGENZE DI SITO E CONDIZIONI CLIMATICHE LEGATE ALLE DIVERSE COLTIVAZIONI",
           "oreConoscenza": 24,
           "oreFadConoscenza": 0
         },
         {
-          "nomeConoscenza": "TECNICHE DELLE LAVORAZIONI PRELIMINARI E DEI SEMILAVORATI IN CUCINA",
-          "oreConoscenza": 54,
+          "nomeConoscenza": "ESIGENZE NUTRIZIONALI",
+          "oreConoscenza": 12,
           "oreFadConoscenza": 0
         },
         {
-          "nomeConoscenza": "UTENSILI PER LA PREPARAZIONE DEI CIBI",
-          "oreConoscenza": 14,
+          "nomeConoscenza": "FERTILIZZANTI E CONCIMI",
+          "oreConoscenza": 24,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "METODI, FORME E TECNICHE DELLA LOTTA CONTRO PARASSITI, MALATTIE, DISTURBI FITOPATOLOGICI",
+          "oreConoscenza": 24,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "PRINCIPALI SISTEMI E FORME DI PRODUZIONI",
+          "oreConoscenza": 30,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "PRINCIPALI TECNICHE DI PIANTUMAZIONE, PRODUZIONE E MANUTENZIONE DELLE PIANTE",
+          "oreConoscenza": 30,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "PRINCIPALI TECNICHE DI RACCOLTA DEI PRODOTTI",
+          "oreConoscenza": 30,
           "oreFadConoscenza": 0
         },
         {
@@ -75,7 +105,7 @@
           "oreFadConoscenza": 0
         },
         {
-          "nomeConoscenza": "LINMGUA STRANIERA (INGLESE)",
+          "nomeConoscenza": "LINGUA STRANIERA (INGLESE)",
           "oreConoscenza": 30,
           "oreFadConoscenza": 0
         },
