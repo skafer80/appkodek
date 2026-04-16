@@ -65,6 +65,8 @@
         .pg-table { width: 100%; border-collapse: collapse; min-width: 1180px; }
         .pg-table th, .pg-table td { border: 1px solid #1f2933; padding: 7px 8px; font-size: 12px; text-align: center; vertical-align: middle; }
         .pg-table th { background: var(--head); font-weight: 700; position: sticky; top: 0; z-index: 1; }
+        .pg-table tbody tr:nth-child(odd) { background: #ffffff; }
+        .pg-table tbody tr:nth-child(even) { background: #f1fcca; }
         .pg-copy-cell { white-space: nowrap; }
         .pg-cell-copied { background: #d8f3dc !important; }
         .pg-copy-btn { border: 0; background: transparent; color: var(--copy); margin-left: 6px; cursor: pointer; padding: 2px 4px; border-radius: 4px; }
@@ -98,14 +100,25 @@
                 td.classList.add('pg-cell-copied');
                 btn.classList.add('copied');
                 btn.querySelector('i').className = 'fa fa-check';
-                setTimeout(() => {
-                    td.classList.remove('pg-cell-copied');
-                    btn.classList.remove('copied');
-                    btn.querySelector('i').className = 'fa fa-copy';
-                }, 1400);
             } catch {
                 alert('Copia non riuscita. Verifica i permessi del browser.');
             }
+        }
+
+        function pgResetCopied(btn) {
+            const scope = btn.closest('.pg-card') || document;
+
+            scope.querySelectorAll('.pg-cell-copied').forEach((td) => {
+                td.classList.remove('pg-cell-copied');
+            });
+
+            scope.querySelectorAll('.pg-copy-btn.copied').forEach((copyBtn) => {
+                copyBtn.classList.remove('copied');
+                const icon = copyBtn.querySelector('i');
+                if (icon) {
+                    icon.className = 'fa fa-copy';
+                }
+            });
         }
     </script>
 </body>

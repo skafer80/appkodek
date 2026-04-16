@@ -8,6 +8,7 @@
             @if ($studenti)
                 <div class="pg-selects">
                     <strong>{{ count($studenti) }} allievi</strong>
+                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="pgResetCopied(this)">Reset copie</button>
                 </div>
             @endif
         </div>

@@ -346,11 +346,11 @@
                             <tbody>
                                 <tr>
                                     <th style="width: 28%;">FASCIA A</th>
-                                    <td>{{ $totOreSenzaStage/2 }}</td>
+                                    <td>{{ $fasce['A'] }}</td>
                                 </tr>
                                 <tr>
                                     <th>FASCIA B</th>
-                                    <td>{{ $totOreSenzaStage/2 }}</td>
+                                    <td>{{ $fasce['B'] }}</td>
                                 </tr>
                                 <tr>
                                     <th>FASCIA C</th>
@@ -484,6 +484,7 @@
                                                     <th style="width: 70px;">Ore</th>
                                                     <th style="width: 80px;">Ore FAD</th>
                                                     <th style="width: 70px;">Totale</th>
+                                                    <th style="width: 70px;">Fascia</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -498,6 +499,7 @@
                                                         <td>{{ $oreAula }}</td>
                                                         <td>{{ $oreFad }}</td>
                                                         <td>{{ $oreAula + $oreFad }}</td>
+                                                        <td>{{ $conoscenza->fascia ?? '-' }}</td>
                                                     </tr>
                                                 @empty
                                                     <tr>

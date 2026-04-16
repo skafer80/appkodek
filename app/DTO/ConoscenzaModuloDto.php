@@ -10,6 +10,7 @@ class ConoscenzaModuloDto implements Wireable
         public ?string $nomeConoscenza,
         public ?int $oreConoscenza,
         public ?int $oreFadConoscenza,
+        public ?string $fascia,
     ) {}
 
     public static function fromArray(array $data): self
@@ -18,6 +19,9 @@ class ConoscenzaModuloDto implements Wireable
             nomeConoscenza: $data['nomeConoscenza'] ?? null,
             oreConoscenza: isset($data['oreConoscenza']) ? (int) $data['oreConoscenza'] : null,
             oreFadConoscenza: isset($data['oreFadConoscenza']) ? (int) $data['oreFadConoscenza'] : null,
+            fascia: array_key_exists('fascia', $data)
+                ? ($data['fascia'] === null ? null : (string) $data['fascia'])
+                : null,
         );
     }
 
@@ -35,6 +39,7 @@ class ConoscenzaModuloDto implements Wireable
             'nomeConoscenza' => $this->nomeConoscenza,
             'oreConoscenza' => $this->oreConoscenza,
             'oreFadConoscenza' => $this->oreFadConoscenza,
+            'fascia' => $this->fascia,
         ];
     }
 

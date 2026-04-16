@@ -73,6 +73,20 @@ class datiProgettazioneController extends Controller
             }
         }
 
+        $fasce = [
+            'A' => 0,
+            'B' => 0,
+            'C' => 0,
+        ];
+
+        foreach ($moduli as $modulo) {
+            foreach ($modulo->conoscenze as $conoscenza) {
+                if (isset($conoscenza->fascia) && isset($fasce[$conoscenza->fascia])) {
+                    $fasce[$conoscenza->fascia] += (int) ($conoscenza->oreConoscenza ?? 0);
+                }
+            }
+        }
+
         return view('progettazione.stampa-classe', [
             'classeId' => $classeId,
             'enteSelezionato' => $enteSelezionato,
@@ -81,6 +95,7 @@ class datiProgettazioneController extends Controller
             'moduli' => $moduli,
             'datiClasse' => $datiClasse,
             'personale' => $personale,
+            'fasce' => $fasce,
             'generatedAt' => now(),
         ]);
     }

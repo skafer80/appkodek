@@ -7,7 +7,7 @@
             </div>
             @if ($moduli)
                 @php
-                    $totaleConoscenze = collect($moduli)->sum(fn ($modulo) => count($modulo->conoscenze ?? []));
+                    $totaleConoscenze = collect($moduli)->sum(fn($modulo) => count($modulo->conoscenze ?? []));
                 @endphp
                 <div class="pg-selects">
                     <strong>{{ count($moduli) }} moduli</strong>
@@ -24,8 +24,12 @@
             <div style="padding: 12px 12px 16px; display: grid; gap: 12px;">
                 @foreach ($moduli as $modulo)
                     @php
-                        $totOre = collect($modulo->conoscenze)->sum(fn ($conoscenza) => (int) ($conoscenza->oreConoscenza ?? 0));
-                        $totOreFad = collect($modulo->conoscenze)->sum(fn ($conoscenza) => (int) ($conoscenza->oreFadConoscenza ?? 0));
+                        $totOre = collect($modulo->conoscenze)->sum(
+                            fn($conoscenza) => (int) ($conoscenza->oreConoscenza ?? 0),
+                        );
+                        $totOreFad = collect($modulo->conoscenze)->sum(
+                            fn($conoscenza) => (int) ($conoscenza->oreFadConoscenza ?? 0),
+                        );
                     @endphp
 
                     <div class="pg-card" style="border-radius: 10px; box-shadow: none;">
@@ -49,36 +53,51 @@
                                         <th>Ore</th>
                                         <th>Ore FAD</th>
                                         <th>Totale</th>
+                                        <th>Fascia</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($modulo->conoscenze as $index => $conoscenza)
-
-                                    @if($conoscenza->nomeConoscenza === 'STAGE')
-                                        @continue
-                                    @endif
+                                        @if ($conoscenza->nomeConoscenza === 'STAGE')
+                                            @continue
+                                        @endif
                                         @php
                                             $oreAula = (int) ($conoscenza->oreConoscenza ?? 0);
-                                            $oreFad  = (int) ($conoscenza->oreFadConoscenza ?? 0);
+                                            $oreFad = (int) ($conoscenza->oreFadConoscenza ?? 0);
                                         @endphp
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
                                             <td class="pg-copy-cell" style="text-align: left;">
                                                 {{ $conoscenza->nomeConoscenza }}
-                                                <button type="button" class="pg-copy-btn" onclick="pgCopy(this, {{ json_encode($conoscenza->nomeConoscenza) }})"><i class="fa fa-copy"></i></button>
+                                                <button type="button" class="pg-copy-btn"
+                                                    onclick="pgCopy(this, {{ json_encode($conoscenza->nomeConoscenza) }})"><i
+                                                        class="fa fa-copy"></i></button>
                                             </td>
                                             <td class="pg-copy-cell">
                                                 {{ $oreAula }}
-                                                <button type="button" class="pg-copy-btn" onclick="pgCopy(this, {{ json_encode((string) $oreAula) }})"><i class="fa fa-copy"></i></button>
+                                                <button type="button" class="pg-copy-btn"
+                                                    onclick="pgCopy(this, {{ json_encode((string) $oreAula) }})"><i
+                                                        class="fa fa-copy"></i></button>
                                             </td>
                                             <td class="pg-copy-cell">
                                                 {{ $oreFad }}
-                                                <button type="button" class="pg-copy-btn" onclick="pgCopy(this, {{ json_encode((string) $oreFad) }})"><i class="fa fa-copy"></i></button>
+                                                <button type="button" class="pg-copy-btn"
+                                                    onclick="pgCopy(this, {{ json_encode((string) $oreFad) }})"><i
+                                                        class="fa fa-copy"></i></button>
                                             </td>
                                             <td class="pg-copy-cell">
                                                 {{ $oreAula + $oreFad }}
-                                                <button type="button" class="pg-copy-btn" onclick="pgCopy(this, {{ json_encode((string) ($oreAula + $oreFad)) }})"><i class="fa fa-copy"></i></button>
+                                                <button type="button" class="pg-copy-btn"
+                                                    onclick="pgCopy(this, {{ json_encode((string) ($oreAula + $oreFad)) }})"><i
+                                                        class="fa fa-copy"></i></button>
                                             </td>
+                                            <td class="pg-copy-cell">
+                                                {{ $conoscenza->fascia }}
+                                                <button type="button" class="pg-copy-btn"
+                                                    onclick="pgCopy(this, {{ json_encode((string) $conoscenza->fascia) }})"><i
+                                                        class="fa fa-copy"></i></button>
+                                            </td>
+
                                         </tr>
                                     @endforeach
                                 </tbody>

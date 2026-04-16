@@ -30,21 +30,18 @@ new class extends Component
         $totaleOre = 0;
 
         foreach ($moduli as $modulo) {
-            if (mb_strtoupper(trim($modulo->nomeModuli ?? '')) === 'STAGE') {
-                continue;
-            }
 
             foreach ($modulo->conoscenze as $conoscenza) {
-                $totaleOre += (int) ($conoscenza->oreConoscenza ?? 0);
-                $totaleOre += (int) ($conoscenza->oreFadConoscenza ?? 0);
+                if ($conoscenza->fascia==='A') {
+                    $this->fasciaA += $conoscenza->oreConoscenza;
+                }
+                if ($conoscenza->fascia==='B') {
+                    $this->fasciaB += $conoscenza->oreConoscenza;
+                }
+
             }
         }
 
-        $valore = (int) round($totaleOre / 2);
-
-        $this->fasciaA = $valore;
-        $this->fasciaB = $valore;
-        $this->fasciaC = $valore;
         $this->loaded  = true;
     }
 };
