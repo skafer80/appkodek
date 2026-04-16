@@ -1,0 +1,120 @@
+{
+  "classeId": "999",
+  "moduli": [
+    {
+      "nomeModuli": "Modulo 1",
+      "conoscenze": [
+        {
+          "nomeConoscenza": "MACCHINE, ATTREZZI E IL LORO FUNZIONAMENTO NELL’IMPIEGO IN PROCESSI PRODUTTIVI",
+          "oreConoscenza": 18,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "TECNICHE DI APPRONTAMENTO",
+          "oreConoscenza": 30,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "TECNICHE E METODI D'USO DELLE MACCHINE E ATTREZZI",
+          "oreConoscenza": 18,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "BASI TECNICHE PER EFFETTUARE PICCOLE RIPARAZIONI ALLE MACCHINE, IMPIANTI E STRUTTURE",
+          "oreConoscenza": 12,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "ELEMENTI DI IDRAULICA LEGATI AL SETTORE",
+          "oreConoscenza": 18,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "ELEMENTI DI MECCANICA LEGATI AL SETTORE",
+          "oreConoscenza": 12,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "FORME DI ALLOGGIAMENTO",
+          "oreConoscenza": 14,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "FORME DI RICOVERI",
+          "oreConoscenza": 12,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "ELEMENTI DI ERGONOMIA",
+          "oreConoscenza": 12,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "PROCEDURE, PROTOCOLLI, TECNICHE DI IGIENE, PULIZIE E RIORDINO",
+          "oreConoscenza": 12,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "ELEMENTI FERTILIZZANTI DEL SUOLO",
+          "oreConoscenza": 18,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "ESIGENZE DI SITO E CONDIZIONI CLIMATICHE LEGATE ALLE DIVERSE COLTIVAZIONI",
+          "oreConoscenza": 24,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "ESIGENZE NUTRIZIONALI",
+          "oreConoscenza": 12,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "FERTILIZZANTI E CONCIMI",
+          "oreConoscenza": 24,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "METODI, FORME E TECNICHE DELLA LOTTA CONTRO PARASSITI, MALATTIE, DISTURBI FITOPATOLOGICI",
+          "oreConoscenza": 24,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "PRINCIPALI SISTEMI E FORME DI PRODUZIONI",
+          "oreConoscenza": 30,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "PRINCIPALI TECNICHE DI PIANTUMAZIONE, PRODUZIONE E MANUTENZIONE DELLE PIANTE",
+          "oreConoscenza": 30,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "PRINCIPALI TECNICHE DI RACCOLTA DEI PRODOTTI",
+          "oreConoscenza": 30,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "IGIENE E SICUREZZA SUL LUOGO DI LAVORO",
+          "oreConoscenza": 12,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "ALFABETIZZAZIONE INFORMATICA",
+          "oreConoscenza": 12,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "LINGUA STRANIERA (INGLESE)",
+          "oreConoscenza": 30,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "STAGE",
+          "oreConoscenza": 150,
+          "oreFadConoscenza": 0
+        }
+      ]
+    }
+  ]
+}

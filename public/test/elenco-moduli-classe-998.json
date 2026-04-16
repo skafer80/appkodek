@@ -1,0 +1,85 @@
+{
+  "classeId": "998",
+  "moduli": [
+    {
+      "nomeModuli": "Modulo 1",
+      "conoscenze": [
+        {
+          "nomeConoscenza": "ARCHITETTURA E COMPONENTI HARDWARE E SOFTWARE DEL SISTEMA",
+          "oreConoscenza": 36,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "INTRODUZIONE ALLE RETI",
+          "oreConoscenza": 24,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "FUNZIONALITà DELL'AMBIENTE OPERATIVO",
+          "oreConoscenza": 38,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "SOFTWARE PER IL TRATTAMENTO DATI",
+          "oreConoscenza": 24,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "TRATTAMENTO TESTI PER IL WEB",
+          "oreConoscenza": 36,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "ELEMENTI DI COMUNICAZIONE MEDIALE",
+          "oreConoscenza": 36,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "CARATTERISTICHE DELLE RETI INFORMATICHE E DEI DISPOSITIVI DI RETE",
+          "oreConoscenza": 24,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "TECNICHE DI UTILIZZO DEI SERVIZI CLOUD",
+          "oreConoscenza": 36,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "WEB APPLICATION",
+          "oreConoscenza": 36,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "TUTELA E SICUREZZA DEI DATI IN RETE",
+          "oreConoscenza": 24,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "SOCIAL NETWORK",
+          "oreConoscenza": 36,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "IGIENE E SICUREZZA SUL LUOGO DI LAVORO",
+          "oreConoscenza": 12,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "ALFABETIZZAZIONE INFORMATICA",
+          "oreConoscenza": 12,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "LINGUA STRANIERA (INGLESE)",
+          "oreConoscenza": 30,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "STAGE",
+          "oreConoscenza": 150,
+          "oreFadConoscenza": 0
+        }
+      ]
+    }
+  ]
+}

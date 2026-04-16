@@ -1,0 +1,17 @@
+{
+    "classeId": "999",
+    "DataAvvio": "10/01/2024",
+    "DataFine": "20/12/2024",
+    "Importo": "12500.00",
+    "NumeroGiorniPrevisti": 120,
+    "DataAvvioStage": "01/09/2024",
+    "DataFineStage": "30/09/2024",
+    "NumeroGiorniStage": 20,
+    "DenominazioneStage": "Azienda Test S.r.l.",
+    "PIVA": "12345678901",
+    "NumeroAllievi": "15",
+    "Provincia": "TO",
+    "Comune": "Torino",
+    "Indirizzo": "Via Test",
+    "NumeroCivico": "1"
+}

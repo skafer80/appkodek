@@ -1,0 +1,17 @@
+{
+    "classeId": "997",
+    "DataAvvio": "05/03/2025",
+    "DataFine": "30/11/2025",
+    "Importo": "15000.00",
+    "NumeroGiorniPrevisti": 150,
+    "DataAvvioStage": "01/10/2025",
+    "DataFineStage": "31/10/2025",
+    "NumeroGiorniStage": 22,
+    "DenominazioneStage": "Tech Roma S.p.A.",
+    "PIVA": "11223344556",
+    "NumeroAllievi": "18",
+    "Provincia": "RM",
+    "Comune": "Roma",
+    "Indirizzo": "Via Testaccio",
+    "NumeroCivico": "7"
+}

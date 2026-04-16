@@ -1,0 +1,33 @@
+[
+    {
+        "ente": "ENTE DI TEST",
+        "classi": [
+            {
+                "id": 999,
+                "nome": "CS1234-ED202222",
+                "descrizione": "ADDETTO ALLA SISTEMAZIONE E MANUTENZIONE AREE VERDI",
+                "sede": "Sede Test Torino",
+                "ordine": 1
+            },
+            {
+                "id": 998,
+                "nome": "CS1244-ED102242",
+                "descrizione": "OPERATORE INFORMATICO DI RISORSE WEB",
+                "sede": "Sede Test Milano",
+                "ordine": 2
+            }
+        ]
+    },
+    {
+        "ente": "SECONDO ENTE TEST",
+        "classi": [
+            {
+                "id": 997,
+                "nome": "CS1254-ED202523",
+                "descrizione": "ASSISTENTE FAMILIARE",
+                "sede": "Sede Test Roma",
+                "ordine": 1
+            }
+        ]
+    }
+]
