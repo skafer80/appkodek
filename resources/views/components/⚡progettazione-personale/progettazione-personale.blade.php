@@ -28,7 +28,6 @@
                             <th>Telefono</th>
                             <th>Email</th>
                             <th>Data nascita</th>
-                            <th>Titolo</th>
                             <th>Ruolo</th>
                             <th>Esterno</th>
                         </tr>
@@ -62,14 +61,10 @@
                                     <button type="button" class="pg-copy-btn" onclick="pgCopy(this, {{ json_encode($persona->data_nascita ?? '') }})"><i class="fa fa-copy"></i></button>
                                 </td>
                                 <td class="pg-copy-cell">
-                                    {{ $persona->titolo ?? '-' }}
-                                    <button type="button" class="pg-copy-btn" onclick="pgCopy(this, {{ json_encode($persona->titolo ?? '') }})"><i class="fa fa-copy"></i></button>
-                                </td>
-                                <td class="pg-copy-cell">
                                     {{ $persona->ruolo ?? '-' }}
                                     <button type="button" class="pg-copy-btn" onclick="pgCopy(this, {{ json_encode($persona->ruolo ?? '') }})"><i class="fa fa-copy"></i></button>
                                 </td>
-                                <td>{{ $persona->esterno ?? '-' }}</td>
+                                <td>{{ $persona->esterno === 'Y' ? 'Sì' : 'No' }}</td>
                             </tr>
                         @endforeach
                     </tbody>

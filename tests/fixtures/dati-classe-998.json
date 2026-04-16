@@ -1,0 +1,17 @@
+{
+    "classeId": "998",
+    "DataAvvio": "15/02/2024",
+    "DataFine": "15/11/2024",
+    "Importo": "9800.00",
+    "NumeroGiorniPrevisti": 90,
+    "DataAvvioStage": "01/10/2024",
+    "DataFineStage": "31/10/2024",
+    "NumeroGiorniStage": 15,
+    "DenominazioneStage": "Studio Comunicazione S.r.l.",
+    "PIVA": "98765432109",
+    "NumeroAllievi": "12",
+    "Provincia": "MI",
+    "Comune": "Milano",
+    "Indirizzo": "Corso Test",
+    "NumeroCivico": "42"
+}

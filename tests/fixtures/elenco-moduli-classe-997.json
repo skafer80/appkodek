@@ -1,0 +1,100 @@
+{
+  "classeId": "997",
+  "moduli": [
+    {
+      "nomeModuli": "Modulo 1",
+      "conoscenze": [
+        {
+          "nomeConoscenza": "ELEMENTI DI OSSERVAZIONE E COMUNICAZIONE",
+          "oreConoscenza": 18,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "I BISOGNI PRIMARI: TECNICHE DI BASE",
+          "oreConoscenza": 18,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "SICUREZZA E PREVENZIONE",
+          "oreConoscenza": 12,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "TECNICHE DI MOBILIZZAZIONE",
+          "oreConoscenza": 18,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "ELEMENTI DI PRIMO SOCCORSO",
+          "oreConoscenza": 18,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "ELEMENTI DI IGIENE PERSONALE",
+          "oreConoscenza": 12,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "TECNICHE DI PREVENZIONE E DI CURA DELLE COMPLICANZE DELLE PRINCIPALI PATOLOGIE DEGENERATIVE",
+          "oreConoscenza": 12,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "TECNICHE DI AUTOMEDICAZIONE E DI ASSUNZIONE DEI FARMACI",
+          "oreConoscenza": 12,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "CONSERVAZIONE DEI FARMACI E LORO SMALTIMENTO",
+          "oreConoscenza": 6,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "ELEMENTI DI IGIENE AMBIENTALE A DOMICILIO: PULIZIA DELLA CASA E CURA DELLA BIANCHERIA",
+          "oreConoscenza": 12,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "ELEMENTI DI ECONOMIA DOMESTICA E DI GESTIONE DEL BILANCIO DOMESTICO",
+          "oreConoscenza": 18,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "PREPARAZIONE DEI PASTI",
+          "oreConoscenza": 18,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "PREVENZIONE DEGLI INCIDENTI DOMESTICI",
+          "oreConoscenza": 18,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "ELEMENTI DI IGIENE ALIMENTARE",
+          "oreConoscenza": 18,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "IGIENE E SICUREZZA SUL LUOGO DI LAVORO",
+          "oreConoscenza": 12,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "ALFABETIZZAZIONE INFORMATICA",
+          "oreConoscenza": 12,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "LINGUA STRANIERA (INGLESE)",
+          "oreConoscenza": 30,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "STAGE",
+          "oreConoscenza": 90,
+          "oreFadConoscenza": 0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "classeId": "999",
+  "moduli": [
+    {
+      "nomeModuli": "Modulo 1",
+      "conoscenze": [
+        {
+          "nomeConoscenza": "ATTREZZATURE DI SERVIZIO",
+          "oreConoscenza": 18,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "NORMATIVE DI SICUREZZA, IGIENE, SALVAGUARDIA AMBIENTALE DI SETTORE",
+          "oreConoscenza": 30,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "NORMATIVE E DISPOSITIVI IGIENICO-SANITARI NEI PROCESSI DI PREPARAZIONE E DISTRIBUZIONE PASTI",
+          "oreConoscenza": 24,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "PRINCIPALI TERMINOLOGIE TECNICHE DI SETTORE",
+          "oreConoscenza": 12,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "PROCESSI E CICLI DI LAVORO DEL PROCESSO RISTORATIVO",
+          "oreConoscenza": 18,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "TECNICHE DI COMUNICAZIONE ORGANIZZATIVA",
+          "oreConoscenza": 36,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "TECNICHE DI PIANIFICAZIONE",
+          "oreConoscenza": 12,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "ELEMENTI DI GASTRONOMIA",
+          "oreConoscenza": 54,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "ELEMENTI DI MERCEOLOGIA RELATIVI ALLE MATERIE PRIME: VARIETà E DERIVATI, PRODOTTI ENOGASTRONOMICI REGIONALI, PROPRIETà ORGANOLETTICHE E IMPIEGHI",
+          "oreConoscenza": 54,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "STANDARD DI QUALITà DEI PRODOTTI ALIMENTARI",
+          "oreConoscenza": 24,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "TECNICHE DELLE LAVORAZIONI PRELIMINARI E DEI SEMILAVORATI IN CUCINA",
+          "oreConoscenza": 54,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "UTENSILI PER LA PREPARAZIONE DEI CIBI",
+          "oreConoscenza": 14,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "IGIENE E SICUREZZA SUL LUOGO DI LAVORO",
+          "oreConoscenza": 12,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "ALFABETIZZAZIONE INFORMATICA",
+          "oreConoscenza": 12,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "LINMGUA STRANIERA (INGLESE)",
+          "oreConoscenza": 30,
+          "oreFadConoscenza": 0
+        },
+        {
+          "nomeConoscenza": "STAGE",
+          "oreConoscenza": 150,
+          "oreFadConoscenza": 0
+        }
+      ]
+    }
+  ]
+}

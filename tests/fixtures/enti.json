@@ -1,0 +1,100 @@
+[
+    {
+        "ente": "ENTE DI TEST",
+        "personale": [
+            {
+                "id": 1,
+                "nome": "Luigi",
+                "cognome": "Bianchi",
+                "codice_fiscale": "BNCLGU80A01L219B",
+                "telefono": "0112345678",
+                "email": "luigi.bianchi@test.it",
+                "data_nascita": "01/01/1980",
+                "titolo": "REO",
+                "esterno": "N"
+            },
+            {
+                "id": 2,
+                "nome": "Carla",
+                "cognome": "Neri",
+                "codice_fiscale": "NRECRL75B41L219C",
+                "telefono": "0119876543",
+                "email": "carla.neri@test.it",
+                "data_nascita": "01/02/1975",
+                "titolo": "Direttore di progetto",
+                "esterno": "Y"
+            },
+            {
+                "id": 3,
+                "nome": "Roberto",
+                "cognome": "Greco",
+                "codice_fiscale": "GRCRRT82C15L219D",
+                "telefono": null,
+                "email": "roberto.greco@test.it",
+                "data_nascita": "15/03/1982",
+                "titolo": "Tutor",
+                "esterno": "Y"
+            },
+            {
+                "id": 4,
+                "nome": "Silvia",
+                "cognome": "Mariani",
+                "codice_fiscale": "MRNSLV86E50L219E",
+                "telefono": "0115554433",
+                "email": "silvia.mariani@test.it",
+                "data_nascita": "10/05/1986",
+                "titolo": "Personale amministrativo",
+                "esterno": "N"
+            }
+        ]
+    },
+    {
+        "ente": "SECONDO ENTE TEST",
+        "personale": [
+            {
+                "id": 5,
+                "nome": "Marta",
+                "cognome": "Esposito",
+                "codice_fiscale": "SPSMRT88D56H501E",
+                "telefono": "0612345678",
+                "email": "marta.esposito@test.it",
+                "data_nascita": "16/04/1988",
+                "titolo": "REO",
+                "esterno": "N"
+            },
+            {
+                "id": 6,
+                "nome": "Claudio",
+                "cognome": "Ferrara",
+                "codice_fiscale": "FRRCLD79M10H501F",
+                "telefono": "0617654321",
+                "email": "claudio.ferrara@test.it",
+                "data_nascita": "10/08/1979",
+                "titolo": "Direttore di progetto",
+                "esterno": "Y"
+            },
+            {
+                "id": 7,
+                "nome": "Monica",
+                "cognome": "Serra",
+                "codice_fiscale": "SRRMCN90H50H501G",
+                "telefono": null,
+                "email": "monica.serra@test.it",
+                "data_nascita": "10/06/1990",
+                "titolo": "Tutor",
+                "esterno": "Y"
+            },
+            {
+                "id": 8,
+                "nome": "Antonio",
+                "cognome": "Rizzi",
+                "codice_fiscale": "RZZNTN83T10H501H",
+                "telefono": "0619988776",
+                "email": "antonio.rizzi@test.it",
+                "data_nascita": "10/12/1983",
+                "titolo": "Personale amministrativo",
+                "esterno": "N"
+            }
+        ]
+    }
+]

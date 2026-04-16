@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\clickController;
 use App\Http\Controllers\allenamentoController;
 use App\Http\Controllers\datiProgettazioneController;
+use App\Http\Controllers\provaDatiController;
 
 Route::get('/click', [clickController::class, 'index'])->name('click.index');
 //Route::get('/click/{id}', [clickController::class, 'show'])->name('click.show');
@@ -20,8 +21,11 @@ Route::post('/click/storePersonale', [clickController::class, 'storePersonale'])
 Route::get('/eweb/config', [clickController::class, 'ewebShow'])->name('click.eweb');
 Route::get('/eweb/enti', [clickController::class, 'ewebEnti'])->name('click.ewebEnti');
 Route::get('/click/tabella-selezione', [clickController::class, 'tabellaSelezione'])->name('click.tabellaSelezione');
-Route::get('/progettazione3006', [datiProgettazioneController::class, 'datiProgettazione'])->name('progettazione.dati');
-Route::get('/progettazione3006/stampa/{classeId}', [datiProgettazioneController::class, 'stampaClasse'])->name('progettazione.stampa');
+Route::get('/progettazione', [datiProgettazioneController::class, 'datiProgettazione'])->name('progettazione.dati');
+Route::get('/progettazione/stampa/{classeId}', [datiProgettazioneController::class, 'stampaClasse'])->name('progettazione.stampa');
+
+Route::get('/provadati', [provaDatiController::class, 'datiProgettazione'])->name('provadati.dati');
+Route::get('/provadati/stampa/{classeId}', [provaDatiController::class, 'stampaClasse'])->name('provadati.stampa');
 
 
 /* Route::get('/allenamento', [allenamentoController::class, 'index'])->name('allenamento.index');
