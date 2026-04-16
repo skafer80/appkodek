@@ -199,11 +199,10 @@
 
                             <tr>
                                 <th>MD36345</th>
-                                <th>Assistere la persona nella soddisfazione dei bisogni primari e nella gestione degli
-                                    interventi igienico-sanitari</th>
-                                <th>84</th>
+                                <th>Pianificare l’impiego, approntare e utilizzare in autonomia e sicurezza macchine, attrezzi, impianti e strutture nei vari processi di produzione di natura zootecnica, agricola, floricolturale, forestale</th>
+                                <th>66</th>
                                 <th>0</th>
-                                <th>70</th>
+                                <th>30</th>
                                 <th></th>
                             </tr>
 
@@ -255,6 +254,42 @@
                                         data-href="{{ route('click.getModulo', ['id' => $subjects->where('id_subject', 155865)->first()->id]) }}"><span
                                             class="glyphicon glyphicon-pencil"></span></button>
                                 </td>
+                            </tr>
+
+
+
+                            <tr class="bg-grey-50-i">
+                                <td></td>
+                                <th class="text-right">Totale Modulo MD36345</th>
+                                @php
+                                    $warning = 'bg-green';
+                                    if (
+                                        $subjects->where('gruppo', 36345)->sum('ore_conoscenza') != 84 ||
+                                        $subjects->where('gruppo', 36345)->sum('ore_fad_conoscenza') != 0
+                                    ) {
+                                        $warning = 'bg-red';
+                                    }
+                                @endphp
+                                <th class="{{ $warning }} shadow">
+                                    {{ $subjects->where('gruppo', 36345)->sum('ore_conoscenza') }}</th>
+                                <th class="{{ $warning }} shadow">
+                                    {{ $subjects->where('gruppo', 36345)->sum('ore_fad_conoscenza') }}</th>
+
+                                <th class="bg-green shadow">70</th>
+                                <td></td>
+                            </tr>
+
+
+
+
+                            <tr>
+                                <th>MD36346</th>
+                                <th>Effettuare la cura, la pulizia e la manutenzione delle macchine, attrezzi, impianti e strutture nonché l'alloggiamento delle macchine e degli attrezzi
+                                </th>
+                                <th>68</th>
+                                <th>0</th>
+                                <th>30</th>
+                                <th></th>
                             </tr>
 
 
@@ -338,6 +373,40 @@
                             </tr>
 
 
+                            <tr class="bg-grey-50-i">
+                                <td></td>
+                                <th class="text-right">Totale Modulo MD36346</th>
+                                @php
+                                    $warning = 'bg-green';
+                                    if (
+                                        $subjects->where('gruppo', 36346)->sum('ore_conoscenza') != 78 ||
+                                        $subjects->where('gruppo', 36346)->sum('ore_fad_conoscenza') != 0
+                                    ) {
+                                        $warning = 'bg-red';
+                                    }
+                                @endphp
+                                <th class="{{ $warning }} shadow">
+                                    {{ $subjects->where('gruppo', 36346)->sum('ore_conoscenza') }}</th>
+                                <th class="{{ $warning }} shadow">
+                                    {{ $subjects->where('gruppo', 36346)->sum('ore_fad_conoscenza') }}</th>
+
+                                <th class="bg-green shadow">70</th>
+                                <td></td>
+                            </tr>
+
+
+
+
+                            <tr>
+                                <th>MD36347</th>
+                                <th>Predisporre e curare degli spazi di lavoro in generale al fine di contrastare affaticamento e malattie professionali</th>
+                                <th>156</th>
+                                <th>0</th>
+                                <th>70</th>
+                                <th></th>
+                            </tr>
+
+
                             <tr id="is-{{ $subjects->where('id_subject', 155871)->first()->id }}"">
                                 <td class="text-right"><i class="fa fa-level-up fa-rotate-90 me-3"></i>MD155871</td>
                                 <td class="ps-5-i">ELEMENTI DI ERGONOMIA</td>
@@ -352,42 +421,6 @@
                                             class="glyphicon glyphicon-pencil"></span></button>
                                 </td>
                             </tr>
-
-
-                            <tr class="bg-grey-50-i">
-                                <td></td>
-                                <th class="text-right">Totale Modulo MD36345</th>
-                                @php
-                                    $warning = 'bg-green';
-                                    if (
-                                        $subjects->where('gruppo', 36345)->sum('ore_conoscenza') != 84 ||
-                                        $subjects->where('gruppo', 36345)->sum('ore_fad_conoscenza') != 0
-                                    ) {
-                                        $warning = 'bg-red';
-                                    }
-                                @endphp
-                                <th class="{{ $warning }} shadow">
-                                    {{ $subjects->where('gruppo', 36345)->sum('ore_conoscenza') }}</th>
-                                <th class="{{ $warning }} shadow">
-                                    {{ $subjects->where('gruppo', 36345)->sum('ore_fad_conoscenza') }}</th>
-
-                                <th class="bg-green shadow">70</th>
-                                <td></td>
-                            </tr>
-
-
-
-
-                            <tr>
-                                <th>MD36346</th>
-                                <th>Supportare la persona nelle attività  domestico alberghiere e igienico ambientali
-                                </th>
-                                <th>78</th>
-                                <th>0</th>
-                                <th>70</th>
-                                <th></th>
-                            </tr>
-
 
 
 
@@ -406,6 +439,38 @@
                                 </td>
                             </tr>
 
+                            <tr class="bg-grey-50-i">
+                                <td></td>
+                                <th class="text-right">Totale Modulo MD36347</th>
+                                @php
+                                    $warning = 'bg-green';
+                                    if (
+                                        $subjects->where('gruppo', 36347)->sum('ore_conoscenza') != 156 ||
+                                        $subjects->where('gruppo', 36347)->sum('ore_fad_conoscenza') != 0
+                                    ) {
+                                        $warning = 'bg-red';
+                                    }
+                                @endphp
+                                <th class="{{ $warning }} shadow">
+                                    {{ $subjects->where('gruppo', 36347)->sum('ore_conoscenza') }}</th>
+                                <th class="{{ $warning }} shadow">
+                                    {{ $subjects->where('gruppo', 36347)->sum('ore_fad_conoscenza') }}</th>
+
+                                <th class="bg-green shadow">70</th>
+                                <td></td>
+                            </tr>
+
+
+
+
+                            <tr>
+                                <th>MD36348</th>
+                                <th>Eseguire le operazioni fondamentali attinenti alla coltivazione di piante arboree, erbacee, ortofloricole</th>
+                                <th>246</th>
+                                <th>0</th>
+                                <th>70</th>
+                                <th></th>
+                            </tr>
 
                             <tr id="is-{{ $subjects->where('id_subject', 155873)->first()->id }}">
                                 <td class="text-right"><i class="fa fa-level-up fa-rotate-90 me-3"></i>MD155873</td>
@@ -469,40 +534,6 @@
                                         data-href="{{ route('click.getModulo', ['id' => $subjects->where('id_subject', 155876)->first()->id]) }}"><span
                                             class="glyphicon glyphicon-pencil"></span></button>
                                 </td>
-                            </tr>
-
-
-                            <tr class="bg-grey-50-i">
-                                <td></td>
-                                <th class="text-right">Totale Modulo MD36346</th>
-                                @php
-                                    $warning = 'bg-green';
-                                    if (
-                                        $subjects->where('gruppo', 36346)->sum('ore_conoscenza') != 78 ||
-                                        $subjects->where('gruppo', 36346)->sum('ore_fad_conoscenza') != 0
-                                    ) {
-                                        $warning = 'bg-red';
-                                    }
-                                @endphp
-                                <th class="{{ $warning }} shadow">
-                                    {{ $subjects->where('gruppo', 36346)->sum('ore_conoscenza') }}</th>
-                                <th class="{{ $warning }} shadow">
-                                    {{ $subjects->where('gruppo', 36346)->sum('ore_fad_conoscenza') }}</th>
-
-                                <th class="bg-green shadow">70</th>
-                                <td></td>
-                            </tr>
-
-
-
-
-                            <tr>
-                                <th>MD36347</th>
-                                <th>Gestire dinamiche di relazione d&#039;aiuto</th>
-                                <th>156</th>
-                                <th>0</th>
-                                <th>70</th>
-                                <th></th>
                             </tr>
 
 
@@ -604,46 +635,10 @@
                             </tr>
 
 
-                            <tr class="bg-grey-50-i">
-                                <td></td>
-                                <th class="text-right">Totale Modulo MD36347</th>
-                                @php
-                                    $warning = 'bg-green';
-                                    if (
-                                        $subjects->where('gruppo', 36347)->sum('ore_conoscenza') != 156 ||
-                                        $subjects->where('gruppo', 36347)->sum('ore_fad_conoscenza') != 0
-                                    ) {
-                                        $warning = 'bg-red';
-                                    }
-                                @endphp
-                                <th class="{{ $warning }} shadow">
-                                    {{ $subjects->where('gruppo', 36347)->sum('ore_conoscenza') }}</th>
-                                <th class="{{ $warning }} shadow">
-                                    {{ $subjects->where('gruppo', 36347)->sum('ore_fad_conoscenza') }}</th>
-
-                                <th class="bg-green shadow">70</th>
-                                <td></td>
-                            </tr>
-
-
-
-
-                            <tr>
-                                <th>MD36348</th>
-                                <th>Fornire assistenza sociale alla persona al fine di promuovere lo sviluppo e
-                                    l&#039;autonomia</th>
-                                <th>102</th>
-                                <th>0</th>
-                                <th>70</th>
-                                <th></th>
-                            </tr>
-
-
-
 
                             <tr id="is-{{ $subjects->where('id_subject', 155883)->first()->id }}">
                                 <td class="text-right"><i class="fa fa-level-up fa-rotate-90 me-3"></i>MD155883</td>
-                                <td class="ps-5-i">Elementi di osservazione e comunicazione </td>
+                                <td class="ps-5-i">LINGUA STRANIERA</td>
                                 <td>{{ $subjects->where('id_subject', 155883)->first()->ore_conoscenza ?? 0 }}</td>
                                 <td>{{ $subjects->where('id_subject', 155883)->first()->ore_fad_conoscenza ?? 0 }}</td>
 
@@ -656,187 +651,13 @@
                                 </td>
                             </tr>
 
-
-                            <tr id="is-{{ $subjects->where('id_subject', 155884)->first()->id }}">
-                                <td class="text-right"><i class="fa fa-level-up fa-rotate-90 me-3"></i>MD155884</td>
-                                <td class="ps-5-i">Teorie e tecniche di comunicazione</td>
-                                <td>{{ $subjects->where('id_subject', 155884)->first()->ore_conoscenza ?? 0 }}</td>
-                                <td>{{ $subjects->where('id_subject', 155884)->first()->ore_fad_conoscenza ?? 0 }}
-                                </td>
-
-                                <td>-</td>
-                                <td class="text-right">
-                                    <button {{ $player->end_time ? 'disabled' : '' }}
-                                        class="btn btn-sm btn-warning editinformationconoscenza"
-                                        data-href="{{ route('click.getModulo', ['id' => $subjects->where('id_subject', 155884)->first()->id]) }}"><span
-                                            class="glyphicon glyphicon-pencil"></span></button>
-                                </td>
-                            </tr>
-
-
-                            <tr id="is-{{ $subjects->where('id_subject', 155885)->first()->id }}">
-                                <td class="text-right"><i class="fa fa-level-up fa-rotate-90 me-3"></i>MD155885</td>
-                                <td class="ps-5-i">Strategie di apprendimento</td>
-                                <td>{{ $subjects->where('id_subject', 155885)->first()->ore_conoscenza ?? 0 }}</td>
-                                <td>{{ $subjects->where('id_subject', 155885)->first()->ore_fad_conoscenza ?? 0 }}
-                                </td>
-
-                                <td>-</td>
-                                <td class="text-right">
-                                    <button {{ $player->end_time ? 'disabled' : '' }}
-                                        class="btn btn-sm btn-warning editinformationconoscenza"
-                                        data-href="{{ route('click.getModulo', ['id' => $subjects->where('id_subject', 155885)->first()->id]) }}"><span
-                                            class="glyphicon glyphicon-pencil"></span></button>
-                                </td>
-                            </tr>
-
-
-                            <tr id="is-{{ $subjects->where('id_subject', 155886)->first()->id }}">
-                                <td class="text-right"><i class="fa fa-level-up fa-rotate-90 me-3"></i>MD155886</td>
-                                <td class="ps-5-i">Teorie e tecniche di gestione di conflitti</td>
-                                <td>{{ $subjects->where('id_subject', 155886)->first()->ore_conoscenza ?? 0 }}</td>
-                                <td>{{ $subjects->where('id_subject', 155886)->first()->ore_fad_conoscenza ?? 0 }}
-                                </td>
-
-                                <td>-</td>
-                                <td class="text-right">
-                                    <button {{ $player->end_time ? 'disabled' : '' }}
-                                        class="btn btn-sm btn-warning editinformationconoscenza"
-                                        data-href="{{ route('click.getModulo', ['id' => $subjects->where('id_subject', 155886)->first()->id]) }}"><span
-                                            class="glyphicon glyphicon-pencil"></span></button>
-                                </td>
-                            </tr>
-
-
-                            <tr id="is-{{ $subjects->where('id_subject', 155887)->first()->id }}">
-                                <td class="text-right"><i class="fa fa-level-up fa-rotate-90 me-3"></i>MD155887</td>
-                                <td class="ps-5-i">Tecniche di ascolto e comunicazione</td>
-                                <td>{{ $subjects->where('id_subject', 155887)->first()->ore_conoscenza ?? 0 }}</td>
-                                <td>{{ $subjects->where('id_subject', 155887)->first()->ore_fad_conoscenza ?? 0 }}
-                                </td>
-
-                                <td>-</td>
-                                <td class="text-right">
-                                    <button {{ $player->end_time ? 'disabled' : '' }}
-                                        class="btn btn-sm btn-warning editinformationconoscenza"
-                                        data-href="{{ route('click.getModulo', ['id' => $subjects->where('id_subject', 155887)->first()->id]) }}"><span
-                                            class="glyphicon glyphicon-pencil"></span></button>
-                                </td>
-                            </tr>
-
-
-                            <tr id="is-{{ $subjects->where('id_subject', 155888)->first()->id }}">
-                                <td class="text-right"><i class="fa fa-level-up fa-rotate-90 me-3"></i>MD155888</td>
-                                <td class="ps-5-i">Elementi di psicologia relazione</td>
-                                <td>{{ $subjects->where('id_subject', 155888)->first()->ore_conoscenza ?? 0 }}</td>
-                                <td>{{ $subjects->where('id_subject', 155888)->first()->ore_fad_conoscenza ?? 0 }}
-                                </td>
-
-                                <td>-</td>
-                                <td class="text-right">
-                                    <button {{ $player->end_time ? 'disabled' : '' }}
-                                        class="btn btn-sm btn-warning editinformationconoscenza"
-                                        data-href="{{ route('click.getModulo', ['id' => $subjects->where('id_subject', 155888)->first()->id]) }}"><span
-                                            class="glyphicon glyphicon-pencil"></span></button>
-                                </td>
-                            </tr>
-
-
-                            <tr id="is-{{ $subjects->where('id_subject', 155889)->first()->id }}">
-                                <td class="text-right"><i class="fa fa-level-up fa-rotate-90 me-3"></i>MD155889</td>
-                                <td class="ps-5-i">Funzioni, organizzazione e articolazione territoriale dei servizi
-                                </td>
-                                <td>{{ $subjects->where('id_subject', 155889)->first()->ore_conoscenza ?? 0 }}</td>
-                                <td>{{ $subjects->where('id_subject', 155889)->first()->ore_fad_conoscenza ?? 0 }}
-                                </td>
-
-                                <td>-</td>
-                                <td class="text-right">
-                                    <button {{ $player->end_time ? 'disabled' : '' }}
-                                        class="btn btn-sm btn-warning editinformationconoscenza"
-                                        data-href="{{ route('click.getModulo', ['id' => $subjects->where('id_subject', 155889)->first()->id]) }}"><span
-                                            class="glyphicon glyphicon-pencil"></span></button>
-                                </td>
-                            </tr>
-
-
-                            <tr id="is-{{ $subjects->where('id_subject', 155890)->first()->id }}">
-                                <td class="text-right"><i class="fa fa-level-up fa-rotate-90 me-3"></i>MD155890</td>
-                                <td class="ps-5-i">Risorse territoriali (enti, associazioni ed altro)</td>
-                                <td>{{ $subjects->where('id_subject', 155890)->first()->ore_conoscenza ?? 0 }}</td>
-                                <td>{{ $subjects->where('id_subject', 155890)->first()->ore_fad_conoscenza ?? 0 }}
-                                </td>
-
-                                <td>-</td>
-                                <td class="text-right">
-                                    <button {{ $player->end_time ? 'disabled' : '' }}
-                                        class="btn btn-sm btn-warning editinformationconoscenza"
-                                        data-href="{{ route('click.getModulo', ['id' => $subjects->where('id_subject', 155890)->first()->id]) }}"><span
-                                            class="glyphicon glyphicon-pencil"></span></button>
-                                </td>
-                            </tr>
-
-
-                            <tr id="is-{{ $subjects->where('id_subject', 155891)->first()->id }}">
-                                <td class="text-right"><i class="fa fa-level-up fa-rotate-90 me-3"></i>MD155891</td>
-                                <td class="ps-5-i">Teorie e tecniche di relazione e socializzazione</td>
-                                <td>{{ $subjects->where('id_subject', 155891)->first()->ore_conoscenza ?? 0 }}</td>
-                                <td>{{ $subjects->where('id_subject', 155891)->first()->ore_fad_conoscenza ?? 0 }}
-                                </td>
-
-                                <td>-</td>
-                                <td class="text-right">
-                                    <button {{ $player->end_time ? 'disabled' : '' }}
-                                        class="btn btn-sm btn-warning editinformationconoscenza"
-                                        data-href="{{ route('click.getModulo', ['id' => $subjects->where('id_subject', 155891)->first()->id]) }}"><span
-                                            class="glyphicon glyphicon-pencil"></span></button>
-                                </td>
-                            </tr>
-
-
-                            <tr id="is-{{ $subjects->where('id_subject', 155892)->first()->id }}">
-                                <td class="text-right"><i class="fa fa-level-up fa-rotate-90 me-3"></i>MD155892</td>
-                                <td class="ps-5-i">Elementi di psicologia sociale</td>
-                                <td>{{ $subjects->where('id_subject', 155892)->first()->ore_conoscenza ?? 0 }}</td>
-                                <td>{{ $subjects->where('id_subject', 155892)->first()->ore_fad_conoscenza ?? 0 }}
-                                </td>
-
-                                <td>-</td>
-                                <td class="text-right">
-                                    <button {{ $player->end_time ? 'disabled' : '' }}
-                                        class="btn btn-sm btn-warning editinformationconoscenza"
-                                        data-href="{{ route('click.getModulo', ['id' => $subjects->where('id_subject', 155892)->first()->id]) }}"><span
-                                            class="glyphicon glyphicon-pencil"></span></button>
-                                </td>
-                            </tr>
-
-
-                            <tr id="is-{{ $subjects->where('id_subject', 155893)->first()->id }}">
-                                <td class="text-right"><i class="fa fa-level-up fa-rotate-90 me-3"></i>MD155893</td>
-                                <td class="ps-5-i">Elementi di etica e deontologia delle professioni sociali e
-                                    sanitarie
-                                </td>
-                                <td>{{ $subjects->where('id_subject', 155893)->first()->ore_conoscenza ?? 0 }}</td>
-                                <td>{{ $subjects->where('id_subject', 155893)->first()->ore_fad_conoscenza ?? 0 }}
-                                </td>
-
-                                <td>-</td>
-                                <td class="text-right">
-                                    <button {{ $player->end_time ? 'disabled' : '' }}
-                                        class="btn btn-sm btn-warning editinformationconoscenza"
-                                        data-href="{{ route('click.getModulo', ['id' => $subjects->where('id_subject', 155893)->first()->id]) }}"><span
-                                            class="glyphicon glyphicon-pencil"></span></button>
-                                </td>
-                            </tr>
-
-
                             <tr class="bg-grey-50-i">
                                 <td></td>
                                 <th class="text-right">Totale Modulo MD36348</th>
                                 @php
                                     $warning = 'bg-green';
                                     if (
-                                        $subjects->where('gruppo', 36348)->sum('ore_conoscenza') != 102 ||
+                                        $subjects->where('gruppo', 36348)->sum('ore_conoscenza') != 246 ||
                                         $subjects->where('gruppo', 36348)->sum('ore_fad_conoscenza') != 0
                                     ) {
                                         $warning = 'bg-red';
@@ -858,7 +679,7 @@
                                 @php
                                     $warning = 'bg-green';
                                     if (
-                                        $subjects->sum('ore_conoscenza') != 420 ||
+                                        $subjects->sum('ore_conoscenza') != 404 ||
                                         $subjects->sum('ore_fad_conoscenza') != 0
                                     ) {
                                         $warning = 'bg-red';

@@ -76,7 +76,7 @@ class clickController extends Controller
 
         if ($request->tipo === 'MODULI') {
             // Aggiungo i moduli predefiniti per il player (da 155863 a 155871)
-            for ($i = 155863; $i <= 155871; $i++) {
+            for ($i = 155863; $i <= 155865; $i++) {
                 ClickSubject::create([
                     'id_subject' => $i,
                     'ore_conoscenza' => 0,
@@ -85,7 +85,7 @@ class clickController extends Controller
                     'player_id' => $player->id,
                 ]);
             }
-            for ($i = 155872; $i <= 155876; $i++) {
+            for ($i = 155866; $i <= 155870; $i++) {
                 ClickSubject::create([
                     'id_subject' => $i,
                     'ore_conoscenza' => 0,
@@ -95,7 +95,7 @@ class clickController extends Controller
                 ]);
             }
 
-            for ($i = 155877; $i <= 155882; $i++) {
+            for ($i = 155871; $i <= 155872; $i++) {
                 ClickSubject::create([
                     'id_subject' => $i,
                     'ore_conoscenza' => 0,
@@ -105,7 +105,7 @@ class clickController extends Controller
                 ]);
             }
 
-            for ($i = 155883; $i <= 155893; $i++) {
+            for ($i = 155873; $i <= 155883; $i++) {
                 ClickSubject::create([
                     'id_subject' => $i,
                     'ore_conoscenza' => 0,
