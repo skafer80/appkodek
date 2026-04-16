@@ -264,7 +264,7 @@
                                 @php
                                     $warning = 'bg-green';
                                     if (
-                                        $subjects->where('gruppo', 36345)->sum('ore_conoscenza') != 84 ||
+                                        $subjects->where('gruppo', 36345)->sum('ore_conoscenza') != 66 ||
                                         $subjects->where('gruppo', 36345)->sum('ore_fad_conoscenza') != 0
                                     ) {
                                         $warning = 'bg-red';
@@ -379,7 +379,7 @@
                                 @php
                                     $warning = 'bg-green';
                                     if (
-                                        $subjects->where('gruppo', 36346)->sum('ore_conoscenza') != 78 ||
+                                        $subjects->where('gruppo', 36346)->sum('ore_conoscenza') != 68 ||
                                         $subjects->where('gruppo', 36346)->sum('ore_fad_conoscenza') != 0
                                     ) {
                                         $warning = 'bg-red';
@@ -445,7 +445,7 @@
                                 @php
                                     $warning = 'bg-green';
                                     if (
-                                        $subjects->where('gruppo', 36347)->sum('ore_conoscenza') != 156 ||
+                                        $subjects->where('gruppo', 36347)->sum('ore_conoscenza') != 24 ||
                                         $subjects->where('gruppo', 36347)->sum('ore_fad_conoscenza') != 0
                                     ) {
                                         $warning = 'bg-red';
