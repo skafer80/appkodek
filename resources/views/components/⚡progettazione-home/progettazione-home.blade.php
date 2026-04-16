@@ -12,11 +12,11 @@
 
                     <h1>Progettazione dati</h1>
                     @if ($classeCorrente)
-                        <p class="pg-hint" style="margin-top: 4px;">
+                        <br class="pg-hint" style="margin-top: 4px;">
                             <strong>Ente:</strong> {{ $enteSelezionato }} |
                             <strong>Classe:</strong> {{ $classeCorrente->nome }} |
-                            <strong>Priorita:</strong> {{ $classeCorrente->ordine + 1 }} |
-                            <strong>Sede:</strong> {{ $classeCorrente->sede }} |
+                            <strong>Priorita:</strong> {{ $classeCorrente->ordine + 1 }} <br>
+                            <strong>Sede:</strong> {{ $classeCorrente->sede }} <br>
                             <strong>Descrizione:</strong> {{ $classeCorrente->descrizione ?: '-' }}
                         </p>
                     @else
@@ -64,7 +64,7 @@
                                     <option value="">Seleziona classe</option>
                                     @foreach ($this->getClassiEnteSelezionato() as $classe)
                                         <option value="{{ $classe->id }}">{{ $loop->iteration }}. {{ $classe->nome }}
-                                            – {{ $classe->sede }}</option>
+                                            – {{ $classe->sede }} - {{ $classe->descrizione }}</option>
                                     @endforeach
                                 </select>
                             </div>

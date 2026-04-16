@@ -53,6 +53,10 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($modulo->conoscenze as $index => $conoscenza)
+
+                                    @if($conoscenza->nomeConoscenza === 'STAGE')
+                                        @continue
+                                    @endif
                                         @php
                                             $oreAula = (int) ($conoscenza->oreConoscenza ?? 0);
                                             $oreFad  = (int) ($conoscenza->oreFadConoscenza ?? 0);
