@@ -602,7 +602,7 @@
                                 </td>
                             </tr>
 
-
+{{--
                             <tr id="is-{{ $subjects->where('id_subject', 155881)->first()->id }}">
                                 <td class="text-right"><i class="fa fa-level-up fa-rotate-90 me-3"></i>MD155881</td>
                                 <td class="ps-5-i">IGIENE E SICUREZZA SUL LUOGO DI LAVORO</td>
@@ -649,7 +649,7 @@
                                         data-href="{{ route('click.getModulo', ['id' => $subjects->where('id_subject', 155883)->first()->id]) }}"><span
                                             class="glyphicon glyphicon-pencil"></span></button>
                                 </td>
-                            </tr>
+                            </tr> --}}
 
                             <tr class="bg-grey-50-i">
                                 <td></td>
@@ -657,7 +657,7 @@
                                 @php
                                     $warning = 'bg-green';
                                     if (
-                                        $subjects->where('gruppo', 36348)->sum('ore_conoscenza') != 246 ||
+                                        $subjects->where('gruppo', 36348)->sum('ore_conoscenza') != 192 ||
                                         $subjects->where('gruppo', 36348)->sum('ore_fad_conoscenza') != 0
                                     ) {
                                         $warning = 'bg-red';
