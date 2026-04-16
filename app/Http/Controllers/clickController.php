@@ -192,8 +192,6 @@ class clickController extends Controller
         $MD36347 = $subjects->where('gruppo', '36347')->sum('ore_conoscenza') + $subjects->where('gruppo', '36347')->sum('ore_fad_conoscenza');
         $MD36348 = $subjects->where('gruppo', '36348')->sum('ore_conoscenza') + $subjects->where('gruppo', '36348')->sum('ore_fad_conoscenza');
 
-        dd('MD36345: ' . $MD36345, 'MD36346: ' . $MD36346, 'MD36347: ' . $MD36347, 'MD36348: ' . $MD36348);
-
         $subject_zero = ClickSubject::where('player_id', $request->player_id)
             ->where(function ($query) {
                 $query->whereNull('ore_conoscenza')
