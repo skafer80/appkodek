@@ -51,8 +51,6 @@
                                         <th>#</th>
                                         <th>Conoscenza</th>
                                         <th>Ore</th>
-                                        <th>Ore FAD</th>
-                                        <th>Totale</th>
                                         <th>Fascia</th>
                                     </tr>
                                 </thead>
@@ -77,18 +75,6 @@
                                                 {{ $oreAula }}
                                                 <button type="button" class="pg-copy-btn"
                                                     onclick="pgCopy(this, {{ json_encode((string) $oreAula) }})"><i
-                                                        class="fa fa-copy"></i></button>
-                                            </td>
-                                            <td class="pg-copy-cell">
-                                                {{ $oreFad }}
-                                                <button type="button" class="pg-copy-btn"
-                                                    onclick="pgCopy(this, {{ json_encode((string) $oreFad) }})"><i
-                                                        class="fa fa-copy"></i></button>
-                                            </td>
-                                            <td class="pg-copy-cell">
-                                                {{ $oreAula + $oreFad }}
-                                                <button type="button" class="pg-copy-btn"
-                                                    onclick="pgCopy(this, {{ json_encode((string) ($oreAula + $oreFad)) }})"><i
                                                         class="fa fa-copy"></i></button>
                                             </td>
                                             <td class="pg-copy-cell">
