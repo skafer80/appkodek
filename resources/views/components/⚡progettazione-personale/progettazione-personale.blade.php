@@ -61,7 +61,7 @@
                                     <button type="button" class="pg-copy-btn" onclick="pgCopy(this, {{ json_encode($persona->data_nascita ?? '') }})"><i class="fa fa-copy"></i></button>
                                 </td>
                                 <td class="pg-copy-cell">
-                                    {{ $persona->ruolo ?? '-' }}
+                                    {{ $persona->titolo ?? '-' }}
                                     <button type="button" class="pg-copy-btn" onclick="pgCopy(this, {{ json_encode($persona->ruolo ?? '') }})"><i class="fa fa-copy"></i></button>
                                 </td>
                                 <td>{{ $persona->esterno === 'Y' ? 'Sì' : 'No' }}</td>
