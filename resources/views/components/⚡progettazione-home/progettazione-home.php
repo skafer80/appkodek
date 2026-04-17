@@ -9,7 +9,7 @@ new class extends Component {
     public $classeSelezionata = null;
     public string $tabAttiva = 'moduli';
     public string $passwordSelettori = '';
-    public bool $selettoriSbloccati = true;
+    public bool $selettoriSbloccati = false;
 
     public function mount(ClassiApiService $classiService)
     {
@@ -86,6 +86,6 @@ new class extends Component {
 
         return $modalitaFake
             ? (string) ($config['password_fake'] ?? 'prova')
-            : (string) ($config['password_reale'] ?? 'gargarozzo');
+            : (string) ($config['password_reale'] ?? 'pappagallo');
     }
 };
