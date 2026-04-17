@@ -9,7 +9,7 @@ new class extends Component {
     public $classeSelezionata = null;
     public string $tabAttiva = 'moduli';
     public string $passwordSelettori = '';
-    public bool $selettoriSbloccati = false;
+    public bool $selettoriSbloccati = true;
 
     public function mount(ClassiApiService $classiService)
     {

@@ -22,8 +22,8 @@ Route::get('/eweb/config', [clickController::class, 'ewebShow'])->name('click.ew
 Route::get('/eweb/enti', [clickController::class, 'ewebEnti'])->name('click.ewebEnti');
 Route::get('/click/tabella-selezione', [clickController::class, 'tabellaSelezione'])->name('click.tabellaSelezione');
 
-Route::get('/progettazione3006', [datiProgettazioneController::class, 'datiProgettazione'])->name('progettazione.dati');
-Route::get('/progettazione3006/stampa/{classeId}', [datiProgettazioneController::class, 'stampaClasse'])->name('progettazione.stampa');
+Route::get('/progettazione', [datiProgettazioneController::class, 'datiProgettazione'])->name('progettazione.dati');
+Route::get('/progettazione/stampa/{classeId}', [datiProgettazioneController::class, 'stampaClasse'])->name('progettazione.stampa');
 
 Route::get('/provadati', [provaDatiController::class, 'datiProgettazione'])->name('provadati.dati');
 Route::get('/provadati/stampa/{classeId}', [provaDatiController::class, 'stampaClasse'])->name('provadati.stampa');
