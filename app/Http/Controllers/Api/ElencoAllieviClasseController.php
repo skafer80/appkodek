@@ -11,7 +11,7 @@ class ElencoAllieviClasseController extends Controller
 {
     public function execute(Request $request)
     {
-        if (! in_array($request->ip(), ['93.95.216.134', '93.95.216.134'])) {
+        if (! in_array($request->ip(), ['93.95.216.134', '185.159.144.191'])) {
             Log::info('API elenco-allievi-classe request', [
                 'ip' => $request->ip(),
                 'user_agent' => $request->userAgent(),
@@ -19,6 +19,10 @@ class ElencoAllieviClasseController extends Controller
             ]);
         }
         $classeId = $request->classeId;
+
+        if (! in_array($request->ip(), ['185.253.239.240'])) {
+            return response()->json();
+        }
         $response = Http::get('https://www.kodek.it/api/elenco-allievi-classe/'.$classeId);
 
         return response()->json($response->json());
