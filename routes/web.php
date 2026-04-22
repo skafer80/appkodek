@@ -29,7 +29,7 @@ Route::get('/provadati', [provaDatiController::class, 'datiProgettazione'])->nam
 Route::get('/provadati/stampa/{classeId}', [provaDatiController::class, 'stampaClasse'])->name('provadati.stampa');
 
 
-/* Route::get('/allenamento', [allenamentoController::class, 'index'])->name('allenamento.index');
+Route::get('/allenamento', [allenamentoController::class, 'index'])->name('allenamento.index');
 Route::get('/allenamento/{id}', [allenamentoController::class, 'show'])->name('allenamento.show');
 Route::post('/allenamento', [allenamentoController::class, 'store'])->name('allenamento.store');
 Route::get('/allenamento/classe/{id}', [allenamentoController::class, 'showClasse'])->name('allenamento.showClasse');
@@ -37,7 +37,7 @@ Route::get('/allenamento/create/{id}', [allenamentoController::class, 'createDes
 Route::post('/allenamento/storeDestinatario', [allenamentoController::class, 'storeDestinatario'])->name('allenamento.storeDestinatario');
 Route::get('/allenamento/getModulo/{id}', [allenamentoController::class, 'getModulo'])->name('allenamento.getModulo');
 Route::post('/allenamento/editModulo', [allenamentoController::class, 'editModuli'])->name('allenamento.editModuli');
-Route::get('/allenamento/moduli/{id}', [allenamentoController::class, 'showModuli'])->name('allenamento.showModuli'); */
+Route::get('/allenamento/moduli/{id}', [allenamentoController::class, 'showModuli'])->name('allenamento.showModuli');
 
 //Route::view('/', 'welcome')->name('home');
 
