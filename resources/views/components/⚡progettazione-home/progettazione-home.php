@@ -14,6 +14,7 @@ new class extends Component {
     public function mount(ClassiApiService $classiService)
     {
         $this->enti = $classiService->getClassi();
+
     }
 
     public function updatedEnteSelezionato(): void
@@ -76,6 +77,13 @@ new class extends Component {
         $ente = collect($this->enti)->first(fn ($e) => $e->ente === $this->enteSelezionato);
 
         return $ente ? $ente->classi : [];
+    }
+
+    public function getClasseCorrenteProperty()
+    {
+        return collect($this->getClassiEnteSelezionato())->first(
+            fn ($classe) => (string) $classe->id === (string) $this->classeSelezionata,
+        );
     }
 
     private function getPasswordSelettoriAttesa(): string

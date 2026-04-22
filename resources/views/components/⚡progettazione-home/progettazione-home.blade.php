@@ -3,21 +3,14 @@
         <div class="pg-card">
             <div class="pg-card-header">
                 <div>
-
-                    @php
-                        $classeCorrente = collect($this->getClassiEnteSelezionato())->first(
-                            fn($classe) => (string) $classe->id === (string) $this->classeSelezionata,
-                        );
-                    @endphp
-
                     <h1>Progettazione dati</h1>
-                    @if ($classeCorrente)
+                    @if ($this->classeCorrente)
                         <br class="pg-hint" style="margin-top: 4px;">
                             <strong>Ente:</strong> {{ $enteSelezionato }} |
-                            <strong>Classe:</strong> {{ $classeCorrente->nome }} |
-                            <strong>Priorita:</strong> {{ $classeCorrente->ordine + 1 }} <br>
-                            <strong>Sede:</strong> {{ $classeCorrente->sede }} <br>
-                            <strong>Descrizione:</strong> {{ $classeCorrente->descrizione ?: '-' }}
+                            <strong>Classe:</strong> {{ $this->classeCorrente->nome }} |
+                            <strong>Priorita:</strong> {{ $this->classeCorrente->ordine + 1 }} <br>
+                            <strong>Sede:</strong> {{ $this->classeCorrente->sede }} <br>
+                            <strong>Descrizione:</strong> {{ $this->classeCorrente->descrizione ?: '-' }}
                         </p>
                     @else
                         <p class="pg-hint">Seleziona ente e classe, poi scegli il tab da visualizzare.</p>
