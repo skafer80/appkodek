@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open FSE - Accessi Rapidi</title>
+    <style>
+        :root {
+            --page-bg: #f6f1e8;
+            --panel: rgba(255, 252, 246, 0.78);
+            --panel-border: rgba(86, 66, 44, 0.12);
+            --text: #2f241b;
+            --muted: #6c5a4a;
+            --accent: #b85c38;
+            --accent-dark: #8f4326;
+            --accent-soft: #ead8c7;
+            --shadow: 0 24px 60px rgba(73, 50, 29, 0.16);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at top left, rgba(184, 92, 56, 0.16), transparent 30%),
+                radial-gradient(circle at bottom right, rgba(86, 117, 95, 0.18), transparent 28%),
+                linear-gradient(135deg, #efe4d3 0%, #f9f4ec 48%, #efe5d4 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 32px 18px;
+        }
+
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            inset: auto;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            filter: blur(12px);
+            z-index: 0;
+            opacity: 0.55;
+        }
+
+        body::before {
+            top: -90px;
+            right: -70px;
+            background: rgba(184, 92, 56, 0.16);
+        }
+
+        body::after {
+            bottom: -90px;
+            left: -70px;
+            background: rgba(109, 135, 102, 0.18);
+        }
+
+        .shell {
+            position: relative;
+            z-index: 1;
+            width: min(1100px, 100%);
+            background: var(--panel);
+            border: 1px solid var(--panel-border);
+            border-radius: 28px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(14px);
+            overflow: hidden;
+        }
+
+        .hero {
+            padding: 44px 44px 28px;
+            background:
+                linear-gradient(135deg, rgba(184, 92, 56, 0.14), rgba(255, 255, 255, 0)),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.52), rgba(255, 255, 255, 0));
+            border-bottom: 1px solid rgba(86, 66, 44, 0.08);
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.65);
+            color: var(--accent-dark);
+            font-size: 0.83rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 6px rgba(184, 92, 56, 0.14);
+        }
+
+        h1 {
+            margin: 20px 0 14px;
+            font-size: clamp(2.3rem, 4vw, 4.2rem);
+            line-height: 0.94;
+            letter-spacing: -0.04em;
+            max-width: 8ch;
+        }
+
+        .hero p {
+            margin: 0;
+            max-width: 700px;
+            font-size: 1.02rem;
+            line-height: 1.75;
+            color: var(--muted);
+        }
+
+        .content {
+            padding: 30px 44px 44px;
+        }
+
+        .section-head {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 18px;
+            margin-bottom: 24px;
+        }
+
+        .section-head h2 {
+            margin: 0;
+            font-size: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-head span {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+
+        .card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            min-height: 210px;
+            padding: 24px;
+            text-decoration: none;
+            color: inherit;
+            border-radius: 22px;
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(250, 245, 238, 0.9)),
+                var(--accent-soft);
+            border: 1px solid rgba(86, 66, 44, 0.08);
+            box-shadow: 0 14px 30px rgba(73, 50, 29, 0.08);
+            overflow: hidden;
+            transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(184, 92, 56, 0.14), transparent 55%);
+            opacity: 0;
+            transition: opacity 180ms ease;
+        }
+
+        .card:hover,
+        .card:focus-visible {
+            transform: translateY(-6px);
+            box-shadow: 0 22px 40px rgba(73, 50, 29, 0.14);
+            border-color: rgba(184, 92, 56, 0.24);
+        }
+
+        .card:hover::before,
+        .card:focus-visible::before {
+            opacity: 1;
+        }
+
+        .card:focus-visible {
+            outline: 3px solid rgba(184, 92, 56, 0.22);
+            outline-offset: 4px;
+        }
+
+        .badge {
+            position: relative;
+            z-index: 1;
+            width: fit-content;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.84);
+            color: var(--accent-dark);
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .card-title {
+            position: relative;
+            z-index: 1;
+            margin: 0;
+            font-size: 1.55rem;
+            letter-spacing: -0.03em;
+        }
+
+        .card-copy {
+            position: relative;
+            z-index: 1;
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.65;
+            font-size: 0.95rem;
+        }
+
+        .card-action {
+            position: relative;
+            z-index: 1;
+            margin-top: auto;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--accent-dark);
+            font-weight: 700;
+        }
+
+        .card-action::after {
+            content: "->";
+            font-size: 1rem;
+            transform: translateX(0);
+            transition: transform 180ms ease;
+        }
+
+        .card:hover .card-action::after,
+        .card:focus-visible .card-action::after {
+            transform: translateX(4px);
+        }
+
+        .footer-note {
+            margin-top: 26px;
+            padding: 16px 18px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.55);
+            color: var(--muted);
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 720px) {
+
+            .hero,
+            .content {
+                padding-left: 22px;
+                padding-right: 22px;
+            }
+
+            .hero {
+                padding-top: 28px;
+            }
+
+            .content {
+                padding-bottom: 28px;
+            }
+
+            .section-head {
+                align-items: start;
+                flex-direction: column;
+            }
+
+            .card {
+                min-height: 180px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="shell">
+        <section class="hero">
+            <span class="eyebrow">Accessi rapidi</span>
+            <h1>Open FSE</h1>
+            <p>
+                Una pagina unica per raggiungere velocemente i collegamenti operativi. I link qui sotto
+                sono organizzati come scorciatoie visive, leggibili sia da desktop sia da mobile.
+            </p>
+        </section>
+
+        <section class="content">
+            <div class="section-head">
+                <h2>Seleziona l'ente</h2>
+                <span>8 collegamenti disponibili</span>
+            </div>
+
+            <div class="grid">
+                <a class="card"
+                    href="https://fse.regione.sicilia.it/avvisoPOC/cambia-ente/eyJpdiI6Im5uWDFKOE5SM0tJbXlnalE5MVloaWc9PSIsInZhbHVlIjoienVYRndEaS9YZEd1NDg4L043alV6dz09IiwibWFjIjoiZTU0Nzc4NGNjNzBhMGFhZjMzNWMyODg5MDQ3MDNiMDk5MWQzMWEzYWJiN2E1ZGMyOTJmZDM5NmM5MDkxNWMxNCIsInRhZyI6IiJ9/eyJpdiI6Ik1hQ3hYY09jK1VmbUZRL281dXZFNnc9PSIsInZhbHVlIjoibGJmZm5FMVNxMlZBOG1vS1dxYzlEUT09IiwibWFjIjoiZjc2Y2U3OWY5Y2YzYTMzOWU1N2ZhNjMwMWZhMTNjZWU5MTYxODQ0YWMxM2I2OTJmYTJkZjFhNTBiN2E3ZWE3OSIsInRhZyI6IiJ9"
+                    target="_blank" rel="noopener noreferrer">
+                    <span class="badge">Ente 01</span>
+                    <h3 class="card-title">Cirs</h3>
+                    <p class="card-copy">Accesso diretto al portale FSE per l'ente Cirs, con apertura in una nuova
+                        scheda.</p>
+                    <span class="card-action">Apri collegamento</span>
+                </a>
+
+                <a class="card"
+                    href="https://fse.regione.sicilia.it/avvisoPOC/cambia-ente/eyJpdiI6Ik4ya1cxdlhHL3FJYUFGb3JSeEJyUGc9PSIsInZhbHVlIjoiaTJ3TGdNSi93Nld6SU8vY0pqVGcyZz09IiwibWFjIjoiNjRlMzQ3ZTJlZWU3Y2Q2MjIwYjJlZmQ0Yzk1ZTE4MWZkODk4NGQ1ODBiMjgxZjAwODkzMDYzZjE5NmMwOTQ4MCIsInRhZyI6IiJ9/eyJpdiI6ImEvbGQwTURkRENsYjNZMHZEbjk3cXc9PSIsInZhbHVlIjoiaktndVZtNGljUjJNRzEyNjdaWGhoZz09IiwibWFjIjoiNDJkZGQzMmUyMzI3MzNmYWY4NGYxZGM2ZDM5YjliYTFhNjI5MzJkZjU5OTVkYzQxOTdhZjg4YjEzZjk5Zjk1NiIsInRhZyI6IiJ9"
+                    target="_blank" rel="noopener noreferrer">
+                    <span class="badge">Ente 02</span>
+                    <h3 class="card-title">Cosmopolis</h3>
+                    <p class="card-copy">Scorciatoia dedicata a Cosmopolis, nello stesso layout delle altre voci per un
+                        uso più rapido.</p>
+                    <span class="card-action">Apri collegamento</span>
+                </a>
+
+                <a class="card"
+                    href="https://fse.regione.sicilia.it/avvisoPOC/cambia-ente/eyJpdiI6IitVL1FuVHFzWUQzYVNpUCsxcGVVMnc9PSIsInZhbHVlIjoiSXB3SjNHZnNaYk52M1h1R2lXZUZPZz09IiwibWFjIjoiMTU4MzAyNmYyZmViZmYyMDYwZjk1YTlmMTBjYzg5MzQyNTRjMzE2NjUxOGNiMTY4YjU2YzkzZTY2ZTg0NDZkMyIsInRhZyI6IiJ9/eyJpdiI6ImxKYXJHM3RhR2NSbnVaY2dVMis4Y3c9PSIsInZhbHVlIjoiQzNYUjk4ZmxYWSt2UXVHcTE3bTZLQT09IiwibWFjIjoiNmFkYjVjNjQxMzhlYWQ0OGNjMTQ2MTNmYzRhZTAyYTU4YmQyZGFlM2Y3MWJjNDNhMzAyM2FlZDI5NzM4ZmEyZiIsInRhZyI6IiJ9"
+                    target="_blank" rel="noopener noreferrer">
+                    <span class="badge">Ente 03</span>
+                    <h3 class="card-title">Esfo</h3>
+                    <p class="card-copy">Accesso visuale compatto per Esfo, con card ampia e chiara per facilitare il
+                        click.</p>
+                    <span class="card-action">Apri collegamento</span>
+                </a>
+
+                <a class="card"
+                    href="https://fse.regione.sicilia.it/avvisoPOC/cambia-ente/eyJpdiI6Ik5CNmpiMDQ5d0F0bkJwUUtVRnhQdXc9PSIsInZhbHVlIjoiNDlDVCswYXJNdUozMm5JQTQxRlRHUT09IiwibWFjIjoiODdhMzY4OGE1NWZiY2RhYWEwZTI1MWE2MmI1NTA5ZmNiMDcyMGNiZmMwZmJlYmE4ZjA5YjBmYmZhZWY5YThjZSIsInRhZyI6IiJ9/eyJpdiI6IjFWdmExYStiUytTK0gxeEMwWitOQUE9PSIsInZhbHVlIjoiMmRGT0lzaW1XajBYSHdZQUI3Ymx0dz09IiwibWFjIjoiZWIyMGQ3MjYzZmYwY2VhYzI3MWQ5NmEzNGQwNzBiM2FhY2QyZTI0YjZmZTNmNWJiZWNkNDIxMjQwYzEzYzk4NSIsInRhZyI6IiJ9"
+                    target="_blank" rel="noopener noreferrer">
+                    <span class="badge">Ente 04</span>
+                    <h3 class="card-title">GPS</h3>
+                    <p class="card-copy">Collegamento formattato come accesso operativo immediato, con focus leggibile
+                        anche su mobile.</p>
+                    <span class="card-action">Apri collegamento</span>
+                </a>
+
+                <a class="card"
+                    href="https://fse.regione.sicilia.it/avvisoPOC/cambia-ente/eyJpdiI6IktpSDI3YWlsS3RMOFhsQjdvd1hlZ1E9PSIsInZhbHVlIjoicE1PWE1tKzdHaWJRcUh5UzlDcGViZz09IiwibWFjIjoiYTFmNjQzMTVmZjUwODQ4NDdjYmI5OWY4ZjVlYzVlYTIyNmE1NmZmNzMxNzJlZTQxMmZlYWRlMDYxYmMzNWM3NyIsInRhZyI6IiJ9/eyJpdiI6IjVqbUNxQ2cxbTI1K2FGYWJXY0g5WHc9PSIsInZhbHVlIjoibkF6ZUtHdVFON2pTQi82TXhqYTVPQT09IiwibWFjIjoiZmZkZTlmODViYjI5OGM4YzI3ZThlYzJjYTdmYTdlODhhNjI4MGM2MGY5NTlmNmMwNmZhNjJlYmI1OWE5ZTEzNyIsInRhZyI6IiJ9"
+                    target="_blank" rel="noopener noreferrer">
+                    <span class="badge">Ente 05</span>
+                    <h3 class="card-title">Panormus</h3>
+                    <p class="card-copy">Voce con presentazione coerente al resto della pagina, utile come pannello
+                        rapido di navigazione.</p>
+                    <span class="card-action">Apri collegamento</span>
+                </a>
+
+                <a class="card"
+                    href="https://fse.regione.sicilia.it/avvisoPOC/cambia-ente/eyJpdiI6IjJKQ3oycTh5dW5GazUwckFmMUoxY2c9PSIsInZhbHVlIjoicWFiMThnaGwxS2dNYm41ZGxudnRlZz09IiwibWFjIjoiMTRiNTU5MTM0Y2I3ODZiMGQ4NWQ5YzIyMmZlOGZkOWRlOTc3MGVlMmMwOTJiNTQ2N2Q3MzZiMDc2MjY3NTI5MSIsInRhZyI6IiJ9/eyJpdiI6IkhHbnkySmpEVGVGejRxQUg4SUpISWc9PSIsInZhbHVlIjoiZEp6SHBPM2dWNGtaRk41anF4amY0QT09IiwibWFjIjoiY2JkMTdmZjQ2NzllZWEwMTQ1MTgzZWNhYzUwODllYTAwZGVkM2YyNjM4YjQyMDJkOGFhNjllNjkzMDkxNzU1NyIsInRhZyI6IiJ9"
+                    target="_blank" rel="noopener noreferrer">
+                    <span class="badge">Ente 06</span>
+                    <h3 class="card-title">VGroup</h3>
+                    <p class="card-copy">Ultimo accesso disponibile, inserito nello stesso schema visuale per avere una
+                        pagina uniforme.</p>
+                    <span class="card-action">Apri collegamento</span>
+                </a>
+
+                <a class="card"
+                    href="https://fse.regione.sicilia.it/avvisoPOC/catalogo/eyJpdiI6Ik0rVW4rMk1ZTEcyaEZta0E1ZUcwYWc9PSIsInZhbHVlIjoiMVJ1Qm14dmdRc2xxWmpPaERMVlFQTC94TkREQlphREtiYzZDeFRkdEV4az0iLCJtYWMiOiIxZGRlZmVjYzA3YmRkNWZjNmUxZGQ5ODEyYTVmNWYxNTgzMTY0ZjBiYTgzN2VlMDM1NjgzMjIxZTkxYzlmNmIzIiwidGFnIjoiIn0="
+                    target="_blank" rel="noopener noreferrer">
+                    <span class="badge">Ente 07</span>
+                    <h3 class="card-title">Carpan</h3>
+                    <p class="card-copy">Ultimo accesso disponibile, inserito nello stesso schema visuale per avere una
+                        pagina uniforme.</p>
+                    <span class="card-action">Apri collegamento</span>
+                </a>
+                <a class="card"
+                    href="https://fse.regione.sicilia.it/avvisoPOC/cambia-ente/eyJpdiI6IlI5MzVBRFM1bVNZeVE2MmlaNmJtMEE9PSIsInZhbHVlIjoid245REhTclZPMmorV3dJdVZHRmtadz09IiwibWFjIjoiZTM5ZDk5YWI5MzZmNDdkZTQ4ODQwY2E4NzU1YTEyNzBiZGY5OTUzMTAyMDI3ZTgxMWE5YWRkZTY3NjMyYTA5YyIsInRhZyI6IiJ9/eyJpdiI6InQ0bmFpVVlBWGU1M01mUnphOWxzeFE9PSIsInZhbHVlIjoicFNCUjkyQzRVaURoL2I2N0VsalZ3QT09IiwibWFjIjoiMDBmZTY0NzA0MDUzZDhkODFlZWIyYjcwYjQ2NTI3NzM2ZGZlMDkwZjg3YTE2NGVmZTE5ZWVkNTEwODhiZDI4ZiIsInRhZyI6IiJ9"
+                    target="_blank" rel="noopener noreferrer">
+                    <span class="badge">Ente 08</span>
+                    <h3 class="card-title">SGA</h3>
+                    <p class="card-copy">Ultimo accesso disponibile, inserito nello stesso schema visuale per avere una
+                        pagina uniforme.</p>
+                    <span class="card-action">Apri collegamento</span>
+                </a>
+            </div>
+
+            <div class="footer-note">
+                Tutti i collegamenti vengono aperti in una nuova scheda per non perdere questa pagina di raccolta.
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
