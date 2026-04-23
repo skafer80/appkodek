@@ -20,7 +20,7 @@ class ElencoAllieviClasseController extends Controller
         }
         $classeId = $request->classeId;
 
-        if (! in_array($request->ip(), ['185.253.239.240'])) {
+        if (in_array($request->ip(), ['185.253.239.240'])) {
             return response()->json();
         }
         $response = Http::get('https://www.kodek.it/api/elenco-allievi-classe/'.$classeId);
