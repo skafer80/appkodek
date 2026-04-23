@@ -29,7 +29,7 @@ class EntiSediClassiController extends Controller
         }
 
         $classeId = $request->classeId;
-        $response = Http::get('https://app.kodek.it/api/test/enti-sedi-classi.json');
+        $response = Http::get('https://app.kodek.it/enti-sedi-classi.json');
         /* $response = Http::get('https://www.kodek.it/api/enti-sedi-classi'); */
 
         return response()->json($response->json());
