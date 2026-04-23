@@ -75,7 +75,7 @@
                                     <option value="REO">REO</option>
                                     <option value="Direttore di progetto">Direttore di progetto</option>
                                     <option value="Tutor">Tutor</option>
-                                    <option value="Personale amministrativo">Personale amministrativo</option>
+                                    <option value="Responsabile amministrativo">Responsabile amministrativo</option>
                                 </select>
                             </div>
                             <div class="col-md-6 mb-3">
