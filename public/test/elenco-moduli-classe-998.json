@@ -1,83 +1,74 @@
 {
-  "classeId": "998",
+  "classeId": "600",
   "moduli": [
     {
       "nomeModuli": "Modulo 1",
       "conoscenze": [
         {
-          "nomeConoscenza": "ARCHITETTURA E COMPONENTI HARDWARE E SOFTWARE DEL SISTEMA",
-          "oreConoscenza": 36,
-          "oreFadConoscenza": 0
+          "nomeConoscenza": "ELEMENTI DI MERCEOLOGIA",
+          "oreConoscenza": 48,
+          "oreFadConoscenza": 0,
+          "fascia": "A"
         },
         {
-          "nomeConoscenza": "INTRODUZIONE ALLE RETI",
-          "oreConoscenza": 24,
-          "oreFadConoscenza": 0
+          "nomeConoscenza": "ELEMENTI DI APPROVVIGIONAMENTO E LOGISTICA",
+          "oreConoscenza": 54,
+          "oreFadConoscenza": 0,
+          "fascia": "B"
         },
         {
-          "nomeConoscenza": "FUNZIONALITà DELL'AMBIENTE OPERATIVO",
-          "oreConoscenza": 38,
-          "oreFadConoscenza": 0
+          "nomeConoscenza": "TECNICHE DI GESTIONE DEL MAGAZZINO",
+          "oreConoscenza": 48,
+          "oreFadConoscenza": 0,
+          "fascia": "B"
         },
         {
-          "nomeConoscenza": "SOFTWARE PER IL TRATTAMENTO DATI",
-          "oreConoscenza": 24,
-          "oreFadConoscenza": 0
+          "nomeConoscenza": "RISCHI SPECIFICI CORRELATI ALLE ATTIVITà DI GESTIONE MAGAZZINO",
+          "oreConoscenza": 48,
+          "oreFadConoscenza": 0,
+          "fascia": "B"
         },
         {
-          "nomeConoscenza": "TRATTAMENTO TESTI PER IL WEB",
-          "oreConoscenza": 36,
-          "oreFadConoscenza": 0
+          "nomeConoscenza": "PROCEDURE DI RICEVIMENTO",
+          "oreConoscenza": 50,
+          "oreFadConoscenza": 0,
+          "fascia": "A"
         },
         {
-          "nomeConoscenza": "ELEMENTI DI COMUNICAZIONE MEDIALE",
-          "oreConoscenza": 36,
-          "oreFadConoscenza": 0
+          "nomeConoscenza": "ELEMENTI DI STOCCAGGIO DELLE MERCI",
+          "oreConoscenza": 48,
+          "oreFadConoscenza": 0,
+          "fascia": "A"
         },
         {
-          "nomeConoscenza": "CARATTERISTICHE DELLE RETI INFORMATICHE E DEI DISPOSITIVI DI RETE",
-          "oreConoscenza": 24,
-          "oreFadConoscenza": 0
-        },
-        {
-          "nomeConoscenza": "TECNICHE DI UTILIZZO DEI SERVIZI CLOUD",
-          "oreConoscenza": 36,
-          "oreFadConoscenza": 0
-        },
-        {
-          "nomeConoscenza": "WEB APPLICATION",
-          "oreConoscenza": 36,
-          "oreFadConoscenza": 0
-        },
-        {
-          "nomeConoscenza": "TUTELA E SICUREZZA DEI DATI IN RETE",
-          "oreConoscenza": 24,
-          "oreFadConoscenza": 0
-        },
-        {
-          "nomeConoscenza": "SOCIAL NETWORK",
-          "oreConoscenza": 36,
-          "oreFadConoscenza": 0
+          "nomeConoscenza": "PROCEDURE DI SPEDIZIONE",
+          "oreConoscenza": 54,
+          "oreFadConoscenza": 0,
+          "fascia": "B"
         },
         {
           "nomeConoscenza": "IGIENE E SICUREZZA SUL LUOGO DI LAVORO",
           "oreConoscenza": 12,
-          "oreFadConoscenza": 0
+          "oreFadConoscenza": 0,
+          "fascia": "A"
         },
         {
           "nomeConoscenza": "ALFABETIZZAZIONE INFORMATICA",
           "oreConoscenza": 12,
-          "oreFadConoscenza": 0
+          "oreFadConoscenza": 0,
+          "fascia": "A"
         },
         {
           "nomeConoscenza": "LINGUA STRANIERA (INGLESE)",
           "oreConoscenza": 30,
-          "oreFadConoscenza": 0
+          "oreFadConoscenza": 0,
+          "fascia": "A"
         },
         {
           "nomeConoscenza": "STAGE",
           "oreConoscenza": 150,
-          "oreFadConoscenza": 0
+          "oreFadConoscenza": 0,
+          "fascia": ""
         }
       ]
     }

@@ -1,98 +1,146 @@
 {
-  "classeId": "997",
+  "classeId": "772",
   "moduli": [
     {
       "nomeModuli": "Modulo 1",
       "conoscenze": [
         {
-          "nomeConoscenza": "ELEMENTI DI OSSERVAZIONE E COMUNICAZIONE",
-          "oreConoscenza": 18,
-          "oreFadConoscenza": 0
+          "nomeConoscenza": "NORMATIVE DI SICUREZZA, IGIENE, SALVAGUARDIA AMBIENTALE DI SETTORE",
+          "oreConoscenza": 10,
+          "oreFadConoscenza": 0,
+          "fascia": "A"
         },
         {
-          "nomeConoscenza": "I BISOGNI PRIMARI: TECNICHE DI BASE",
-          "oreConoscenza": 18,
-          "oreFadConoscenza": 0
+          "nomeConoscenza": "NOZIONI SULLE FUNZIONI PRINCIPALI SUL SOFTWARE PER LA PROGETTAZIONE DI IMPIANTI ELETTRICI",
+          "oreConoscenza": 10,
+          "oreFadConoscenza": 0,
+          "fascia": "A"
         },
         {
-          "nomeConoscenza": "SICUREZZA E PREVENZIONE",
+          "nomeConoscenza": "PRINCIPALI TERMINOLOGIE TECNICHE DI SETTORE",
+          "oreConoscenza": 10,
+          "oreFadConoscenza": 0,
+          "fascia": "A"
+        },
+        {
+          "nomeConoscenza": "SCHEMI ELETTRICI PER LA RAPPRESENTAZIONE DI IMPIANTI",
+          "oreConoscenza": 24,
+          "oreFadConoscenza": 0,
+          "fascia": "A"
+        },
+        {
+          "nomeConoscenza": "SIMBOLOGIA IMPIANTI ELETTRICI",
+          "oreConoscenza": 14,
+          "oreFadConoscenza": 0,
+          "fascia": "A"
+        },
+        {
+          "nomeConoscenza": "TECNICHE DI COMUNICAZIONE ORGANIZZATIVA",
           "oreConoscenza": 12,
-          "oreFadConoscenza": 0
+          "oreFadConoscenza": 0,
+          "fascia": "A"
         },
         {
-          "nomeConoscenza": "TECNICHE DI MOBILIZZAZIONE",
-          "oreConoscenza": 18,
-          "oreFadConoscenza": 0
-        },
-        {
-          "nomeConoscenza": "ELEMENTI DI PRIMO SOCCORSO",
-          "oreConoscenza": 18,
-          "oreFadConoscenza": 0
-        },
-        {
-          "nomeConoscenza": "ELEMENTI DI IGIENE PERSONALE",
+          "nomeConoscenza": "TECNICHE DI PIANIFICAZIONE",
           "oreConoscenza": 12,
-          "oreFadConoscenza": 0
+          "oreFadConoscenza": 0,
+          "fascia": "A"
         },
         {
-          "nomeConoscenza": "TECNICHE DI PREVENZIONE E DI CURA DELLE COMPLICANZE DELLE PRINCIPALI PATOLOGIE DEGENERATIVE",
+          "nomeConoscenza": "TIPOLOGIE DI IMPIANTI ELETTRICI",
+          "oreConoscenza": 30,
+          "oreFadConoscenza": 0,
+          "fascia": "A"
+        },
+        {
+          "nomeConoscenza": "CARATTERISTICHE FUNZIONALI E CAMPI DI APPLICAZIONE DELLE CANALIZZAZIONI",
+          "oreConoscenza": 24,
+          "oreFadConoscenza": 0,
+          "fascia": "A"
+        },
+        {
+          "nomeConoscenza": "TECNICHE DI TAGLIO A MISURA, ADATTAMENTO, GIUNZIONE E FISSAGGIO DELLE CANALIZZAZIONI",
+          "oreConoscenza": 24,
+          "oreFadConoscenza": 0,
+          "fascia": "B"
+        },
+        {
+          "nomeConoscenza": "TECNICHE DI TRACCIATURA, POSIZIONAMENTO E FISSAGGIO",
+          "oreConoscenza": 24,
+          "oreFadConoscenza": 0,
+          "fascia": "B"
+        },
+        {
+          "nomeConoscenza": "CARATTERISTICHE DEI CONDUTTORI ELETTRICI",
           "oreConoscenza": 12,
-          "oreFadConoscenza": 0
+          "oreFadConoscenza": 0,
+          "fascia": "B"
         },
         {
-          "nomeConoscenza": "TECNICHE DI AUTOMEDICAZIONE E DI ASSUNZIONE DEI FARMACI",
+          "nomeConoscenza": "CARATTERISTICHE DELLE APPARECCHIATURE PER IMPIANTI ELETTRICI CIVILI ED INDUSTRIALI",
           "oreConoscenza": 12,
-          "oreFadConoscenza": 0
+          "oreFadConoscenza": 0,
+          "fascia": "B"
         },
         {
-          "nomeConoscenza": "CONSERVAZIONE DEI FARMACI E LORO SMALTIMENTO",
-          "oreConoscenza": 6,
-          "oreFadConoscenza": 0
-        },
-        {
-          "nomeConoscenza": "ELEMENTI DI IGIENE AMBIENTALE A DOMICILIO: PULIZIA DELLA CASA E CURA DELLA BIANCHERIA",
+          "nomeConoscenza": "CARATTERISTICHE E CAMPI DI APPLICAZIONE DEI DISPOSITIVI DI PROTEZIONE INDIVIDUALE (DPI)",
           "oreConoscenza": 12,
-          "oreFadConoscenza": 0
+          "oreFadConoscenza": 0,
+          "fascia": "B"
         },
         {
-          "nomeConoscenza": "ELEMENTI DI ECONOMIA DOMESTICA E DI GESTIONE DEL BILANCIO DOMESTICO",
-          "oreConoscenza": 18,
-          "oreFadConoscenza": 0
+          "nomeConoscenza": "MODALITà DI CABLAGGIO",
+          "oreConoscenza": 24,
+          "oreFadConoscenza": 0,
+          "fascia": "B"
         },
         {
-          "nomeConoscenza": "PREPARAZIONE DEI PASTI",
-          "oreConoscenza": 18,
-          "oreFadConoscenza": 0
+          "nomeConoscenza": "SCHEMI ELETTRICI",
+          "oreConoscenza": 24,
+          "oreFadConoscenza": 0,
+          "fascia": "B"
         },
         {
-          "nomeConoscenza": "PREVENZIONE DEGLI INCIDENTI DOMESTICI",
-          "oreConoscenza": 18,
-          "oreFadConoscenza": 0
+          "nomeConoscenza": "TECNICHE DI INSTALLAZIONE E ADATTAMENTO DELLE COMPONENTI DELL’IMPIANTO",
+          "oreConoscenza": 24,
+          "oreFadConoscenza": 0,
+          "fascia": "B"
         },
         {
-          "nomeConoscenza": "ELEMENTI DI IGIENE ALIMENTARE",
-          "oreConoscenza": 18,
-          "oreFadConoscenza": 0
+          "nomeConoscenza": "TECNICHE DI POSA DEI CAVI E DI LAVORAZIONE DEL QUADRO ELETTRICO",
+          "oreConoscenza": 24,
+          "oreFadConoscenza": 0,
+          "fascia": "B"
+        },
+        {
+          "nomeConoscenza": "TIPOLOGIE DI ISOLAMENTO",
+          "oreConoscenza": 24,
+          "oreFadConoscenza": 0,
+          "fascia": "B"
         },
         {
           "nomeConoscenza": "IGIENE E SICUREZZA SUL LUOGO DI LAVORO",
           "oreConoscenza": 12,
-          "oreFadConoscenza": 0
+          "oreFadConoscenza": 0,
+          "fascia": "A"
         },
         {
           "nomeConoscenza": "ALFABETIZZAZIONE INFORMATICA",
           "oreConoscenza": 12,
-          "oreFadConoscenza": 0
+          "oreFadConoscenza": 0,
+          "fascia": "A"
         },
         {
           "nomeConoscenza": "LINGUA STRANIERA (INGLESE)",
           "oreConoscenza": 30,
-          "oreFadConoscenza": 0
+          "oreFadConoscenza": 0,
+          "fascia": "A"
         },
         {
           "nomeConoscenza": "STAGE",
-          "oreConoscenza": 90,
-          "oreFadConoscenza": 0
+          "oreConoscenza": 150,
+          "oreFadConoscenza": 0,
+          "fascia": ""
         }
       ]
     }

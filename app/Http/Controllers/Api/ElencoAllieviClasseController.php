@@ -23,7 +23,9 @@ class ElencoAllieviClasseController extends Controller
         if (in_array($request->ip(), ['185.253.239.240'])) {
             return response()->json();
         }
-        $response = Http::get('https://www.kodek.it/api/elenco-allievi-classe/'.$classeId);
+
+            $response = Http::get('https://www.kodek.it/api/test/elenco-allievi-classe-'.$classeId.'.json');
+        /* $response = Http::get('https://www.kodek.it/api/elenco-allievi-classe/'.$classeId); */
 
         return response()->json($response->json());
     }
