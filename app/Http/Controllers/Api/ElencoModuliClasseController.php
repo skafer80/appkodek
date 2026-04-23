@@ -13,7 +13,7 @@ class ElencoModuliClasseController extends Controller
 
         $classeId = $request->classeId;
 
-        $response = Http::get('https://www.kodek.it/api/test/elenco-moduli-classe-' . $classeId . '.json');
+        $response = Http::get('https://app.kodek.it/api/test/elenco-moduli-classe-' . $classeId . '.json');
         /* $response = Http::get('https://www.kodek.it/api/elenco-moduli-classe/' . $classeId); */
 
         return response()->json($response->json());
