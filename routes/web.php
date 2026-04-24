@@ -1,13 +1,14 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\clickController;
 use App\Http\Controllers\allenamentoController;
+use App\Http\Controllers\clickController;
 use App\Http\Controllers\datiProgettazioneController;
 use App\Http\Controllers\provaDatiController;
+use App\Http\Controllers\simulatore\propostaFormaticaController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/click', [clickController::class, 'index'])->name('click.index');
-//Route::get('/click/{id}', [clickController::class, 'show'])->name('click.show');
+// Route::get('/click/{id}', [clickController::class, 'show'])->name('click.show');
 Route::post('/click', [clickController::class, 'store'])->name('click.store');
 Route::get('/click/classe/{id}', [clickController::class, 'showClasse'])->name('click.showClasse');
 Route::get('/click/create/{id}', [clickController::class, 'createDestinatario'])->name('click.createDestinatario');
@@ -28,7 +29,6 @@ Route::get('/progettazione3006/stampa/{classeId}', [datiProgettazioneController:
 Route::get('/provadati', [provaDatiController::class, 'datiProgettazione'])->name('provadati.dati');
 Route::get('/provadati/stampa/{classeId}', [provaDatiController::class, 'stampaClasse'])->name('provadati.stampa');
 
-
 Route::get('/allenamento', [allenamentoController::class, 'index'])->name('allenamento.index');
 Route::get('/allenamento/{id}', [allenamentoController::class, 'show'])->name('allenamento.show');
 Route::post('/allenamento', [allenamentoController::class, 'store'])->name('allenamento.store');
@@ -39,12 +39,20 @@ Route::get('/allenamento/getModulo/{id}', [allenamentoController::class, 'getMod
 Route::post('/allenamento/editModulo', [allenamentoController::class, 'editModuli'])->name('allenamento.editModuli');
 Route::get('/allenamento/moduli/{id}', [allenamentoController::class, 'showModuli'])->name('allenamento.showModuli');
 
-//Route::view('/', 'welcome')->name('home');
+// Route::view('/', 'welcome')->name('home');
 
 Route::redirect('/', '/click')->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('dashboard', 'dashboard')->name('dashboard');
 });
+
+Route::get('/propostaformatica', [propostaFormaticaController::class, 'index'])->name('propostaformatica.index');
+Route::get('/propostaformatica/moduli/{id}', [propostaFormaticaController::class, 'showModuli'])->name('propostaformatica.showModuli');
+Route::get('/propostaformatica/percorsi/{id}', [propostaFormaticaController::class, 'showPercorsi'])->name('propostaformatica.showPercorsi');
+Route::get('/propostaformatica/dettagli-percorso/{id}', [propostaFormaticaController::class, 'showDettagliPercorso'])->name('propostaformatica.showDettagliPercorso');
+Route::get('/propostaformatica/dati-economici/{id}', [propostaFormaticaController::class, 'showDatiEconomici'])->name('propostaformatica.showDatiEconomici');
+Route::get('/propostaformatica/stage/{id}', [propostaFormaticaController::class, 'showStage'])->name('propostaformatica.showStage');
+Route::get('/propostaformatica/impresa/{id}', [propostaFormaticaController::class, 'showImpresa'])->name('propostaformatica.showImpresa');
 
 require __DIR__.'/settings.php';
