@@ -64,7 +64,7 @@
             <div class="row pt-4 pe-4 pb-4 ps-4">
                 <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
 
-                    <a href="https://fse.regione.sicilia.it/avvisoPOC/home"
+                    <a href=""
                         style="white-space:nowrap;display:inline-block;text-decoration:none;line-height:2rem;">
                         <img id="logo-regione-siciliana" src="{{ asset('regione/logo-regione-siciliana.png') }}"
                             style="display:inline-block;height:4rem;margin:0 0.5rem 0 0;">
@@ -72,17 +72,17 @@
                                 style="display:block;font-size:12px;vertical-align:bottom;">Catalogo Regionale
                                 dell'Offerta Formativa</i></span>
                         <i class="fa fa-home ms-5 text-warning"></i>&nbsp;</a><a
-                        href="https://fse.regione.sicilia.it/avvisoPOC/home" class="d-inline-block text-warning">Elenco
+                        href="" class="d-inline-block text-warning">Elenco
                         corsi</a>
 
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 text-center" style="line-height:4rem;">
-                    <a href="https://fse.regione.sicilia.it/avvisoPOC/scegli-ente" class="btn green radius-1-i">Cambia
+                    <a href="" class="btn green radius-1-i">Cambia
                         soggetto proponente</a>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 text-right" style="line-height:4rem;">
                     <span class="d-inline-block ms-3">Accesso delegato</span>
-                    <a href="https://fse.regione.sicilia.it/avvisoPOC/logout"
+                    <a href=""
                         class="d-inline-block ms-3 text-danger text-truncate"
                         title="VGROUP ONLUS">Disconnetti</a>&nbsp;<i class="me-3 fa fa-sign-out text-danger"></i>
                 </div>

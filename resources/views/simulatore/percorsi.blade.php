@@ -13,7 +13,7 @@
 
                             <div class="col-md-12 text-center">
 
-                                <a href="{{ route('propostaformatica.index') }}"
+                                <a href="{{ route('simulatore.index', $SimulatorPlayer->id) }}"
                                     class="d-block absolute p-2 bg-blue underline-off-i"><i class="fa fa-long-arrow-left" "="" aria-hidden=" true"></i>&nbsp;Indietro</a>
 
                                 <h2> Progettazione Esecutiva </h2>
@@ -82,7 +82,7 @@
                                             <td style="vertical-align:middle;" class="text-center">
                                                 <div class="btn-group">
                                                     <!-- ($dBandoSelezione[$rr->id]['b_termini_validi_presentazione_pe'] dipende dalle date `data_init_pe`, `data_end_pe` -->
-                                                    <a href="{{ route('propostaformatica.showDettagliPercorso', $percorso->id) }}" class="btn blue radius-1-i">
+                                                    <a href="{{ route('simulatore.showDettagliPercorso', [$SimulatorPlayer->id, $percorso->id]) }}" class="btn blue radius-1-i">
                                                         <i class="fa fa-pencil zoom-1_4"></i>
                                                     </a>
                                                 </div>

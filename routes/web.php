@@ -4,7 +4,9 @@ use App\Http\Controllers\allenamentoController;
 use App\Http\Controllers\clickController;
 use App\Http\Controllers\datiProgettazioneController;
 use App\Http\Controllers\provaDatiController;
+use App\Http\Controllers\simulatore\HomeController;
 use App\Http\Controllers\simulatore\propostaFormaticaController;
+use App\Http\Controllers\simulatore\memorizzaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/click', [clickController::class, 'index'])->name('click.index');
@@ -41,18 +43,38 @@ Route::get('/allenamento/moduli/{id}', [allenamentoController::class, 'showModul
 
 // Route::view('/', 'welcome')->name('home');
 
-Route::redirect('/', '/click')->name('home');
+// Route::redirect('/', '/click')->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('dashboard', 'dashboard')->name('dashboard');
 });
+Route::prefix('play/{SimulatorPlayer}')->group(function () {
+    Route::get('/simulatore', [propostaFormaticaController::class, 'index'])->name('simulatore.index');
+    Route::get('/simulatore/moduli/{id}', [propostaFormaticaController::class, 'showModuli'])->name('simulatore.showModuli');
+    Route::get('/simulatore/percorsi/{id}', [propostaFormaticaController::class, 'showPercorsi'])->name('simulatore.showPercorsi');
+    Route::get('/simulatore/dettagli-percorso/{id}', [propostaFormaticaController::class, 'showDettagliPercorso'])->name('simulatore.showDettagliPercorso');
+    Route::get('/simulatore/dati-economici/{id}', [propostaFormaticaController::class, 'showDatiEconomici'])->name('simulatore.showDatiEconomici');
+    Route::get('/simulatore/stage/{id}', [propostaFormaticaController::class, 'showStage'])->name('simulatore.showStage');
+    Route::get('/simulatore/impresa/{id}', [propostaFormaticaController::class, 'showImpresa'])->name('simulatore.showImpresa');
 
-Route::get('/propostaformatica', [propostaFormaticaController::class, 'index'])->name('propostaformatica.index');
-Route::get('/propostaformatica/moduli/{id}', [propostaFormaticaController::class, 'showModuli'])->name('propostaformatica.showModuli');
-Route::get('/propostaformatica/percorsi/{id}', [propostaFormaticaController::class, 'showPercorsi'])->name('propostaformatica.showPercorsi');
-Route::get('/propostaformatica/dettagli-percorso/{id}', [propostaFormaticaController::class, 'showDettagliPercorso'])->name('propostaformatica.showDettagliPercorso');
-Route::get('/propostaformatica/dati-economici/{id}', [propostaFormaticaController::class, 'showDatiEconomici'])->name('propostaformatica.showDatiEconomici');
-Route::get('/propostaformatica/stage/{id}', [propostaFormaticaController::class, 'showStage'])->name('propostaformatica.showStage');
-Route::get('/propostaformatica/impresa/{id}', [propostaFormaticaController::class, 'showImpresa'])->name('propostaformatica.showImpresa');
+    Route::post('/simulatore/memorizza-dettagli-percorso/{classroom}', [memorizzaController::class, 'dettagliPercorso'])->name('simulatore.memorizzaDettagliPercorso');
+    Route::post('/simulatore/memorizza-dettagli-stage/{classroom}', [memorizzaController::class, 'dettagliStage'])->name('simulatore.memorizzaDettagliStage');
+    Route::post('/simulatore/memorizza-impresa/{classroom}', [memorizzaController::class, 'dettagliImpresa'])->name('simulatore.memorizzaDettagliImpresa');
+    Route::post('/simulatore/dati-economici/{classroom}', [memorizzaController::class, 'dettagliDatiEconomici'])->name('simulatore.memorizzaDatiEconomici');
+
+    Route::delete('/simulatore/elimina-impresa/{impresa}', [memorizzaController::class, 'eliminaImpresa'])->name('simulatore.eliminaImpresa');
+});
+
+/*
+Route::get('/simulatore', [propostaFormaticaController::class, 'index'])->name('simulatore.index');
+Route::get('/simulatore/moduli/{id}', [propostaFormaticaController::class, 'showModuli'])->name('simulatore.showModuli');
+Route::get('/simulatore/percorsi/{id}', [propostaFormaticaController::class, 'showPercorsi'])->name('simulatore.showPercorsi');
+Route::get('/simulatore/dettagli-percorso/{id}', [propostaFormaticaController::class, 'showDettagliPercorso'])->name('simulatore.showDettagliPercorso');
+Route::get('/simulatore/dati-economici/{id}', [propostaFormaticaController::class, 'showDatiEconomici'])->name('simulatore.showDatiEconomici');
+Route::get('/simulatore/stage/{id}', [propostaFormaticaController::class, 'showStage'])->name('simulatore.showStage');
+Route::get('/simulatore/impresa/{id}', [propostaFormaticaController::class, 'showImpresa'])->name('simulatore.showImpresa');
+*/
+
+Route::get('/', [HomeController::class, 'index'])->name('simulatore.home');
 
 require __DIR__.'/settings.php';

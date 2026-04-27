@@ -4,7 +4,7 @@
     <div class="page-content-wrapper">
         <div class="page-content" style="background-color: #f5f5f5!important;">
 
-            <a href="{{ route('propostaformatica.showDettagliPercorso', $percorso->id) }}"
+            <a href="{{ route('simulatore.showDettagliPercorso', [$SimulatorPlayer->id, $percorso->id]) }}"
                 class="d-inline-block mb-5 p-2 bg-blue underline-off-i"><i class="fa fa-long-arrow-left" "="" aria-hidden=" true"></i>&nbsp;Indietro</a>
 
 
@@ -40,18 +40,18 @@
                         <td>Ore massime da inserire: 101 (25%)</td>
                     </tr>
 
-                    <form method="post" action="https://fse.regione.sicilia.it/avvisoPOC/pe/ore-presunte"></form>
-                        <input type="hidden" name="_token" value="LThRShcEdk9UxInaZ6o0eKZZvr9fyXzIKbBX4xPn" autocomplete="off">                    <input type="hidden" name="id_edizione" value="eyJpdiI6InBZbHp4eXRJVW9CUGxQeWJNdVNKQ3c9PSIsInZhbHVlIjoiR01QVjk3TVdJWU1lWFJNcjhDVmtOZz09IiwibWFjIjoiNDZiNTUzODc5NmY5ODQ0Y2UxOTc2MDY3YWZmZjE4ZWQ3N2Y5YWIwODc1MjRiN2MwNGM2NDllYTBmMDQxMWE2YiIsInRhZyI6IiJ9">
+                    <form method="post" action="{{ route('simulatore.memorizzaDatiEconomici', [$SimulatorPlayer->id, $percorso->id]) }}">
+                        @csrf
                         <tr class="odd gradeX">
                             <td><strong>Ore presunte aula + FAD</strong></td>
-                            <td><input min="162" max="202" class="form-control required" required="required" name="ore_presunte_fascia_a" type="number" value="0"></td>
-                            <td><input min="0" max="242" class="form-control required" required="required" name="ore_presunte_fascia_b" type="number" value="0"></td>
-                            <td><input min="0" max="101" class="form-control required" required="required" name="ore_presunte_fascia_c" type="number" value="0"></td>
+                            <td><input min="162" max="202" class="form-control required" required="required" name="ore_presunte_fascia_a" type="number" value="{{ $orePresunteFasciaA }}"></td>
+                            <td><input min="0" max="242" class="form-control required" required="required" name="ore_presunte_fascia_b" type="number" value="{{ $orePresunteFasciaB }}"></td>
+                            <td><input min="0" max="101" class="form-control required" required="required" name="ore_presunte_fascia_c" type="number" value="{{ $orePresunteFasciaC }}"></td>
                         </tr>
                         <tr>
                             <td colspan="4" class="text-center"><button class="btn blue" type="submit"><i class="fa fa-check-circle"></i>&nbsp;Salva</button></td>
                         </tr>
-
+                    </form>
 
                 </tbody>
             </table>

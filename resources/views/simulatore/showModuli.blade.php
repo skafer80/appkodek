@@ -10,7 +10,7 @@
                 <div class="portlet-title">
                     <div class="col-md-3 text-left">
                         <ol class="breadcrumb">
-                            <a href="{{ route('propostaformatica.index') }}" class="btn blue btn-sm"><i class="fa fa-long-arrow-left fa-5x""
+                            <a href="{{ route('simulatore.index', $SimulatorPlayer->id) }}" class="btn blue btn-sm"><i class="fa fa-long-arrow-left fa-5x""
                                     aria-hidden=" true"></i>&nbsp;Indietro</a>
                         </ol>
                     </div>

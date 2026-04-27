@@ -73,9 +73,9 @@
                             </div>
                         </div>
                         <div class="portlet-body">
-                            <form method="POST" action="https://fse.regione.sicilia.it/avvisoPOC/pe/189/detail/2684"
-                                accept-charset="UTF-8"><input name="_token" type="hidden"
-                                    value="LThRShcEdk9UxInaZ6o0eKZZvr9fyXzIKbBX4xPn">
+                            <form method="POST" action="{{ route('simulatore.memorizzaDettagliPercorso', [$SimulatorPlayer->id, $percorso->id]) }}">
+                                @csrf
+
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                         <strong>
@@ -134,7 +134,7 @@
                                         <div class="form-group">
                                             <label for="data_avvio_prevista" class="required">Data avvio prevista</label>
                                             <input class="form-control required date-picker-chiusura"
-                                                name="data_avvio_prevista" type="text" value=""
+                                                name="data_avvio_prevista" type="text" value="{{ $dataAvvioPrevista }}"
                                                 id="data_avvio_prevista">
                                         </div>
                                     </div>
@@ -142,7 +142,7 @@
                                         <div class="form-group">
                                             <label for="data_fine_prevista" class="required">Data fine prevista</label>
                                             <input class="form-control required date-picker-fine"
-                                                name="data_fine_prevista" type="text" value=""
+                                                name="data_fine_prevista" type="text" value="{{ $dataFinePrevista }}"
                                                 id="data_fine_prevista">
                                         </div>
                                     </div>
@@ -178,7 +178,7 @@
                                             <label for="importo_finanziamenti" class="control-label">Importo totale
                                                 finanziamenti PO FSE 2014-2020 e PR FSE+ Sicilia 2021-2027 ricevuti</label>
                                             <input step="0.01" class="form-control" name="importo_finanziamenti"
-                                                type="number" id="importo_finanziamenti">
+                                                type="number" id="importo_finanziamenti" value="{{ $importoFinanziamenti }}">
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
@@ -186,7 +186,7 @@
                                             <label for="giornate_aula_previste" class="control-label">Numero di giornate
                                                 previste(aula + stage)</label>
                                             <input class="form-control" type="number" name="giornate_aula_previste"
-                                                id="giornate_aula_previste">
+                                                id="giornate_aula_previste" value="{{ $giornateAulaPreviste }}">
 
                                         </div>
                                     </div>

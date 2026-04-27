@@ -117,7 +117,7 @@
 
                                                                         <td class="text-center">
 
-                                                                            <a href="{{ route('propostaformatica.showModuli', $row->id) }}"
+                                                                            <a href="{{ route('simulatore.showModuli', [$SimulatorPlayer->id, $row->id]) }}"
                                                                                 title="Sezione moduli formativi completata correttamente e non modificabile perchè almeno un percorso è stato confermato"
                                                                                 class="btn default green radius-1-i">
                                                                                 <i class="fa fa-eye zoom-1_4"></i>
@@ -126,7 +126,7 @@
                                                                         </td>
 
                                                                         <td class="text-center">
-                                                                            <a href="{{ route('propostaformatica.showPercorsi', $row->id) }}"
+                                                                            <a href="{{ route('simulatore.showPercorsi', [$SimulatorPlayer->id, $row->id]) }}"
                                                                                 title="Accedi all&#39;elenco dei percorsi relativi al corso 1238"
                                                                                 class="btn default purple radius-2-i">
                                                                                 <i class="fa fa-map-marker zoom-1_4"></i>

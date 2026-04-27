@@ -46,21 +46,21 @@
                                 </td>
                             </tr>
                             <!--                <tr>
-                        <td>Numero giornate min /Numero giornate max</td>
-                        <td><strong>
+                            <td>Numero giornate min /Numero giornate max</td>
+                            <td><strong>
 
-                            /
-                            </strong> </td>
-                    </tr>-->
+                                /
+                                </strong> </td>
+                        </tr>-->
                             <!--                <tr>
-                        <td>Data Inizio Bando di selezione: </td>
-                        <td><strong>
-                                </strong></td>
-                    </tr>-->
+                            <td>Data Inizio Bando di selezione: </td>
+                            <td><strong>
+                                    </strong></td>
+                        </tr>-->
                             <!--<tr>
-                        <td> Data termine compilazione P.E: </td>
-                        <td>   <strong></strong></td>
-                    </tr>-->
+                            <td> Data termine compilazione P.E: </td>
+                            <td>   <strong></strong></td>
+                        </tr>-->
                         </tbody>
                     </table>
                 </div>
@@ -68,9 +68,8 @@
 
             <div class="row">
                 <form method="POST"
-                    action="https://fse.regione.sicilia.it/avvisoPOC/pe/aV9kb21hbmRhX2lkPTE4OQ==/convenzioni/aV9lZGl6aW9uZV9pZD0yNjg0"
-                    accept-charset="UTF-8"><input name="_token" type="hidden"
-                        value="LThRShcEdk9UxInaZ6o0eKZZvr9fyXzIKbBX4xPn">
+                    action="{{ route('simulatore.memorizzaDettagliStage', [$SimulatorPlayer->id, $percorso->id]) }}">
+                    @csrf
                     <input id="isEditablePe" name="isEditablePe" type="hidden" value="1">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="portlet box red">
@@ -94,14 +93,14 @@
                                         <div class="form-group">
                                             <label for="d_avvio_stage" class="required">Data avvio prevista</label>
                                             <input class="form-control required date-picker-chiusura" name="d_avvio_stage"
-                                                type="text" value="" id="d_avvio_stage">
+                                                type="text" value="{{ $dataAvvioStage }}" id="d_avvio_stage">
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
                                         <div class="form-group">
                                             <label for="d_fine_stage" class="required">Data fine prevista</label>
                                             <input class="form-control required date-picker-fine" name="d_fine_stage"
-                                                type="text" value="" id="d_fine_stage">
+                                                type="text" value="{{ $dataFineStage }}" id="d_fine_stage">
                                         </div>
                                     </div>
                                 </div>
@@ -133,14 +132,14 @@
                                             <div class="form-group">
                                                 <label for="giornate_stage" class="required">Giornate Stage</label>
                                                 <input class="form-control required" type="number" min="19"
-                                                    max="38" name="i_giornate_stage" value="0">
+                                                    max="38" name="i_giornate_stage" value="{{ $giornateStage }}">
 
                                             </div>
                                         </div>
                                         <div class="col-md-3 col-lg-3 text-right">
                                             <div class="form-group">
                                                 <input class="btn btn-large blue" type="submit" value="Salva">
-                                                <a href="https://fse.regione.sicilia.it/avvisoPOC/pe/aV9kb21hbmRhX2lkPTE4OQ==/convenzioni/aV9lZGl6aW9uZV9pZD0yNjg0"
+                                                <a href=""
                                                     class="btn btn-warning">Annulla</a>
                                             </div>
                                         </div>
@@ -159,7 +158,7 @@
             </div>
             <div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right mb-3">
                 <div class="btn-group">
-                    <a href="{{ route('propostaformatica.showImpresa', ['id' => $percorso->id]) }}"
+                    <a href="{{ route('simulatore.showImpresa', [$SimulatorPlayer->id, 'id' => $percorso->id]) }}"
                         class="btn blue"> <i class="fa fa-plus"></i> Aggiungi Impresa/Ente</a>
                 </div>
             </div>
@@ -187,9 +186,26 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td colspan="5">Nessun elemento</td>
-                                            </tr>
+                                            @foreach ($imprese as $impresa)
+                                                <tr>
+                                                    <td>{{ $impresa->denominazione }}</td>
+                                                    <td>{{ $impresa->partita_iva }}</td>
+                                                    <td>{{ $impresa->indirizzo }}, {{ $impresa->comune ? $impresa->comune->nome : 'N/A' }}</td>
+                                                    <td>{{ $impresa->sede_operativa }}</td>
+                                                    <td>{{ $impresa->numero_allievi }}</td>
+                                                    <td class="text-right">
+                                                        <form method="POST"
+                                                            action="{{ route('simulatore.eliminaImpresa', [$SimulatorPlayer->id, $impresa->id]) }}"
+                                                            style="display:inline-block;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-sm btn-danger"
+                                                                onclick="return confirm('Sei sicuro di voler eliminare questa impresa?')">Elimina</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+
                                         </tbody>
                                     </table>
 
