@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\simulatore;
 
 use App\Http\Controllers\Controller;
-use App\Models\Classroom;
+use App\Models\classroom;
 use App\Models\SimulatorClassroom;
 use App\Models\SimulatorPlayer;
 use App\Models\SimulatorImpresa;
@@ -12,17 +12,37 @@ use Illuminate\Http\Request;
 
 class memorizzaController extends Controller
 {
-    public function dettagliPercorso(SimulatorPlayer $SimulatorPlayer, Classroom $classroom, Request $request)
+    public function dettagliPercorso(SimulatorPlayer $SimulatorPlayer, classroom $classroom, Request $request)
     {
+        $validated = $request->validate([
+            'data_avvio_prevista' => ['required', 'date_format:d/m/Y', 'after_or_equal:27/04/2026', 'before_or_equal:03/06/2026'],
+            'data_fine_prevista' => ['required', 'date_format:d/m/Y', 'after_or_equal:data_avvio_prevista', 'before_or_equal:20/11/2026'],
+            'importo_finanziamenti' => ['nullable', 'numeric', 'min:0'],
+            'giornate_aula_previste' => ['nullable', 'integer', 'min:70', 'max:139'],
+        ], [
+            'data_avvio_prevista.required' => 'Inserire la data di avvio prevista.',
+            'data_avvio_prevista.date_format' => 'La data di avvio prevista deve essere nel formato gg/mm/aaaa.',
+            'data_avvio_prevista.after_or_equal' => 'La data di avvio prevista non pu\u00f2 essere antecedente al 27/04/2026.',
+            'data_avvio_prevista.before_or_equal' => 'La data di avvio prevista non pu\u00f2 essere successiva al 03/06/2026.',
+            'data_fine_prevista.required' => 'Inserire la data di fine prevista.',
+            'data_fine_prevista.date_format' => 'La data di fine prevista deve essere nel formato gg/mm/aaaa.',
+            'data_fine_prevista.after_or_equal' => 'La data di fine prevista non pu\u00f2 essere antecedente alla data di avvio prevista.',
+            'data_fine_prevista.before_or_equal' => 'La data di fine prevista non pu\u00f2 essere successiva al 20/11/2026.',
+            'importo_finanziamenti.numeric' => 'L\'importo dei finanziamenti deve essere numerico.',
+            'importo_finanziamenti.min' => 'L\'importo dei finanziamenti non pu\u00f2 essere negativo.',
+            'giornate_aula_previste.integer' => 'Il numero di giornate previste deve essere un intero.',
+            'giornate_aula_previste.min' => 'Il numero di giornate previste non pu\u00f2 essere inferiore a 70.',
+            'giornate_aula_previste.max' => 'Il numero di giornate previste non pu\u00f2 essere superiore a 139.',
+        ]);
 
         $classroom = SimulatorClassroom::updateOrCreate([
             'simulator_player_id' => $SimulatorPlayer->id,
             'classroom_id' => $classroom->id,
         ], [
-            'data_avvio' => $request->input('data_avvio_prevista'),
-            'data_fine' => $request->input('data_fine_prevista'),
-            'importo' => $request->input('importo_finanziamenti'),
-            'totale_giornate' => $request->input('giornate_aula_previste'),
+            'data_avvio' => $validated['data_avvio_prevista'],
+            'data_fine' => $validated['data_fine_prevista'],
+            'importo' => $validated['importo_finanziamenti'],
+            'totale_giornate' => $validated['giornate_aula_previste'],
         ]);
 
         return redirect()->route('simulatore.showDettagliPercorso', [$SimulatorPlayer->id, $classroom->id])->with('success', 'Dettagli percorso memorizzati con successo.');
@@ -30,13 +50,32 @@ class memorizzaController extends Controller
 
     public function dettagliStage(SimulatorPlayer $SimulatorPlayer, Classroom $classroom, Request $request)
     {
+        $validated = $request->validate([
+            'd_avvio_stage' => ['required', 'date_format:d/m/Y', 'after_or_equal:27/04/2026', 'before_or_equal:20/11/2026'],
+            'd_fine_stage' => ['required', 'date_format:d/m/Y', 'after_or_equal:d_avvio_stage', 'before_or_equal:20/11/2026'],
+            'i_giornate_stage' => ['required', 'integer', 'min:19', 'max:38'],
+        ], [
+            'd_avvio_stage.required' => 'Inserire la data di avvio prevista dello stage.',
+            'd_avvio_stage.date_format' => 'La data di avvio dello stage deve essere nel formato gg/mm/aaaa.',
+            'd_avvio_stage.after_or_equal' => 'La data di avvio dello stage non pu\u00f2 essere antecedente al 27/04/2026.',
+            'd_avvio_stage.before_or_equal' => 'La data di avvio dello stage non pu\u00f2 essere successiva al 20/11/2026.',
+            'd_fine_stage.required' => 'Inserire la data di fine prevista dello stage.',
+            'd_fine_stage.date_format' => 'La data di fine dello stage deve essere nel formato gg/mm/aaaa.',
+            'd_fine_stage.after_or_equal' => 'La data di fine dello stage non pu\u00f2 essere antecedente alla data di avvio.',
+            'd_fine_stage.before_or_equal' => 'La data di fine dello stage non pu\u00f2 essere successiva al 20/11/2026.',
+            'i_giornate_stage.required' => 'Inserire il numero di giornate stage.',
+            'i_giornate_stage.integer' => 'Il numero di giornate stage deve essere un intero.',
+            'i_giornate_stage.min' => 'Il numero di giornate stage non pu\u00f2 essere inferiore a 19.',
+            'i_giornate_stage.max' => 'Il numero di giornate stage non pu\u00f2 essere superiore a 38.',
+        ]);
+
         $classroom = SimulatorClassroom::updateOrCreate([
             'simulator_player_id' => $SimulatorPlayer->id,
             'classroom_id' => $classroom->id,
         ], [
-            'data_avvio_stage' => $request->input('d_avvio_stage'),
-            'data_fine_stage' => $request->input('d_fine_stage'),
-            'totale_giornate_stage' => $request->input('i_giornate_stage'),
+            'data_avvio_stage' => $validated['d_avvio_stage'],
+            'data_fine_stage' => $validated['d_fine_stage'],
+            'totale_giornate_stage' => $validated['i_giornate_stage'],
         ]);
 
         return redirect()->route('simulatore.showStage', [$SimulatorPlayer->id, $classroom->id])->with('success', 'Dettagli stage memorizzati con successo.');
@@ -74,7 +113,7 @@ class memorizzaController extends Controller
             abort(403, 'Azione non autorizzata');
         }
 
-        $classroom = Classroom::findOrFail($impresa->classroom_id);
+        $classroom = classroom::findOrFail($impresa->classroom_id);
 
         $impresa->delete();
 

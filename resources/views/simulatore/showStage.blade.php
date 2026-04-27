@@ -6,6 +6,16 @@
             @include('simulatore.menuPercorso')
             <hr>
 
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <h4 class="page-title">
                     Progettazione esecutiva - Riferimento Edizione ED2684
@@ -93,14 +103,14 @@
                                         <div class="form-group">
                                             <label for="d_avvio_stage" class="required">Data avvio prevista</label>
                                             <input class="form-control required date-picker-chiusura" name="d_avvio_stage"
-                                                type="text" value="{{ $dataAvvioStage }}" id="d_avvio_stage">
+                                                type="text" value="{{ old('d_avvio_stage', $dataAvvioStage) }}" id="d_avvio_stage">
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
                                         <div class="form-group">
                                             <label for="d_fine_stage" class="required">Data fine prevista</label>
                                             <input class="form-control required date-picker-fine" name="d_fine_stage"
-                                                type="text" value="{{ $dataFineStage }}" id="d_fine_stage">
+                                                type="text" value="{{ old('d_fine_stage', $dataFineStage) }}" id="d_fine_stage">
                                         </div>
                                     </div>
                                 </div>
@@ -132,7 +142,7 @@
                                             <div class="form-group">
                                                 <label for="giornate_stage" class="required">Giornate Stage</label>
                                                 <input class="form-control required" type="number" min="19"
-                                                    max="38" name="i_giornate_stage" value="{{ $giornateStage }}">
+                                                    max="38" name="i_giornate_stage" value="{{ old('i_giornate_stage', $giornateStage) }}">
 
                                             </div>
                                         </div>
@@ -186,7 +196,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($imprese as $impresa)
+                                            @forelse ($imprese as $impresa)
                                                 <tr>
                                                     <td>{{ $impresa->denominazione }}</td>
                                                     <td>{{ $impresa->partita_iva }}</td>
@@ -204,7 +214,11 @@
                                                         </form>
                                                     </td>
                                                 </tr>
-                                            @endforeach
+                                            @empty
+                                                <tr>
+                                                    <td colspan="6">Nessun elemento</td>
+                                                </tr>
+                                            @endforelse
 
                                         </tbody>
                                     </table>
@@ -232,11 +246,15 @@
         $(document).ready(function() {
             $('.date-picker-chiusura').datepicker({
                 format: 'dd/mm/yyyy',
+                startDate: '27/04/2026',
+                endDate: '20/11/2026',
                 autoclose: true,
                 todayHighlight: true
             });
             $('.date-picker-fine').datepicker({
                 format: 'dd/mm/yyyy',
+                startDate: '27/04/2026',
+                endDate: '20/11/2026',
                 autoclose: true,
                 todayHighlight: true
             });

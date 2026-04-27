@@ -5,6 +5,15 @@
         <div class="page-content" style="background-color: #f5f5f5!important;">
             @include('simulatore.menuPercorso')
             <hr>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <h4 class="page-title">
                     Progettazione esecutiva - Riferimento Edizione {{ $percorso->nome }}
@@ -134,7 +143,7 @@
                                         <div class="form-group">
                                             <label for="data_avvio_prevista" class="required">Data avvio prevista</label>
                                             <input class="form-control required date-picker-chiusura"
-                                                name="data_avvio_prevista" type="text" value="{{ $dataAvvioPrevista }}"
+                                                name="data_avvio_prevista" type="text" value="{{ old('data_avvio_prevista', $dataAvvioPrevista) }}"
                                                 id="data_avvio_prevista">
                                         </div>
                                     </div>
@@ -142,7 +151,7 @@
                                         <div class="form-group">
                                             <label for="data_fine_prevista" class="required">Data fine prevista</label>
                                             <input class="form-control required date-picker-fine"
-                                                name="data_fine_prevista" type="text" value="{{ $dataFinePrevista }}"
+                                                name="data_fine_prevista" type="text" value="{{ old('data_fine_prevista', $dataFinePrevista) }}"
                                                 id="data_fine_prevista">
                                         </div>
                                     </div>
@@ -178,7 +187,7 @@
                                             <label for="importo_finanziamenti" class="control-label">Importo totale
                                                 finanziamenti PO FSE 2014-2020 e PR FSE+ Sicilia 2021-2027 ricevuti</label>
                                             <input step="0.01" class="form-control" name="importo_finanziamenti"
-                                                type="number" id="importo_finanziamenti" value="{{ $importoFinanziamenti }}">
+                                                type="number" id="importo_finanziamenti" value="{{ old('importo_finanziamenti', $importoFinanziamenti) }}">
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
@@ -186,7 +195,7 @@
                                             <label for="giornate_aula_previste" class="control-label">Numero di giornate
                                                 previste(aula + stage)</label>
                                             <input class="form-control" type="number" name="giornate_aula_previste"
-                                                id="giornate_aula_previste" value="{{ $giornateAulaPreviste }}">
+                                                id="giornate_aula_previste" value="{{ old('giornate_aula_previste', $giornateAulaPreviste) }}">
 
                                         </div>
                                     </div>
@@ -232,11 +241,15 @@
         $(document).ready(function() {
             $('.date-picker-chiusura').datepicker({
                 format: 'dd/mm/yyyy',
+                startDate: '27/04/2026',
+                endDate: '03/06/2026',
                 autoclose: true,
                 todayHighlight: true
             });
             $('.date-picker-fine').datepicker({
                 format: 'dd/mm/yyyy',
+                startDate: '27/04/2026',
+                endDate: '20/11/2026',
                 autoclose: true,
                 todayHighlight: true
             });
