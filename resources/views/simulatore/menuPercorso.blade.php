@@ -9,7 +9,7 @@
                             class="btn blue">Dettaglio</a>&nbsp;
                         <a href="https://fse.regione.sicilia.it/avvisoPOC/pe/aV9kb21hbmRhX2lkPTE4OQ==/allievi/aV9lZGl6aW9uZV9pZD0yNjg0"
                             class="btn blue">Partecipanti</a>&nbsp;
-                        <a href="https://fse.regione.sicilia.it/avvisoPOC/pe/aV9kb21hbmRhX2lkPTE4OQ==/docenti/aV9lZGl6aW9uZV9pZD0yNjg0"
+                        <a href="{{ route('simulatore.showPersonale', [$SimulatorPlayer->id, $percorso->id]) }}"
                             class="btn blue">Personale non docente</a>&nbsp;
 
 

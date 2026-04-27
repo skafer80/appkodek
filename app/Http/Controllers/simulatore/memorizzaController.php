@@ -7,7 +7,9 @@ use App\Models\classroom;
 use App\Models\SimulatorClassroom;
 use App\Models\SimulatorPlayer;
 use App\Models\SimulatorImpresa;
+use App\Models\SimulatorPersonale;
 use App\Models\Comune;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class memorizzaController extends Controller
@@ -107,6 +109,63 @@ class memorizzaController extends Controller
 
     }
 
+    public function dettagliPersonale(SimulatorPlayer $SimulatorPlayer, Classroom $classroom, Request $request)
+    {
+        $validated = $request->validate([
+            'personale_id' => ['nullable', 'integer', 'exists:simulator_personales,id'],
+            'nome' => ['required', 'string', 'max:255'],
+            'cognome' => ['required', 'string', 'max:255'],
+            'cf' => ['required', 'string', 'max:16'],
+            'telefono' => ['required', 'string', 'max:20'],
+            'email' => ['required', 'email', 'max:255'],
+            'data_nascita' => ['required', 'date_format:d/m/Y'],
+            'ruolo' => ['required', 'string', 'max:100'],
+            'esterno' => ['required', 'in:Y,N'],
+        ], [
+            'nome.required' => 'Inserire il nome.',
+            'cognome.required' => 'Inserire il cognome.',
+            'cf.required' => 'Inserire il codice fiscale.',
+            'telefono.required' => 'Inserire il telefono.',
+            'email.required' => 'Inserire l\'email.',
+            'email.email' => 'Inserire un indirizzo email valido.',
+            'data_nascita.required' => 'Inserire la data di nascita.',
+            'data_nascita.date_format' => 'La data di nascita deve essere nel formato gg/mm/aaaa.',
+            'ruolo.required' => 'Selezionare un ruolo.',
+            'esterno.required' => 'Indicare se il personale è esterno.',
+            'esterno.in' => 'Il valore del personale esterno non è valido.',
+        ]);
+
+        $personale = null;
+        if (! empty($validated['personale_id'])) {
+            $personale = SimulatorPersonale::findOrFail($validated['personale_id']);
+
+            if ($personale->simulator_player_id !== $SimulatorPlayer->id || $personale->classroom_id !== $classroom->id) {
+                abort(403, 'Azione non autorizzata');
+            }
+        }
+
+        $payload = [
+            'simulator_player_id' => $SimulatorPlayer->id,
+            'classroom_id' => $classroom->id,
+            'nome' => $validated['nome'],
+            'cognome' => $validated['cognome'],
+            'cf' => strtoupper($validated['cf']),
+            'telefono' => $validated['telefono'],
+            'email' => $validated['email'],
+            'data_nascita' => Carbon::createFromFormat('d/m/Y', $validated['data_nascita'])->format('Y-m-d'),
+            'ruolo' => $validated['ruolo'],
+            'esterno' => $validated['esterno'] === 'Y',
+        ];
+
+        if ($personale) {
+            $personale->update($payload);
+        } else {
+            SimulatorPersonale::create($payload);
+        }
+
+        return redirect()->route('simulatore.showPersonale', [$SimulatorPlayer->id, $classroom->id])->with('success', 'Personale non docente salvato con successo.');
+    }
+
     public function eliminaImpresa(SimulatorPlayer $SimulatorPlayer, SimulatorImpresa $impresa)
      {
         if ($impresa->simulator_player_id !== $SimulatorPlayer->id) {
@@ -119,6 +178,19 @@ class memorizzaController extends Controller
 
         return redirect()->route('simulatore.showStage', [$SimulatorPlayer->id, $classroom->id])->with('success', 'Dettagli impresa eliminata con successo.');
 
+    }
+
+    public function eliminaPersonale(SimulatorPlayer $SimulatorPlayer, SimulatorPersonale $personale)
+    {
+        if ($personale->simulator_player_id !== $SimulatorPlayer->id) {
+            abort(403, 'Azione non autorizzata');
+        }
+
+        $classroom = classroom::findOrFail($personale->classroom_id);
+
+        $personale->delete();
+
+        return redirect()->route('simulatore.showPersonale', [$SimulatorPlayer->id, $classroom->id])->with('success', 'Personale non docente eliminato con successo.');
     }
 
     public function dettagliDatiEconomici(SimulatorPlayer $SimulatorPlayer, Classroom $classroom, Request $request)

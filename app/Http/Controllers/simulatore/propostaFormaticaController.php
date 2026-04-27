@@ -9,6 +9,7 @@ use App\Models\formazione;
 use App\Models\Moduli;
 use App\Models\SimulatorImpresa;
 use App\Models\SimulatorModuli;
+use App\Models\SimulatorPersonale;
 use App\Models\SimulatorPlayer;
 
 class propostaFormaticaController extends Controller
@@ -184,6 +185,48 @@ class propostaFormaticaController extends Controller
             ->get();
 
         return view('simulatore.showStage', compact('percorso', 'SimulatorPlayer', 'dataAvvioStage', 'dataFineStage', 'giornateStage', 'imprese'));
+    }
+
+    public function showPersonale(SimulatorPlayer $SimulatorPlayer, $id)
+    {
+        $percorso = classroom::findOrFail($id);
+
+        $personale = SimulatorPersonale::where('simulator_player_id', $SimulatorPlayer->id)
+            ->where('classroom_id', $percorso->id)
+            ->orderBy('cognome')
+            ->orderBy('nome')
+            ->get();
+
+        $ruoliPossibili = collect([
+            'Direttore di progetto',
+            'Responsabile amministrativo',
+            'Tutor',
+            'REO',
+        ]);
+
+        $ruoliPresenti = $personale->pluck('ruolo')->unique()->sort()->values();
+        $ruoliMancanti = $ruoliPossibili->diff($ruoliPresenti);
+        $allRuoliPresenti = $ruoliMancanti->isEmpty();
+
+        return view('simulatore.showPersonale', compact('percorso', 'SimulatorPlayer', 'personale', 'ruoliMancanti', 'allRuoliPresenti'));
+    }
+
+    public function showCreatePersonale(SimulatorPlayer $SimulatorPlayer, $id)
+    {
+        $percorso = classroom::findOrFail($id);
+
+        return view('simulatore.personaleForm', compact('percorso', 'SimulatorPlayer'));
+    }
+
+    public function showDettaglioPersonale(SimulatorPlayer $SimulatorPlayer, $id, SimulatorPersonale $personale)
+    {
+        $percorso = classroom::findOrFail($id);
+
+        if ($personale->simulator_player_id !== $SimulatorPlayer->id || $personale->classroom_id !== $percorso->id) {
+            abort(403, 'Azione non autorizzata');
+        }
+
+        return view('simulatore.personaleForm', compact('percorso', 'SimulatorPlayer', 'personale'));
     }
 
     public function showImpresa(SimulatorPlayer $SimulatorPlayer, $id)

@@ -291,9 +291,9 @@
     <main class="shell">
         <section class="hero">
             <span class="eyebrow">Simulatore</span>
-            <h1>Allenamento Click v1.0</h1>
+            <h1>Allenamento Click v1.1</h1>
             <p>
-                Una simulatore del clickday per eserictarsie prima dell'evento reale. Clicca su uno dei collegamenti qui sotto per aprire la pagina di accesso rapido all'ente e alla classe corrispondente. <br>
+                Una simulatore del clickday per esercitarsi prima dell'evento reale. Utilizza il tuo indirizo email. <br>
             </p>
         </section>
 
