@@ -84,13 +84,40 @@ class memorizzaController extends Controller
 
     public function dettagliDatiEconomici(SimulatorPlayer $SimulatorPlayer, Classroom $classroom, Request $request)
     {
+        $validated = $request->validate([
+            'ore_presunte_fascia_a' => ['required', 'integer', 'min:162', 'max:202'],
+            'ore_presunte_fascia_b' => ['required', 'integer', 'min:0', 'max:242'],
+            'ore_presunte_fascia_c' => ['required', 'integer', 'min:0', 'max:101'],
+        ], [
+            'ore_presunte_fascia_a.required' => 'Inserire le ore della fascia A.',
+            'ore_presunte_fascia_a.integer' => 'Le ore della fascia A devono essere un numero intero.',
+            'ore_presunte_fascia_a.min' => 'Le ore della fascia A devono essere almeno 162.',
+            'ore_presunte_fascia_a.max' => 'Le ore della fascia A non possono superare 202.',
+            'ore_presunte_fascia_b.required' => 'Inserire le ore della fascia B.',
+            'ore_presunte_fascia_b.integer' => 'Le ore della fascia B devono essere un numero intero.',
+            'ore_presunte_fascia_b.min' => 'Le ore della fascia B non possono essere negative.',
+            'ore_presunte_fascia_b.max' => 'Le ore della fascia B non possono superare 242.',
+            'ore_presunte_fascia_c.required' => 'Inserire le ore della fascia C.',
+            'ore_presunte_fascia_c.integer' => 'Le ore della fascia C devono essere un numero intero.',
+            'ore_presunte_fascia_c.min' => 'Le ore della fascia C non possono essere negative.',
+            'ore_presunte_fascia_c.max' => 'Le ore della fascia C non possono superare 101.',
+        ]);
+
+        $totaleOre = $validated['ore_presunte_fascia_a'] + $validated['ore_presunte_fascia_b'] + $validated['ore_presunte_fascia_c'];
+
+        if ($totaleOre !== 404) {
+            return back()
+                ->withErrors(['ore_totali' => 'La somma delle ore delle fasce A, B e C deve essere pari a 404.'])
+                ->withInput();
+        }
+
         $classroom = SimulatorClassroom::updateOrCreate([
             'simulator_player_id' => $SimulatorPlayer->id,
             'classroom_id' => $classroom->id,
         ], [
-            'fascia_a' => $request->input('ore_presunte_fascia_a'),
-            'fascia_b' => $request->input('ore_presunte_fascia_b'),
-            'fascia_c' => $request->input('ore_presunte_fascia_c'),
+            'fascia_a' => $validated['ore_presunte_fascia_a'],
+            'fascia_b' => $validated['ore_presunte_fascia_b'],
+            'fascia_c' => $validated['ore_presunte_fascia_c'],
         ]);
 
         return redirect()->route('simulatore.showDatiEconomici', [$SimulatorPlayer->id, $classroom->id])->with('success', 'Dati economici memorizzati con successo.');

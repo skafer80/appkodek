@@ -202,7 +202,7 @@
                                 <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
                                     <div class="form-group" style="margin-top: 25px;">
                                         <input class="btn btn-large blue" type="submit" value="Salva">
-                                        <a href="https://fse.regione.sicilia.it/avvisoPOC/pe/aV9kb21hbmRhX2lkPTE4OQ==/detail/aV9lZGl6aW9uZV9pZD0yNjg0"
+                                        <a href=""
                                             class="btn btn-warning">Annulla</a>
                                     </div>
                                 </div>
