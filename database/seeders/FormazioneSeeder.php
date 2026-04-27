@@ -12,7 +12,7 @@ class FormazioneSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Formazione::insert([
+        \App\Models\formazione::insert([
             [
                 'titolo' => 'Addetto alla sistemazione e manutenzione aree verdi',
                 'area' => 'AGRO-ALIMENTARE',
