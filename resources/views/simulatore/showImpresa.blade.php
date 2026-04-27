@@ -25,7 +25,9 @@
                     </div>
                     <div class="portlet-body">
 
-                        <form method="POST" action="{{ route('simulatore.memorizzaDettagliImpresa', [$SimulatorPlayer->id, $percorso->id]) }}" accept-charset="UTF-8">
+                        <form method="POST"
+                            action="{{ route('simulatore.memorizzaDettagliImpresa', [$SimulatorPlayer->id, $percorso->id]) }}"
+                            accept-charset="UTF-8">
                             @csrf
                             <div class="row">
 
@@ -63,8 +65,7 @@
                                 <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
                                     <div class="form-group">
                                         <label for="sede_legale_provincia" class="control-label required">Provincia</label>
-                                        <select name="sede_legale_provincia"
-                                            data-url="https://app.kodek.it/api/comuni"
+                                        <select name="sede_legale_provincia" data-url="https://app.kodek.it/api/comuni"
                                             required="required" class="w-100 form-control required">
                                             <option>...</option>
                                             <option value="AG">Agrigento</option>
@@ -372,8 +373,7 @@
                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right">
                                     <div class="form-group">
                                         <input class="btn blue btn-large" type="submit" value="Salva">
-                                        <a href=""
-                                            class="btn btn-warning">Annulla</a>
+                                        <a href="" class="btn btn-warning">Annulla</a>
                                     </div>
                                 </div>
                             </div>

@@ -293,8 +293,7 @@
             <span class="eyebrow">Simulatore</span>
             <h1>Allenamento Click v1.0</h1>
             <p>
-                Una pagina unica per raggiungere velocemente i collegamenti operativi. I link qui sotto
-                sono organizzati come scorciatoie visive, leggibili sia da desktop sia da mobile.
+                Una simulatore del clickday per eserictarsie prima dell'evento reale. Clicca su uno dei collegamenti qui sotto per aprire la pagina di accesso rapido all'ente e alla classe corrispondente. <br>
             </p>
         </section>
 

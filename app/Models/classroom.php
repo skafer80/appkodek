@@ -21,6 +21,6 @@ class classroom extends Model
 
     public function formazione()
     {
-        return $this->belongsTo(Formazione::class);
+        return $this->belongsTo(formazione::class);
     }
 }

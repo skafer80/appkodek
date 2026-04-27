@@ -5,7 +5,7 @@ namespace App\Http\Controllers\simulatore;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\classroom;
-use App\Models\Formazione;
+use App\Models\formazione;
 use App\Models\Moduli;
 use App\Models\SimulatorImpresa;
 use App\Models\SimulatorModuli;
@@ -15,7 +15,7 @@ class propostaFormaticaController extends Controller
 {
     public function index(SimulatorPlayer $SimulatorPlayer)
     {
-        $formazione = Formazione::all();
+        $formazione = formazione::all();
 
         return view('simulatore.propostaformatica', compact('formazione', 'SimulatorPlayer'));
     }
