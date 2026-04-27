@@ -111,6 +111,16 @@ class memorizzaController extends Controller
 
     public function dettagliPersonale(SimulatorPlayer $SimulatorPlayer, Classroom $classroom, Request $request)
     {
+        $simulatorClassroom = SimulatorClassroom::where('simulator_player_id', $SimulatorPlayer->id)
+            ->where('classroom_id', $classroom->id)
+            ->first();
+
+        if (! $simulatorClassroom) {
+            return back()
+                ->withErrors(['classroom' => 'Prima di inserire il personale, completa e salva i dettagli del percorso.'])
+                ->withInput();
+        }
+
         $isCreate = empty($request->input('personale_id'));
 
         $rules = [
@@ -166,14 +176,14 @@ class memorizzaController extends Controller
         if (! empty($validated['personale_id'])) {
             $personale = SimulatorPersonale::findOrFail($validated['personale_id']);
 
-            if ($personale->simulator_player_id !== $SimulatorPlayer->id || $personale->classroom_id !== $classroom->id) {
+            if ($personale->simulator_player_id !== $SimulatorPlayer->id || $personale->classroom_id !== $simulatorClassroom->id) {
                 abort(403, 'Azione non autorizzata');
             }
         }
 
         $payload = [
             'simulator_player_id' => $SimulatorPlayer->id,
-            'classroom_id' => $classroom->id,
+            'classroom_id' => $simulatorClassroom->id,
             'nome' => $validated['nome'],
             'cognome' => $validated['cognome'],
             'cf' => strtoupper($validated['cf']),
@@ -213,11 +223,15 @@ class memorizzaController extends Controller
             abort(403, 'Azione non autorizzata');
         }
 
-        $classroom = classroom::findOrFail($personale->classroom_id);
+        $simulatorClassroom = SimulatorClassroom::findOrFail($personale->classroom_id);
+
+        if ($simulatorClassroom->simulator_player_id !== $SimulatorPlayer->id) {
+            abort(403, 'Azione non autorizzata');
+        }
 
         $personale->delete();
 
-        return redirect()->route('simulatore.showPersonale', [$SimulatorPlayer->id, $classroom->id])->with('success', 'Personale non docente eliminato con successo.');
+        return redirect()->route('simulatore.showPersonale', [$SimulatorPlayer->id, $simulatorClassroom->classroom_id])->with('success', 'Personale non docente eliminato con successo.');
     }
 
     public function dettagliDatiEconomici(SimulatorPlayer $SimulatorPlayer, Classroom $classroom, Request $request)

@@ -8,6 +8,7 @@ use App\Models\classroom;
 use App\Models\formazione;
 use App\Models\Moduli;
 use App\Models\SimulatorImpresa;
+use App\Models\SimulatorClassroom;
 use App\Models\SimulatorModuli;
 use App\Models\SimulatorPersonale;
 use App\Models\SimulatorPlayer;
@@ -191,11 +192,18 @@ class propostaFormaticaController extends Controller
     {
         $percorso = classroom::findOrFail($id);
 
-        $personale = SimulatorPersonale::where('simulator_player_id', $SimulatorPlayer->id)
+        $simulatorClassroom = SimulatorClassroom::where('simulator_player_id', $SimulatorPlayer->id)
             ->where('classroom_id', $percorso->id)
-            ->orderBy('cognome')
-            ->orderBy('nome')
-            ->get();
+            ->first();
+
+        $personale = collect();
+        if ($simulatorClassroom) {
+            $personale = SimulatorPersonale::where('simulator_player_id', $SimulatorPlayer->id)
+                ->where('classroom_id', $simulatorClassroom->id)
+                ->orderBy('cognome')
+                ->orderBy('nome')
+                ->get();
+        }
 
         $ruoliPossibili = collect([
             'Direttore di progetto',
@@ -225,8 +233,11 @@ class propostaFormaticaController extends Controller
     public function showDettaglioPersonale(SimulatorPlayer $SimulatorPlayer, $id, SimulatorPersonale $personale)
     {
         $percorso = classroom::findOrFail($id);
+        $simulatorClassroom = SimulatorClassroom::where('simulator_player_id', $SimulatorPlayer->id)
+            ->where('classroom_id', $percorso->id)
+            ->firstOrFail();
 
-        if ($personale->simulator_player_id !== $SimulatorPlayer->id || $personale->classroom_id !== $percorso->id) {
+        if ($personale->simulator_player_id !== $SimulatorPlayer->id || $personale->classroom_id !== $simulatorClassroom->id) {
             abort(403, 'Azione non autorizzata');
         }
 
