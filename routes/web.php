@@ -51,6 +51,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::prefix('play/{SimulatorPlayer}')->group(function () {
     Route::get('/simulatore', [propostaFormaticaController::class, 'index'])->name('simulatore.index');
     Route::get('/simulatore/moduli/{id}', [propostaFormaticaController::class, 'showModuli'])->name('simulatore.showModuli');
+    Route::get('/simulatore/getModulo/{id}', [propostaFormaticaController::class, 'getModulo'])->name('simulatore.getModulo');
+    Route::post('/simulatore/editModulo', [propostaFormaticaController::class, 'editModuli'])->name('simulatore.editModuli');
     Route::get('/simulatore/percorsi/{id}', [propostaFormaticaController::class, 'showPercorsi'])->name('simulatore.showPercorsi');
     Route::get('/simulatore/dettagli-percorso/{id}', [propostaFormaticaController::class, 'showDettagliPercorso'])->name('simulatore.showDettagliPercorso');
     Route::get('/simulatore/dati-economici/{id}', [propostaFormaticaController::class, 'showDatiEconomici'])->name('simulatore.showDatiEconomici');

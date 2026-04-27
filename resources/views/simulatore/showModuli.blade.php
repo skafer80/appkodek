@@ -70,9 +70,9 @@
                             <tr>
                                 <th>MD{{ $gruppo['categoria']->id }}</th>
                                 <th>{{ $gruppo['categoria']->nome }}</th>
-                                <th>{{ $gruppo['totale_ore_aula'] }}</th>
-                                <th>{{ $gruppo['totale_ore_fad'] }}</th>
-                                <th>{{ $gruppo['categoria']->nome }}</th>
+                                <th>{{ $gruppo['totale_ore_aula_moduli'] }}</th>
+                                <th>{{ $gruppo['totale_ore_fad_moduli'] }}</th>
+                                <th>70</th>
                                 <th></th>
                             </tr>
 
@@ -81,15 +81,14 @@
                                     <td class="text-right"><i
                                             class="fa fa-level-up fa-rotate-90 me-3"></i>{{ $modulo->id }}</td>
                                     <td class="ps-5-i">{{ $modulo->nome }}</td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $modulo->ore_aula_utente }}</td>
+                                    <td>{{ $modulo->ore_fad_utente }}</td>
 
                                     <td>-</td>
                                     <td class="text-right">
-                                        {{--                                             <button {{ $player->end_time ? 'disabled' : '' }}
-                                                class="btn btn-sm btn-warning editinformationconoscenza"
-                                                data-href="{{ route('click.getModulo', ['id' => $modulo->id]) }}"><span
-                                                    class="glyphicon glyphicon-pencil"></span></button> --}}
+                                        <button class="btn btn-sm btn-warning editinformationconoscenza"
+                                                data-href="{{ route('simulatore.getModulo', [$SimulatorPlayer->id, 'id' => $modulo->id]) }}"><span
+                                                    class="glyphicon glyphicon-pencil"></span></button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -107,10 +106,8 @@
                                         $warning = 'bg-red';
                                     }
                                 @endphp --}}
-                                <th class=" shadow">{{--
-                                    {{ $subjects->where('gruppo', 36348)->sum('ore_conoscenza') }} --}}</th>
-                                <th class=" shadow">{{--
-                                    {{ $subjects->where('gruppo', 36348)->sum('ore_fad_conoscenza') }} --}}</th>
+                                <th class="shadow">{{ $gruppo['totale_ore_aula'] }}</th>
+                                <th class="shadow">{{ $gruppo['totale_ore_fad'] }}</th>
 
                                 <th class="bg-green shadow">70</th>
                                 <td></td>
@@ -137,6 +134,9 @@
                     {{ $subjects->where('gruppo', 36348)->sum('ore_fad_conoscenza') }}</th>
 
                 <th class="bg-green shadow">280</th> --}}
+                <th class="shadow">{{ $totaleOreAula }}</th>
+                <th class="shadow">{{ $totaleOreFad }}</th>
+                <th></th>
                 <td></td>
             </tr>
             </tbody>
@@ -163,11 +163,12 @@
                         <h4 class="modal-title" id="informationSourceModalLabel">Modifica modulo</h4>
                     </div>
                     <div class="modal-body">
-                        <form method="POST" action="{{ route('click.editModuli') }}" accept-charset="UTF-8"
+                        <form method="POST" action="{{ route('simulatore.editModuli', $SimulatorPlayer->id) }}" accept-charset="UTF-8"
                             id="informationSourceForm">
                             @csrf
                             <input name="id_corso" type="hidden" value="5598">
-                            <input name="player_id" type="hidden" value="{{ $player->id ?? '' }}">
+                            <input name="formazione_id" type="hidden" value="{{ $id }}">
+                            <input name="player_id" type="hidden" value="{{ $SimulatorPlayer->id }}">
                             <input name="id" type="hidden" value="-1">
                             <div class="form-group">
                                 <label for="t_denominazione_conoscenza" class="control-label">TITOLO
@@ -202,4 +203,182 @@
     </div>
     </div>
     <!-- END CONTENT -->
+@endsection
+
+@section('scripts')
+    <script>
+        jQuery(function($) {
+            /** start information source **/
+            $('#addinformationsource').on('click', function() {
+                $('#informationSourceModal').modal('show');
+                return false;
+            });
+            $('.editinformationsource').live('click', function() {
+                var href = $(this).attr('data-href');
+                $.ajax({
+                    url: href,
+                    type: "GET",
+                    success: function(data, textStatus, jqXHR) {
+
+                        $("#informationSourceForm input[name='id']").val(data.data.id);
+                        $("#informationSourceForm input[name='t_denominazione']").val(data.data
+                            .t_denominazione);
+                        $("#informationSourceForm input[name='i_ore']").val(data.data.i_ore);
+                        $("#informationSourceForm input[name='i_ore_fad']").val(data.data
+                            .i_ore_fad);
+                        $("#informationSourceForm input[name='i_ore_stage']").val(data.data
+                            .i_ore_stage);
+
+                        if (data.data.b_competenza_trasversale === "Y") {
+                            $("#informationSourceForm input[name='i_ore']").prop("disabled",
+                                true);
+                            $("#informationSourceForm input[name='i_ore_stage']").prop(
+                                "disabled", true);
+                        } else {
+                            $("#informationSourceForm input[name='i_ore']").prop("disabled",
+                                false);
+                            $("#informationSourceForm input[name='i_ore_stage']").prop(
+                                "disabled", false);
+                        }
+
+                        if (data.data.t_competenze_correlate != null && data.data
+                            .t_competenze_correlate != "") {
+                            data.data.t_competenze_correlate.split(",").forEach(function(key,
+                                value) {
+                                $("#informationSourceForm input[name='competenze[]'][value=" +
+                                    key + "]").click();
+                            });
+                        }
+
+                        $('#informationSourceModal').modal('show');
+
+
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        //console.log(errorThrown);
+                    }
+                });
+
+                return false;
+            });
+            $('.editinformationconoscenza').live('click', function() {
+                var href = $(this).attr('data-href');
+                // Recupera il titolo della materia dalla seconda colonna della riga corrente
+                var titoloMateria = $(this).closest('tr').find('td').eq(1).text().trim();
+
+                $.ajax({
+                    url: href,
+                    type: "GET",
+                    success: function(data, textStatus, jqXHR) {
+
+                        $("#informationSourceForm input[name='id']").val(data.data.id);
+                        $("#informationSourceForm input[name='t_denominazione_conoscenza']")
+                            .val(data.data.t_denominazione_conoscenza);
+                        $("#informationSourceForm input[name='ore_conoscenza']").val(data.data
+                            .ore_conoscenza);
+                        $("#informationSourceForm input[name='ore_fad_conoscenza']").val(data
+                            .data.ore_fad_conoscenza);
+                        $("#informationSourceForm input[name='ore_stage_conoscenza']").val(data
+                            .data.ore_stage_conoscenza);
+
+                        if (data.data.b_competenza_trasversale === "Y") {
+                            $("#informationSourceForm input[name='i_ore']").prop("disabled",
+                                true);
+                            $("#informationSourceForm input[name='i_ore_stage']").prop(
+                                "disabled", true);
+                        } else {
+                            $("#informationSourceForm input[name='i_ore']").prop("disabled",
+                                false);
+                            $("#informationSourceForm input[name='i_ore_stage']").prop(
+                                "disabled", false);
+                        }
+
+                        if (data.data.t_competenze_correlate != null && data.data
+                            .t_competenze_correlate != "") {
+                            data.data.t_competenze_correlate.split(",").forEach(function(key,
+                                value) {
+                                $("#informationSourceForm input[name='competenze[]'][value=" +
+                                    key + "]").click();
+                            });
+                        }
+
+                        // Imposta il titolo del modal con il nome della materia
+                        $("#informationSourceForm input[name='t_denominazione_conoscenza']")
+                            .val(titoloMateria);
+
+                        $('#informationSourceModal').modal('show');
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        //console.log(errorThrown);
+                    }
+                });
+
+                return false;
+            });
+
+            $('.delinformationsource').live('click', function() {
+                var href = $(this).attr('data-href');
+                var id = $(this).attr('data-id');
+                // alert(href);
+                $.ajax({
+                    url: href,
+                    type: "DELETE",
+                    success: function(data, textStatus, jqXHR) {
+                        if (data.data == true) {
+                            $('#is-' + id).remove();
+                            // alert('Modulo correttamente eliminato');
+                            // location.reload();
+                        } else {
+                            alert(
+                                'Non è possibile aggiornare la domanda perchè in stato CONFERMATA o il dato non esiste'
+                            );
+                            location.reload();
+                        }
+
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        //console.log(errorThrown);
+                    }
+                });
+
+                return false;
+            });
+            $('#informationSourceModal').on('hidden.bs.modal', function() {
+                $("#informationSourceForm input[name='competenze[]']:checked").click();
+                $('#informationSourceForm').trigger("reset");
+                $("#informationSourceForm input[name='id']").val('-1');
+            });
+            // SALVATAGGIO DEI MODULI
+            $('#saveinformationsource').on('click', function() {
+                var form = $('#informationSourceForm');
+                var formData = $(form).serializeArray();
+                var formURL = $(form).attr("action");
+
+                var formMethod = $(form).attr("method");
+                $.ajax({
+                    url: formURL,
+                    type: formMethod,
+                    data: formData,
+                    success: function(data, textStatus, jqXHR) {
+                        if (data.data != false) {
+                            var ore = data.data.i_ore ? data.data.i_ore : '0';
+                            var orefad = data.data.i_ore_fad ? data.data.i_ore_fad : '0';
+                            var orestage = data.data.i_ore_stage ? data.data.i_ore_stage : '0';
+                            $('#informationSourceModal').modal('hide');
+                            location.reload();
+                        } else {
+                            alert(data.data);
+                            return;
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        //console.log(errorThrown);
+                    }
+                });
+            });
+
+
+            /** end information source **/
+        });
+    </script>
 @endsection
