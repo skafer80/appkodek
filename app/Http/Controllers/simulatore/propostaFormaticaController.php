@@ -11,6 +11,7 @@ use App\Models\SimulatorImpresa;
 use App\Models\SimulatorModuli;
 use App\Models\SimulatorPersonale;
 use App\Models\SimulatorPlayer;
+use Illuminate\Support\Str;
 
 class propostaFormaticaController extends Controller
 {
@@ -215,7 +216,11 @@ class propostaFormaticaController extends Controller
     {
         $percorso = classroom::findOrFail($id);
 
-        return view('simulatore.personaleForm', compact('percorso', 'SimulatorPlayer'));
+        $captchaCode = $this->generateCaptchaCode();
+        session(['simulatore_personale_captcha' => $captchaCode]);
+        $captchaImageDataUri = $this->generateCaptchaSvgDataUri($captchaCode);
+
+        return view('simulatore.personaleForm', compact('percorso', 'SimulatorPlayer', 'captchaImageDataUri'));
     }
 
     public function showDettaglioPersonale(SimulatorPlayer $SimulatorPlayer, $id, SimulatorPersonale $personale)
@@ -234,5 +239,37 @@ class propostaFormaticaController extends Controller
         $percorso = classroom::findOrFail($id);
 
         return view('simulatore.showImpresa', compact('percorso', 'SimulatorPlayer'));
+    }
+
+    private function generateCaptchaCode(int $length = 5): string
+    {
+        $characters = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789';
+
+        return Str::of(str_repeat('x', $length))
+            ->replaceMatches('/x/', function () use ($characters) {
+                return $characters[random_int(0, strlen($characters) - 1)];
+            })
+            ->toString();
+    }
+
+    private function generateCaptchaSvgDataUri(string $code): string
+    {
+        $escapedCode = htmlspecialchars($code, ENT_QUOTES, 'UTF-8');
+        $noise = '';
+
+        for ($i = 0; $i < 70; $i++) {
+            $cx = random_int(0, 260);
+            $cy = random_int(0, 40);
+            $opacity = random_int(2, 4) / 10;
+            $noise .= '<circle cx="'.$cx.'" cy="'.$cy.'" r="1" fill="black" opacity="'.$opacity.'"/>';
+        }
+
+        $svg = '<svg xmlns="http://www.w3.org/2000/svg" width="260" height="44">'
+            .'<rect width="100%" height="100%" fill="white"/>'
+            .'<text x="18" y="30" font-size="24" font-family="monospace" fill="black">'.$escapedCode.'</text>'
+            .$noise
+            .'</svg>';
+
+        return 'data:image/svg+xml;base64,'.base64_encode($svg);
     }
 }

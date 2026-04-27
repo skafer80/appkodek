@@ -47,6 +47,35 @@
                                 <input name="personale_id" type="hidden" value="{{ $personale->id }}">
                             @endif
 
+                            @if (!isset($personale) && !empty($captchaImageDataUri))
+                                <fieldset>
+                                    <legend class="bold text-center">CODICE DI CONTROLLO</legend>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                                            <img src="{{ $captchaImageDataUri }}" alt="Captcha" style="width:250px;outline:solid 2px black;">
+                                            <br>
+                                            <br>
+                                            <b>DIGITA I CARATTERI VISUALIZZATI SOPRA</b>
+                                            <br>
+                                            <b class="text-danger">RISPETTANDO MAIUSCOLO/MINUSCOLO</b>
+                                            <br>
+                                            <input
+                                                type="text"
+                                                name="captcha_code"
+                                                class="text-center"
+                                                style="text-transform:none!important;width:250px;padding:9px;border:solid 2px black;"
+                                                placeholder="Digita i caratteri sopra"
+                                                value="{{ old('captcha_code') }}"
+                                                required
+                                            >
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <br>
+                                <br>
+                            @endif
+
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                                     <div class="form-group">

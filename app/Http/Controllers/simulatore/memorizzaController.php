@@ -111,7 +111,9 @@ class memorizzaController extends Controller
 
     public function dettagliPersonale(SimulatorPlayer $SimulatorPlayer, Classroom $classroom, Request $request)
     {
-        $validated = $request->validate([
+        $isCreate = empty($request->input('personale_id'));
+
+        $rules = [
             'personale_id' => ['nullable', 'integer', 'exists:simulator_personales,id'],
             'nome' => ['required', 'string', 'max:255'],
             'cognome' => ['required', 'string', 'max:255'],
@@ -121,7 +123,9 @@ class memorizzaController extends Controller
             'data_nascita' => ['required', 'date_format:d/m/Y'],
             'ruolo' => ['required', 'string', 'max:100'],
             'esterno' => ['required', 'in:Y,N'],
-        ], [
+        ];
+
+        $messages = [
             'nome.required' => 'Inserire il nome.',
             'cognome.required' => 'Inserire il cognome.',
             'cf.required' => 'Inserire il codice fiscale.',
@@ -133,7 +137,30 @@ class memorizzaController extends Controller
             'ruolo.required' => 'Selezionare un ruolo.',
             'esterno.required' => 'Indicare se il personale è esterno.',
             'esterno.in' => 'Il valore del personale esterno non è valido.',
-        ]);
+        ];
+
+        if ($isCreate) {
+            $rules['captcha_code'] = [
+                'required',
+                'string',
+                function (string $attribute, mixed $value, \Closure $fail) use ($request): void {
+                    $expectedCaptcha = (string) $request->session()->get('simulatore_personale_captcha', '');
+                    $submittedCaptcha = trim((string) $value);
+
+                    if ($expectedCaptcha === '' || ! hash_equals($expectedCaptcha, $submittedCaptcha)) {
+                        $fail('Il codice di controllo non è corretto.');
+                    }
+                },
+            ];
+
+            $messages['captcha_code.required'] = 'Digitare il codice di controllo.';
+        }
+
+        $validated = $request->validate($rules, $messages);
+
+        if ($isCreate) {
+            $request->session()->forget('simulatore_personale_captcha');
+        }
 
         $personale = null;
         if (! empty($validated['personale_id'])) {

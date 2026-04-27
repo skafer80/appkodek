@@ -111,7 +111,10 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="4">Nessun elemento</td>
+                                    <td>1</td>
+                                    <td>Nessun elemento</td>
+                                    <td>-</td>
+                                    <td></td>
                                 </tr>
                             @endforelse
                         </tbody>
