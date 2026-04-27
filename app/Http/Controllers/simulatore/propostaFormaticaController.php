@@ -11,7 +11,6 @@ use App\Models\SimulatorImpresa;
 use App\Models\SimulatorModuli;
 use App\Models\SimulatorPersonale;
 use App\Models\SimulatorPlayer;
-use Illuminate\Support\Str;
 
 class propostaFormaticaController extends Controller
 {
@@ -244,12 +243,13 @@ class propostaFormaticaController extends Controller
     private function generateCaptchaCode(int $length = 5): string
     {
         $characters = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789';
+        $code = '';
 
-        return Str::of(str_repeat('x', $length))
-            ->replaceMatches('/x/', function () use ($characters) {
-                return $characters[random_int(0, strlen($characters) - 1)];
-            })
-            ->toString();
+        for ($i = 0; $i < $length; $i++) {
+            $code .= $characters[random_int(0, strlen($characters) - 1)];
+        }
+
+        return $code;
     }
 
     private function generateCaptchaSvgDataUri(string $code): string
