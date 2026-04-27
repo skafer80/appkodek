@@ -299,8 +299,8 @@
 
         <section class="content">
             <div class="section-head">
-                <h2>Seleziona l'ente</h2>
-                <span>8 collegamenti disponibili</span>
+                <h2>Benvenuto</h2>
+                <span></span>
             </div>
 
             <div class="grid">
@@ -308,7 +308,7 @@
             </div>
 
             <div class="footer-note">
-                Tutti i collegamenti vengono aperti in una nuova scheda per non perdere questa pagina di raccolta.
+                Questo simulatore è stato creato per scopi di allenamento e non è collegato a nessun sistema reale. I dati inseriti non saranno salvati o utilizzati in alcun modo. Si prega di non inserire informazioni personali o sensibili.
             </div>
         </section>
     </main>
