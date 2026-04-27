@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('nome');
             $table->string('indirizzo');
-            $table->smallInteger('numero_civico');
-            $table->smallInteger('cap');
+            $table->string('numero_civico');
+            $table->string('cap');
             $table->string('citta');
             $table->string('provincia');
             $table->smallInteger('totale_ore');
