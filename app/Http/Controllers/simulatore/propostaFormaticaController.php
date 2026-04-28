@@ -320,6 +320,198 @@ class propostaFormaticaController extends Controller
         return view('simulatore.showImpresa', compact('percorso', 'SimulatorPlayer'));
     }
 
+    public function showVerifica(SimulatorPlayer $SimulatorPlayer, $id)
+    {
+        $percorso = classroom::with('formazione')->findOrFail($id);
+
+        $simulatorClassroom = SimulatorClassroom::where('simulator_player_id', $SimulatorPlayer->id)
+            ->where('classroom_id', $percorso->id)
+            ->first();
+
+        $errori = [];
+
+        // 1. Dettaglio percorso - date
+        $erroriDettaglio = [];
+        if (! $simulatorClassroom || ! $simulatorClassroom->data_avvio) {
+            $erroriDettaglio[] = 'Inserire data avvio prevista';
+        }
+        if (! $simulatorClassroom || ! $simulatorClassroom->data_fine) {
+            $erroriDettaglio[] = 'Inserire data fine prevista';
+        }
+        if (! empty($erroriDettaglio)) {
+            $errori[] = [
+                'sezione' => 'Controlli sul dettaglio percorso',
+                'route' => route('simulatore.showDettagliPercorso', [$SimulatorPlayer->id, $percorso->id]),
+                'link_label' => 'APRI SEZIONE DETTAGLIO',
+                'errori' => $erroriDettaglio,
+            ];
+        }
+
+        // 2. Personale non docente - Conteggi
+        $personale = collect();
+        if ($simulatorClassroom) {
+            $personale = SimulatorPersonale::where('simulator_player_id', $SimulatorPlayer->id)
+                ->where('classroom_id', $simulatorClassroom->id)
+                ->get();
+        }
+        if ($personale->isEmpty()) {
+            $errori[] = [
+                'sezione' => 'Personale non docente => Conteggi',
+                'route' => route('simulatore.showPersonale', [$SimulatorPlayer->id, $percorso->id]),
+                'link_label' => 'APRI SEZIONE PERSONALE NON DOCENTE',
+                'errori' => ['Inserire almeno un soggetto tra il personale non docente'],
+            ];
+        }
+
+        // 3. Personale non docente - Figure professionali
+        $ruoliAttesi = [
+            'REO'                      => ['esatto' => 1],
+            'Direttore di progetto'    => ['minimo' => 1],
+            'Tutor'                    => ['minimo' => 1],
+            'Responsabile amministrativo' => ['minimo' => 1],
+        ];
+        $erroriRuoli = [];
+        foreach ($ruoliAttesi as $ruolo => $regola) {
+            $count = $personale->filter(fn ($p) => strtolower($p->ruolo) === strtolower($ruolo))->count();
+            if (isset($regola['esatto'])) {
+                if ($count !== $regola['esatto']) {
+                    $volte = $regola['esatto'] === 1 ? 'una volta' : $regola['esatto'].' volte';
+                    $erroriRuoli[] = 'La figura di "'.strtoupper($ruolo).'" deve essere presente '.$volte.' ('.$count.')';
+                }
+            } elseif (isset($regola['minimo']) && $count < $regola['minimo']) {
+                $erroriRuoli[] = 'La figura di "'.strtoupper($ruolo).'" deve essere presente almeno una volta';
+            }
+        }
+        if (! empty($erroriRuoli)) {
+            $errori[] = [
+                'sezione' => 'Personale non docente => Figure professionali',
+                'route' => route('simulatore.showPersonale', [$SimulatorPlayer->id, $percorso->id]),
+                'link_label' => 'APRI SEZIONE PERSONALE NON DOCENTE',
+                'errori' => $erroriRuoli,
+            ];
+        }
+
+        // 4. Docenti - Fasce (somma fascia_a + fascia_b + fascia_c deve essere 404)
+        $oreTotaliAttese = 404;
+        $fasceOk = $simulatorClassroom
+            && $simulatorClassroom->fascia_a !== null
+            && $simulatorClassroom->fascia_b !== null
+            && $simulatorClassroom->fascia_c !== null
+            && ((int) $simulatorClassroom->fascia_a + (int) $simulatorClassroom->fascia_b + (int) $simulatorClassroom->fascia_c) === $oreTotaliAttese;
+        if (! $fasceOk) {
+            $errori[] = [
+                'sezione' => 'Docenti => Fasce',
+                'route' => route('simulatore.showDatiEconomici', [$SimulatorPlayer->id, $percorso->id]),
+                'link_label' => 'APRI SEZIONE DATI ECONOMICI',
+                'errori' => ['La somma delle ore non corrisponde al totale delle ore aula/FAD'],
+            ];
+        }
+
+        // 5. Partecipanti - Conteggi
+        $countPartecipanti = SimulatorPartecipante::where('simulator_player_id', $SimulatorPlayer->id)
+            ->where('classroom_id', $percorso->id)
+            ->count();
+        if ($countPartecipanti < 8 || $countPartecipanti > 10) {
+            $errori[] = [
+                'sezione' => 'Partecipanti => Conteggi',
+                'route' => route('simulatore.showPartecipanti', [$SimulatorPlayer->id, $percorso->id]),
+                'link_label' => 'APRI SEZIONE PARTECIPANTI',
+                'errori' => ['Numero minimo/massimo di partecipanti (8/10) non corretto ('.$countPartecipanti.')'],
+            ];
+        }
+
+        // 6 & 7. Moduli - Conteggi e Ore aula pari a zero
+        $moduli = Moduli::with('gruppoModuli')
+            ->where('formazione_id', $percorso->formazione_id)
+            ->get();
+
+        $salvataggiModuli = SimulatorModuli::where('simulator_player_id', $SimulatorPlayer->id)
+            ->whereIn('modulo_id', $moduli->pluck('id'))
+            ->get()
+            ->keyBy('modulo_id');
+
+        $erroriModuliConteggi = [];
+        $erroriModuliZero = [];
+
+        foreach ($moduli->groupBy('gruppo_moduli_id') as $moduliGruppo) {
+            $gruppo = $moduliGruppo->first()->gruppoModuli;
+            $oreAttese = $gruppo->getOreAula();
+            $oreInserite = $moduliGruppo->sum(fn ($m) => (int) ($salvataggiModuli->get($m->id)->ore_aula ?? 0));
+
+            if ($oreInserite !== $oreAttese) {
+                $erroriModuliConteggi[] = 'Conteggio ore AULA modulo "'.$gruppo->nome.'" differente da '.$oreAttese.' ('.$oreInserite.')';
+            }
+
+            foreach ($moduliGruppo as $modulo) {
+                $oreAula = (int) ($salvataggiModuli->get($modulo->id)->ore_aula ?? 0);
+                if ($oreAula === 0) {
+                    $erroriModuliZero[] = 'Il modulo "'.$gruppo->nome.' => '.$modulo->nome.'" ha zero (0) ore';
+                }
+            }
+        }
+
+        if (! empty($erroriModuliConteggi)) {
+            $errori[] = [
+                'sezione' => 'Moduli => Conteggi',
+                'route' => route('simulatore.showModuli', [$SimulatorPlayer->id, 'id' => $percorso->formazione_id]),
+                'link_label' => 'APRI SEZIONE MODULI',
+                'errori' => $erroriModuliConteggi,
+            ];
+        }
+
+        if (! empty($erroriModuliZero)) {
+            $errori[] = [
+                'sezione' => 'Moduli => Ore aula pari a zero',
+                'route' => route('simulatore.showModuli', [$SimulatorPlayer->id, 'id' => $percorso->formazione_id]),
+                'link_label' => 'APRI SEZIONE MODULI',
+                'errori' => $erroriModuliZero,
+            ];
+        }
+
+        // 8. Stage - Campi di dettaglio (giornate stage)
+        if (! $simulatorClassroom || ! $simulatorClassroom->totale_giornate_stage) {
+            $errori[] = [
+                'sezione' => 'Stage => Campi di dettaglio',
+                'route' => route('simulatore.showStage', [$SimulatorPlayer->id, $percorso->id]),
+                'link_label' => 'APRI SEZIONE STAGE',
+                'errori' => ['Compilare tutti i campi del dettaglio stage'],
+            ];
+        }
+
+        // 9. Stage - Date
+        $erroriStageDate = [];
+        if (! $simulatorClassroom || ! $simulatorClassroom->data_avvio_stage) {
+            $erroriStageDate[] = 'Compilare i campi data avvio e fine stage e le date di avvio e fine edizione';
+        } elseif (! $simulatorClassroom->data_fine_stage) {
+            $erroriStageDate[] = 'Compilare i campi data avvio e fine stage e le date di avvio e fine edizione';
+        }
+        if (! empty($erroriStageDate)) {
+            $errori[] = [
+                'sezione' => 'Stage => Date',
+                'route' => route('simulatore.showStage', [$SimulatorPlayer->id, $percorso->id]),
+                'link_label' => 'APRI SEZIONE STAGE',
+                'errori' => $erroriStageDate,
+            ];
+        }
+
+        // 10. Stage - Sedi
+        $countImprese = SimulatorImpresa::where('simulator_player_id', $SimulatorPlayer->id)
+            ->where('classroom_id', $percorso->id)
+            ->count();
+        if ($countImprese === 0) {
+            $errori[] = [
+                'sezione' => 'Stage => Sedi',
+                'route' => route('simulatore.showStage', [$SimulatorPlayer->id, $percorso->id]),
+                'link_label' => 'APRI SEZIONE STAGE',
+                'errori' => ['Inserire almeno un soggetto presso cui fare lo stage'],
+            ];
+        }
+
+        $verificaOk = empty($errori);
+
+        return view('simulatore.verifica', compact('percorso', 'SimulatorPlayer', 'errori', 'verificaOk'));
+    }
+
     private function generateCaptchaCode(int $length = 5): string
     {
         $characters = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789';

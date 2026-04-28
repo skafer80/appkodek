@@ -18,7 +18,7 @@
 
                         <a href="{{ route('simulatore.showDatiEconomici', [$SimulatorPlayer->id, $percorso->id]) }}"
                             class="btn yellow">Dati economici</a>&nbsp;
-                        <a href="https://fse.regione.sicilia.it/avvisoPOC/pe/verificaeconferma/eyJpdiI6IlJLNklaL0NsQ1YvZEtkRktldzVESFE9PSIsInZhbHVlIjoiZnpuWk01TnJYUHJoTFQ3NE90VHhjdz09IiwibWFjIjoiNDFiNDY3ZTY4MzNlZWI1NTE2MzU0ZDQxNjczMjRlMDYxOThhZmY3MmRmODExOGRiYzI4OWQxY2EwYTFhMWI0NSIsInRhZyI6IiJ9/eyJpdiI6IkNHNU4zMUJFNFNYNEJqWnJNa0krY0E9PSIsInZhbHVlIjoiYWZrbTBvaDdaaDJOVUtkSWFHWkpXdz09IiwibWFjIjoiY2IzNTZlNzQwMmIwNTJjMjM2ZTY2N2Q0MzA3Njg5ZjQ2MTk5OTdlNTNlOTc3MTM5Mzk1NjgwMTM0MmQ0N2JkYyIsInRhZyI6IiJ9"
+                        <a href="{{ route('simulatore.showVerifica', [$SimulatorPlayer->id, $percorso->id]) }}"
                             class="btn red">Verifica e conferma P.E.</a>&nbsp;
 
                     </div>

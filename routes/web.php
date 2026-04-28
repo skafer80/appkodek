@@ -75,6 +75,7 @@ Route::prefix('play/{SimulatorPlayer}')->group(function () {
     Route::delete('/simulatore/elimina-partecipante/{partecipante}', [memorizzaController::class, 'eliminaPartecipante'])->name('simulatore.eliminaPartecipante');
     Route::delete('/simulatore/elimina-personale/{personale}', [memorizzaController::class, 'eliminaPersonale'])->name('simulatore.eliminaPersonale');
     Route::delete('/simulatore/elimina-impresa/{impresa}', [memorizzaController::class, 'eliminaImpresa'])->name('simulatore.eliminaImpresa');
+    Route::get('/simulatore/verifica/{id}', [propostaFormaticaController::class, 'showVerifica'])->name('simulatore.showVerifica');
 });
 
 /*
