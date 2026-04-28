@@ -152,7 +152,7 @@ class memorizzaController extends Controller
         ];
 
         if ($isCreate) {
-            $rules['pdoeiekijfjhfdghjj'] = [
+            $rules['lewltrljeljdkndekirejo'] = [
                 'required',
                 'string',
                 function (string $attribute, mixed $value, \Closure $fail) use ($request): void {
@@ -165,7 +165,7 @@ class memorizzaController extends Controller
                 },
             ];
 
-            $messages['pdoeiekijfjhfdghjj.required'] = 'Digitare il codice di controllo.';
+            $messages['lewltrljeljdkndekirejo.required'] = 'Digitare il codice di controllo.';
         }
 
         $validated = $request->validate($rules, $messages);

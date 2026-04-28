@@ -41,4 +41,16 @@ class SimulatorPlayer extends Model
     {
         return $this->hasMany(SimulatorImpresa::class);
     }
+
+    public function getElapsedTimeAttribute(): ?string
+    {
+        if (! $this->start_time || ! $this->end_time) {
+            return null;
+        }
+
+        $intervallo = $this->start_time->diff($this->end_time);
+        $giorni = $intervallo->days > 0 ? $intervallo->days.'g ' : '';
+
+        return $giorni.$intervallo->format('%H:%I:%S');
+    }
 }
