@@ -1,5 +1,5 @@
 {
-  "classeId": "600",
+  "classeId": "998",
   "moduli": [
     {
       "nomeModuli": "Modulo 1",
@@ -8,61 +8,61 @@
           "nomeConoscenza": "ELEMENTI DI MERCEOLOGIA",
           "oreConoscenza": 48,
           "oreFadConoscenza": 0,
-          "fascia": "A"
+          "fascia": ""
         },
         {
           "nomeConoscenza": "ELEMENTI DI APPROVVIGIONAMENTO E LOGISTICA",
           "oreConoscenza": 54,
           "oreFadConoscenza": 0,
-          "fascia": "B"
+          "fascia": ""
         },
         {
           "nomeConoscenza": "TECNICHE DI GESTIONE DEL MAGAZZINO",
           "oreConoscenza": 48,
           "oreFadConoscenza": 0,
-          "fascia": "B"
+          "fascia": ""
         },
         {
           "nomeConoscenza": "RISCHI SPECIFICI CORRELATI ALLE ATTIVITà DI GESTIONE MAGAZZINO",
           "oreConoscenza": 48,
           "oreFadConoscenza": 0,
-          "fascia": "B"
+          "fascia": ""
         },
         {
           "nomeConoscenza": "PROCEDURE DI RICEVIMENTO",
           "oreConoscenza": 50,
           "oreFadConoscenza": 0,
-          "fascia": "A"
+          "fascia": ""
         },
         {
           "nomeConoscenza": "ELEMENTI DI STOCCAGGIO DELLE MERCI",
           "oreConoscenza": 48,
           "oreFadConoscenza": 0,
-          "fascia": "A"
+          "fascia": ""
         },
         {
           "nomeConoscenza": "PROCEDURE DI SPEDIZIONE",
           "oreConoscenza": 54,
           "oreFadConoscenza": 0,
-          "fascia": "B"
+          "fascia": ""
         },
         {
           "nomeConoscenza": "IGIENE E SICUREZZA SUL LUOGO DI LAVORO",
           "oreConoscenza": 12,
           "oreFadConoscenza": 0,
-          "fascia": "A"
+          "fascia": ""
         },
         {
           "nomeConoscenza": "ALFABETIZZAZIONE INFORMATICA",
           "oreConoscenza": 12,
           "oreFadConoscenza": 0,
-          "fascia": "A"
+          "fascia": ""
         },
         {
           "nomeConoscenza": "LINGUA STRANIERA (INGLESE)",
           "oreConoscenza": 30,
           "oreFadConoscenza": 0,
-          "fascia": "A"
+          "fascia": ""
         },
         {
           "nomeConoscenza": "STAGE",
