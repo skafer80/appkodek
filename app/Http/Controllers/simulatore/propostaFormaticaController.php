@@ -240,6 +240,10 @@ class propostaFormaticaController extends Controller
     public function showCreatePartecipante(SimulatorPlayer $SimulatorPlayer, $id)
     {
         $percorso = classroom::findOrFail($id);
+        $captchaCode = $this->generateCaptchaCode();
+        session(['simulatore_partecipante_captcha' => $captchaCode]);
+        $captchaImageDataUri = $this->generateCaptchaSvgDataUri($captchaCode);
+
         $province = Comune::query()
             ->whereNotNull('sigla')
             ->select('sigla')
@@ -255,7 +259,7 @@ class propostaFormaticaController extends Controller
             ->groupBy('sigla')
             ->map(fn ($items) => $items->pluck('comune')->values());
 
-        return view('simulatore.partecipanteForm', compact('percorso', 'SimulatorPlayer', 'province', 'comuniBySigla'));
+        return view('simulatore.partecipanteForm', compact('percorso', 'SimulatorPlayer', 'province', 'comuniBySigla', 'captchaImageDataUri'));
     }
 
     public function showDettaglioPartecipante(SimulatorPlayer $SimulatorPlayer, $id, SimulatorPartecipante $partecipante)

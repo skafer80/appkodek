@@ -207,7 +207,9 @@ class memorizzaController extends Controller
 
     public function dettagliPartecipante(SimulatorPlayer $SimulatorPlayer, classroom $classroom, Request $request)
     {
-        $validated = $request->validate([
+        $isCreate = empty($request->input('partecipante_id'));
+
+        $rules = [
             'partecipante_id' => ['nullable', 'integer', 'exists:simulator_partecipanti,id'],
             't_codice_fiscale' => [
                 'required',
@@ -226,7 +228,9 @@ class memorizzaController extends Controller
             't_d_provincia' => ['nullable', 'string', 'size:2'],
             't_d_comune' => ['nullable', 'string', 'max:255'],
             'i_tipo_condizione_occupazionale_id' => ['required', 'in:8,10,12'],
-        ], [
+        ];
+
+        $messages = [
             't_codice_fiscale.required' => 'Inserire il codice fiscale.',
             't_codice_fiscale.size' => 'Il codice fiscale deve avere 16 caratteri.',
             't_codice_fiscale.unique' => 'Esiste gia un partecipante con questo codice fiscale per questa edizione.',
@@ -234,7 +238,30 @@ class memorizzaController extends Controller
             't_r_provincia.required' => 'Selezionare la provincia di residenza.',
             't_r_comune.required' => 'Selezionare il comune di residenza.',
             'i_tipo_condizione_occupazionale_id.required' => 'Selezionare la condizione occupazionale.',
-        ]);
+        ];
+
+        if ($isCreate) {
+            $rules['captcha_code'] = [
+                'required',
+                'string',
+                function (string $attribute, mixed $value, \Closure $fail) use ($request): void {
+                    $expectedCaptcha = (string) $request->session()->get('simulatore_partecipante_captcha', '');
+                    $submittedCaptcha = trim((string) $value);
+
+                    if ($expectedCaptcha === '' || ! hash_equals($expectedCaptcha, $submittedCaptcha)) {
+                        $fail('Il codice di controllo non e corretto.');
+                    }
+                },
+            ];
+
+            $messages['captcha_code.required'] = 'Digitare il codice di controllo.';
+        }
+
+        $validated = $request->validate($rules, $messages);
+
+        if ($isCreate) {
+            $request->session()->forget('simulatore_partecipante_captcha');
+        }
 
         $partecipante = null;
         if (! empty($validated['partecipante_id'])) {
