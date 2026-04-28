@@ -27,11 +27,22 @@
                             <br><strong>Verifica superata!</strong><br>
                             Tutti i controlli sulla P.E. sono stati completati correttamente.
                         </div>
-                    @else
-                        <div id="esito_verifica" class="mb-3">
-                            <ul class="list-group">
-                                @foreach ($errori as $blocco)
-                                    <li class="list-group-item bg-grey-light-i">
+                    @endif
+
+                    <div id="esito_verifica" class="mb-3">
+                        <ul class="list-group">
+                            @foreach ($controlli as $blocco)
+                                <li class="list-group-item bg-grey-light-i">
+                                    @if ($blocco['ok'])
+                                        <i class="fa fa-check-circle me-2 text-success"></i>
+                                        <a class="text-success underline-off-i" href="javascript:void(null);"
+                                            onclick="
+                                                $('.section-errors').addClass('d-none');
+                                                $(this).parent().next().removeClass('d-none');
+                                            ">
+                                            {{ $blocco['sezione'] }}
+                                        </a>
+                                    @else
                                         <i class="fa fa-list me-2 text-danger"></i>
                                         <a class="text-danger underline-off-i" href="javascript:void(null);"
                                             onclick="
@@ -40,11 +51,21 @@
                                             ">
                                             {{ $blocco['sezione'] }}
                                         </a>
-                                        <a href="{{ $blocco['route'] }}"
-                                            class="float-right text-warning underline-off-i">
-                                            {{ $blocco['link_label'] }}
-                                        </a>
+                                    @endif
+                                    <a href="{{ $blocco['route'] }}" class="float-right text-warning underline-off-i">
+                                        {{ $blocco['link_label'] }}
+                                    </a>
+                                </li>
+                                @if ($blocco['ok'])
+                                    <li class="section-errors list-group-item d-none">
+                                        <ul class="list-group mb-0">
+                                            <li class="list-group-item">
+                                                <b class="text-success"><i class="fa fa-check me-1"></i></b>
+                                                &nbsp;Controllo superato
+                                            </li>
+                                        </ul>
                                     </li>
+                                @else
                                     <li class="section-errors list-group-item d-none">
                                         <ul class="list-group mb-0">
                                             @foreach ($blocco['errori'] as $errore)
@@ -55,10 +76,10 @@
                                             @endforeach
                                         </ul>
                                     </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
+                                @endif
+                            @endforeach
+                        </ul>
+                    </div>
 
                     <p class="text-center mt-3">
                         <a href="{{ route('simulatore.showVerifica', [$SimulatorPlayer->id, $percorso->id]) }}"

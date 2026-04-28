@@ -328,7 +328,24 @@ class propostaFormaticaController extends Controller
             ->where('classroom_id', $percorso->id)
             ->first();
 
+        $controlli = [];
         $errori = [];
+
+        $addControllo = function (string $sezione, string $route, string $linkLabel, array $erroriControllo) use (&$controlli, &$errori): void {
+            $controllo = [
+                'sezione' => $sezione,
+                'route' => $route,
+                'link_label' => $linkLabel,
+                'errori' => $erroriControllo,
+                'ok' => empty($erroriControllo),
+            ];
+
+            $controlli[] = $controllo;
+
+            if (! $controllo['ok']) {
+                $errori[] = $controllo;
+            }
+        };
 
         // 1. Dettaglio percorso - date
         $erroriDettaglio = [];
@@ -338,14 +355,12 @@ class propostaFormaticaController extends Controller
         if (! $simulatorClassroom || ! $simulatorClassroom->data_fine) {
             $erroriDettaglio[] = 'Inserire data fine prevista';
         }
-        if (! empty($erroriDettaglio)) {
-            $errori[] = [
-                'sezione' => 'Controlli sul dettaglio percorso',
-                'route' => route('simulatore.showDettagliPercorso', [$SimulatorPlayer->id, $percorso->id]),
-                'link_label' => 'APRI SEZIONE DETTAGLIO',
-                'errori' => $erroriDettaglio,
-            ];
-        }
+        $addControllo(
+            'Controlli sul dettaglio percorso',
+            route('simulatore.showDettagliPercorso', [$SimulatorPlayer->id, $percorso->id]),
+            'APRI SEZIONE DETTAGLIO',
+            $erroriDettaglio
+        );
 
         // 2. Personale non docente - Conteggi
         $personale = collect();
@@ -354,14 +369,16 @@ class propostaFormaticaController extends Controller
                 ->where('classroom_id', $simulatorClassroom->id)
                 ->get();
         }
+        $erroriPersonaleConteggi = [];
         if ($personale->isEmpty()) {
-            $errori[] = [
-                'sezione' => 'Personale non docente => Conteggi',
-                'route' => route('simulatore.showPersonale', [$SimulatorPlayer->id, $percorso->id]),
-                'link_label' => 'APRI SEZIONE PERSONALE NON DOCENTE',
-                'errori' => ['Inserire almeno un soggetto tra il personale non docente'],
-            ];
+            $erroriPersonaleConteggi[] = 'Inserire almeno un soggetto tra il personale non docente';
         }
+        $addControllo(
+            'Personale non docente => Conteggi',
+            route('simulatore.showPersonale', [$SimulatorPlayer->id, $percorso->id]),
+            'APRI SEZIONE PERSONALE NON DOCENTE',
+            $erroriPersonaleConteggi
+        );
 
         // 3. Personale non docente - Figure professionali
         $ruoliAttesi = [
@@ -382,14 +399,12 @@ class propostaFormaticaController extends Controller
                 $erroriRuoli[] = 'La figura di "'.strtoupper($ruolo).'" deve essere presente almeno una volta';
             }
         }
-        if (! empty($erroriRuoli)) {
-            $errori[] = [
-                'sezione' => 'Personale non docente => Figure professionali',
-                'route' => route('simulatore.showPersonale', [$SimulatorPlayer->id, $percorso->id]),
-                'link_label' => 'APRI SEZIONE PERSONALE NON DOCENTE',
-                'errori' => $erroriRuoli,
-            ];
-        }
+        $addControllo(
+            'Personale non docente => Figure professionali',
+            route('simulatore.showPersonale', [$SimulatorPlayer->id, $percorso->id]),
+            'APRI SEZIONE PERSONALE NON DOCENTE',
+            $erroriRuoli
+        );
 
         // 4. Docenti - Fasce (somma fascia_a + fascia_b + fascia_c deve essere 404)
         $oreTotaliAttese = 404;
@@ -398,27 +413,31 @@ class propostaFormaticaController extends Controller
             && $simulatorClassroom->fascia_b !== null
             && $simulatorClassroom->fascia_c !== null
             && ((int) $simulatorClassroom->fascia_a + (int) $simulatorClassroom->fascia_b + (int) $simulatorClassroom->fascia_c) === $oreTotaliAttese;
+        $erroriFasce = [];
         if (! $fasceOk) {
-            $errori[] = [
-                'sezione' => 'Docenti => Fasce',
-                'route' => route('simulatore.showDatiEconomici', [$SimulatorPlayer->id, $percorso->id]),
-                'link_label' => 'APRI SEZIONE DATI ECONOMICI',
-                'errori' => ['La somma delle ore non corrisponde al totale delle ore aula/FAD'],
-            ];
+            $erroriFasce[] = 'La somma delle ore non corrisponde al totale delle ore aula/FAD';
         }
+        $addControllo(
+            'Docenti => Fasce',
+            route('simulatore.showDatiEconomici', [$SimulatorPlayer->id, $percorso->id]),
+            'APRI SEZIONE DATI ECONOMICI',
+            $erroriFasce
+        );
 
         // 5. Partecipanti - Conteggi
         $countPartecipanti = SimulatorPartecipante::where('simulator_player_id', $SimulatorPlayer->id)
             ->where('classroom_id', $percorso->id)
             ->count();
+        $erroriPartecipanti = [];
         if ($countPartecipanti < 8 || $countPartecipanti > 10) {
-            $errori[] = [
-                'sezione' => 'Partecipanti => Conteggi',
-                'route' => route('simulatore.showPartecipanti', [$SimulatorPlayer->id, $percorso->id]),
-                'link_label' => 'APRI SEZIONE PARTECIPANTI',
-                'errori' => ['Numero minimo/massimo di partecipanti (8/10) non corretto ('.$countPartecipanti.')'],
-            ];
+            $erroriPartecipanti[] = 'Numero minimo/massimo di partecipanti (8/10) non corretto ('.$countPartecipanti.')';
         }
+        $addControllo(
+            'Partecipanti => Conteggi',
+            route('simulatore.showPartecipanti', [$SimulatorPlayer->id, $percorso->id]),
+            'APRI SEZIONE PARTECIPANTI',
+            $erroriPartecipanti
+        );
 
         // 6 & 7. Moduli - Conteggi e Ore aula pari a zero
         $moduli = Moduli::with('gruppoModuli')
@@ -450,33 +469,31 @@ class propostaFormaticaController extends Controller
             }
         }
 
-        if (! empty($erroriModuliConteggi)) {
-            $errori[] = [
-                'sezione' => 'Moduli => Conteggi',
-                'route' => route('simulatore.showModuli', [$SimulatorPlayer->id, 'id' => $percorso->formazione_id]),
-                'link_label' => 'APRI SEZIONE MODULI',
-                'errori' => $erroriModuliConteggi,
-            ];
-        }
+        $addControllo(
+            'Moduli => Conteggi',
+            route('simulatore.showModuli', [$SimulatorPlayer->id, 'id' => $percorso->formazione_id]),
+            'APRI SEZIONE MODULI',
+            $erroriModuliConteggi
+        );
 
-        if (! empty($erroriModuliZero)) {
-            $errori[] = [
-                'sezione' => 'Moduli => Ore aula pari a zero',
-                'route' => route('simulatore.showModuli', [$SimulatorPlayer->id, 'id' => $percorso->formazione_id]),
-                'link_label' => 'APRI SEZIONE MODULI',
-                'errori' => $erroriModuliZero,
-            ];
-        }
+        $addControllo(
+            'Moduli => Ore aula pari a zero',
+            route('simulatore.showModuli', [$SimulatorPlayer->id, 'id' => $percorso->formazione_id]),
+            'APRI SEZIONE MODULI',
+            $erroriModuliZero
+        );
 
         // 8. Stage - Campi di dettaglio (giornate stage)
+        $erroriStageDettaglio = [];
         if (! $simulatorClassroom || ! $simulatorClassroom->totale_giornate_stage) {
-            $errori[] = [
-                'sezione' => 'Stage => Campi di dettaglio',
-                'route' => route('simulatore.showStage', [$SimulatorPlayer->id, $percorso->id]),
-                'link_label' => 'APRI SEZIONE STAGE',
-                'errori' => ['Compilare tutti i campi del dettaglio stage'],
-            ];
+            $erroriStageDettaglio[] = 'Compilare tutti i campi del dettaglio stage';
         }
+        $addControllo(
+            'Stage => Campi di dettaglio',
+            route('simulatore.showStage', [$SimulatorPlayer->id, $percorso->id]),
+            'APRI SEZIONE STAGE',
+            $erroriStageDettaglio
+        );
 
         // 9. Stage - Date
         $erroriStageDate = [];
@@ -485,31 +502,31 @@ class propostaFormaticaController extends Controller
         } elseif (! $simulatorClassroom->data_fine_stage) {
             $erroriStageDate[] = 'Compilare i campi data avvio e fine stage e le date di avvio e fine edizione';
         }
-        if (! empty($erroriStageDate)) {
-            $errori[] = [
-                'sezione' => 'Stage => Date',
-                'route' => route('simulatore.showStage', [$SimulatorPlayer->id, $percorso->id]),
-                'link_label' => 'APRI SEZIONE STAGE',
-                'errori' => $erroriStageDate,
-            ];
-        }
+        $addControllo(
+            'Stage => Date',
+            route('simulatore.showStage', [$SimulatorPlayer->id, $percorso->id]),
+            'APRI SEZIONE STAGE',
+            $erroriStageDate
+        );
 
         // 10. Stage - Sedi
         $countImprese = SimulatorImpresa::where('simulator_player_id', $SimulatorPlayer->id)
             ->where('classroom_id', $percorso->id)
             ->count();
+        $erroriStageSedi = [];
         if ($countImprese === 0) {
-            $errori[] = [
-                'sezione' => 'Stage => Sedi',
-                'route' => route('simulatore.showStage', [$SimulatorPlayer->id, $percorso->id]),
-                'link_label' => 'APRI SEZIONE STAGE',
-                'errori' => ['Inserire almeno un soggetto presso cui fare lo stage'],
-            ];
+            $erroriStageSedi[] = 'Inserire almeno un soggetto presso cui fare lo stage';
         }
+        $addControllo(
+            'Stage => Sedi',
+            route('simulatore.showStage', [$SimulatorPlayer->id, $percorso->id]),
+            'APRI SEZIONE STAGE',
+            $erroriStageSedi
+        );
 
         $verificaOk = empty($errori);
 
-        return view('simulatore.verifica', compact('percorso', 'SimulatorPlayer', 'errori', 'verificaOk'));
+        return view('simulatore.verifica', compact('percorso', 'SimulatorPlayer', 'controlli', 'errori', 'verificaOk'));
     }
 
     private function generateCaptchaCode(int $length = 5): string
