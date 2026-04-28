@@ -43,8 +43,8 @@ class memorizzaController extends Controller
             'simulator_player_id' => $SimulatorPlayer->id,
             'classroom_id' => $classroom->id,
         ], [
-            'data_avvio' => $validated['data_avvio_prevista'],
-            'data_fine' => $validated['data_fine_prevista'],
+            'data_avvio' => Carbon::createFromFormat('d/m/Y', $validated['data_avvio_prevista'])->format('Y-m-d'),
+            'data_fine' => Carbon::createFromFormat('d/m/Y', $validated['data_fine_prevista'])->format('Y-m-d'),
             'importo' => $validated['importo_finanziamenti'],
             'totale_giornate' => $validated['giornate_aula_previste'],
         ]);
@@ -77,8 +77,8 @@ class memorizzaController extends Controller
             'simulator_player_id' => $SimulatorPlayer->id,
             'classroom_id' => $classroom->id,
         ], [
-            'data_avvio_stage' => $validated['d_avvio_stage'],
-            'data_fine_stage' => $validated['d_fine_stage'],
+            'data_avvio_stage' => Carbon::createFromFormat('d/m/Y', $validated['d_avvio_stage'])->format('Y-m-d'),
+            'data_fine_stage' => Carbon::createFromFormat('d/m/Y', $validated['d_fine_stage'])->format('Y-m-d'),
             'totale_giornate_stage' => $validated['i_giornate_stage'],
         ]);
 
