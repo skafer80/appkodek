@@ -207,6 +207,10 @@ class memorizzaController extends Controller
 
     public function dettagliPartecipante(SimulatorPlayer $SimulatorPlayer, classroom $classroom, Request $request)
     {
+        $request->merge([
+            't_codice_fiscale' => strtoupper(trim((string) $request->input('t_codice_fiscale'))),
+        ]);
+
         $isCreate = empty($request->input('partecipante_id'));
 
         $rules = [
@@ -215,6 +219,12 @@ class memorizzaController extends Controller
                 'required',
                 'string',
                 'size:16',
+                'regex:/^[A-Z0-9]{16}$/',
+                function (string $attribute, mixed $value, \Closure $fail): void {
+                    if (! $this->isValidItalianFiscalCode((string) $value)) {
+                        $fail('Il codice fiscale non e formalmente valido.');
+                    }
+                },
                 Rule::unique('simulator_partecipanti', 't_codice_fiscale')
                     ->where(fn ($query) => $query
                         ->where('simulator_player_id', $SimulatorPlayer->id)
@@ -233,6 +243,7 @@ class memorizzaController extends Controller
         $messages = [
             't_codice_fiscale.required' => 'Inserire il codice fiscale.',
             't_codice_fiscale.size' => 'Il codice fiscale deve avere 16 caratteri.',
+            't_codice_fiscale.regex' => 'Il codice fiscale deve contenere solo lettere maiuscole e numeri.',
             't_codice_fiscale.unique' => 'Esiste gia un partecipante con questo codice fiscale per questa edizione.',
             'b_disabile.required' => 'Specificare se il partecipante e disabile/categoria protetta.',
             't_r_provincia.required' => 'Selezionare la provincia di residenza.',
@@ -376,5 +387,46 @@ class memorizzaController extends Controller
 
         return redirect()->route('simulatore.showDatiEconomici', [$SimulatorPlayer->id, $classroom->id])->with('success', 'Dati economici memorizzati con successo.');
 
+    }
+
+    private function isValidItalianFiscalCode(string $fiscalCode): bool
+    {
+        $cf = strtoupper(trim($fiscalCode));
+
+        if (! preg_match('/^[A-Z0-9]{16}$/', $cf)) {
+            return false;
+        }
+
+        $oddMap = [
+            '0' => 1, '1' => 0, '2' => 5, '3' => 7, '4' => 9,
+            '5' => 13, '6' => 15, '7' => 17, '8' => 19, '9' => 21,
+            'A' => 1, 'B' => 0, 'C' => 5, 'D' => 7, 'E' => 9,
+            'F' => 13, 'G' => 15, 'H' => 17, 'I' => 19, 'J' => 21,
+            'K' => 2, 'L' => 4, 'M' => 18, 'N' => 20, 'O' => 11,
+            'P' => 3, 'Q' => 6, 'R' => 8, 'S' => 12, 'T' => 14,
+            'U' => 16, 'V' => 10, 'W' => 22, 'X' => 25, 'Y' => 24, 'Z' => 23,
+        ];
+
+        $sum = 0;
+
+        for ($i = 0; $i < 15; $i++) {
+            $char = $cf[$i];
+            $position = $i + 1;
+
+            if ($position % 2 === 1) {
+                $sum += $oddMap[$char] ?? 0;
+                continue;
+            }
+
+            if (ctype_digit($char)) {
+                $sum += (int) $char;
+            } else {
+                $sum += ord($char) - ord('A');
+            }
+        }
+
+        $expectedControlChar = chr(($sum % 26) + ord('A'));
+
+        return $expectedControlChar === $cf[15];
     }
 }
