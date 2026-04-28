@@ -110,7 +110,7 @@
                                         <div class="form-group">
                                             <label for="d_fine_stage" class="required">Data fine prevista</label>
                                             <input class="form-control required date-picker-fine" name="d_fine_stage"
-                                                type="text" value="{{ old('d_fine_stage', $dataFineStage) }}" id="d_fine_stage">
+                                                type="text" value="{{ old('d_fine_stage', $dataFineStage?->format('d/m/Y')) }}" id="d_fine_stage">
                                         </div>
                                     </div>
                                 </div>
