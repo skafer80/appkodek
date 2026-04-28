@@ -271,7 +271,7 @@ new class extends Component {
                                 <td><a href="{{ route('simulatore.index', ['SimulatorPlayer' => $partita->id]) }}">Sessione #{{ $partita->id }}</a></td>
                                 <td>{{ $partita->created_at->format('d/m/Y H:i') }}</td>
                                 <td>{{ $partita->end_time ? 'Completata' : 'In corso' }}</td>
-                                <td>{{ $partita->end_time ? $partita->end_time->diffForHumans($partita->created_at) : '-' }}</td>
+                                <td>{{ $partita->end_time ? $partita->getElapsedTimeAttribute() : '-' }}</td>
                             </tr>
                         @endforeach
                     </tbody>
