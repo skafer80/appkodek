@@ -19,6 +19,9 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right">
                 <div class="btn-group">
                     <a href="{{ route('simulatore.showPartecipanti', [$SimulatorPlayer->id, $percorso->id]) }}" class="btn default">Torna indietro</a>
+                    <button type="submit" form="partecipante-form" class="btn blue">
+                        <i class="fa fa-check-circle"></i>&nbsp;Salva
+                    </button>
                 </div>
             </div>
 
@@ -41,7 +44,7 @@
                             </form>
                         @endif
 
-                        <form method="POST" action="{{ route('simulatore.memorizzaPartecipante', [$SimulatorPlayer->id, $percorso->id]) }}" accept-charset="UTF-8" class="form-horizontal form-row-seperated">
+                        <form id="partecipante-form" method="POST" action="{{ route('simulatore.memorizzaPartecipante', [$SimulatorPlayer->id, $percorso->id]) }}" accept-charset="UTF-8" class="form-horizontal form-row-seperated">
                             @csrf
                             @if (isset($partecipante))
                                 <input name="partecipante_id" type="hidden" value="{{ $partecipante->id }}">
@@ -149,14 +152,14 @@
                                         @php
                                             $condizione = (string) old('i_tipo_condizione_occupazionale_id', $partecipante->i_tipo_condizione_occupazionale_id ?? '10');
                                         @endphp
-                                        <div class="radio">
-                                            <label><input id="i_tipo_condizione_occupazionale_id8" name="i_tipo_condizione_occupazionale_id" type="radio" value="8" @checked($condizione === '8')> 01 Inoccupato</label>
+                                        <div class="radio" style="margin-bottom:10px;">
+                                            <label style="display:block;line-height:1.4;"><input id="i_tipo_condizione_occupazionale_id8" name="i_tipo_condizione_occupazionale_id" type="radio" value="8" @checked($condizione === '8')> 01 Inoccupato</label>
+                                        </div>
+                                        <div class="radio" style="margin-bottom:10px;">
+                                            <label style="display:block;line-height:1.4;"><input id="i_tipo_condizione_occupazionale_id10" name="i_tipo_condizione_occupazionale_id" type="radio" value="10" @checked($condizione === '10')> 03 Disoccupato</label>
                                         </div>
                                         <div class="radio">
-                                            <label><input id="i_tipo_condizione_occupazionale_id10" name="i_tipo_condizione_occupazionale_id" type="radio" value="10" @checked($condizione === '10')> 03 Disoccupato</label>
-                                        </div>
-                                        <div class="radio">
-                                            <label><input id="i_tipo_condizione_occupazionale_id12" name="i_tipo_condizione_occupazionale_id" type="radio" value="12" @checked($condizione === '12')> 05 Inattivo</label>
+                                            <label style="display:block;line-height:1.4;"><input id="i_tipo_condizione_occupazionale_id12" name="i_tipo_condizione_occupazionale_id" type="radio" value="12" @checked($condizione === '12')> 05 Inattivo</label>
                                         </div>
                                     </div>
                                 </div>
