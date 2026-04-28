@@ -103,7 +103,7 @@
                                         <div class="form-group">
                                             <label for="d_avvio_stage" class="required">Data avvio prevista</label>
                                             <input class="form-control required date-picker-chiusura" name="d_avvio_stage"
-                                                type="text" value="{{ old('d_avvio_stage', $dataAvvioStage) }}" id="d_avvio_stage">
+                                                type="text" value="{{ old('d_avvio_stage', $dataAvvioStage?->format('d/m/Y')) }}" id="d_avvio_stage">
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
