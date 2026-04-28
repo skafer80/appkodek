@@ -57,13 +57,7 @@
                             </tr>
                             <!--                <tr>
                             <td>Numero giornate min /Numero giornate max</td>
-                            <td><strong>
-
-                                /
-                                </strong> </td>
-                        </tr>-->
-                            <!--                <tr>
-                            <td>Data Inizio Bando di selezione: </td>
+                            <td><strong>ffData Inizio Bando di selezione: </td>
                             <td><strong>
                                     </strong></td>
                         </tr>-->
@@ -103,14 +97,14 @@
                                         <div class="form-group">
                                             <label for="d_avvio_stage" class="required">Data avvio prevista</label>
                                             <input class="form-control required date-picker-chiusura" name="d_avvio_stage"
-                                                type="text" value="{{ old('d_avvio_stage', $dataAvvioStage?->format('d/m/Y')) }}" id="d_avvio_stage">
+                                                type="text" value="{{ old('d_avvio_stage', is_object($dataAvvioStage) ? $dataAvvioStage->format('d/m/Y') : $dataAvvioStage) }}" id="d_avvio_stage">
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
                                         <div class="form-group">
                                             <label for="d_fine_stage" class="required">Data fine prevista</label>
                                             <input class="form-control required date-picker-fine" name="d_fine_stage"
-                                                type="text" value="{{ old('d_fine_stage', $dataFineStage?->format('d/m/Y')) }}" id="d_fine_stage">
+                                                type="text" value="{{ old('d_fine_stage', is_object($dataFineStage) ? $dataFineStage->format('d/m/Y') : $dataFineStage) }}" id="d_fine_stage">
                                         </div>
                                     </div>
                                 </div>

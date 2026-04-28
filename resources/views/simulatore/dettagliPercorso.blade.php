@@ -143,7 +143,7 @@
                                         <div class="form-group">
                                             <label for="data_avvio_prevista" class="required">Data avvio prevista</label>
                                             <input class="form-control required date-picker-chiusura"
-                                                name="data_avvio_prevista" type="text" value="{{ old('data_avvio_prevista', $dataAvvioPrevista?->format('d/m/Y')) }}"
+                                                name="data_avvio_prevista" type="text" value="{{ old('data_avvio_prevista', is_object($dataAvvioPrevista) ? $dataAvvioPrevista->format('d/m/Y') : $dataAvvioPrevista) }}"
                                                 id="data_avvio_prevista">
                                         </div>
                                     </div>
@@ -151,7 +151,7 @@
                                         <div class="form-group">
                                             <label for="data_fine_prevista" class="required">Data fine prevista</label>
                                             <input class="form-control required date-picker-fine"
-                                                name="data_fine_prevista" type="text" value="{{ old('data_fine_prevista', $dataFinePrevista?->format('d/m/Y')) }}"
+                                                name="data_fine_prevista" type="text" value="{{ old('data_fine_prevista', is_object($dataFinePrevista) ? $dataFinePrevista->format('d/m/Y') : $dataFinePrevista) }}"
                                                 id="data_fine_prevista">
                                         </div>
                                     </div>
