@@ -21,6 +21,14 @@ class SimulatorClassroom extends Model
         'fascia_c',
     ];
 
+    protected $casts = [
+        'data_avvio' => 'date:d/m/Y',
+        'data_fine' => 'date:d/m/Y',
+        'data_avvio_stage' => 'date:d/m/Y',
+        'data_fine_stage' => 'date:d/m/Y',
+    ];
+
+
     public function simulatorPlayer()
     {
         return $this->belongsTo(SimulatorPlayer::class);
