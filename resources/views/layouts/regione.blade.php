@@ -16,6 +16,7 @@
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="{{ asset('regione/css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{{ asset('regione/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="{{ asset('regione/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('regione/uniform.default.css') }}" rel="stylesheet" type="text/css">
     <!-- END GLOBAL MANDATORY STYLES --> <!-- BEGIN PAGE LEVEL STYLES -->
