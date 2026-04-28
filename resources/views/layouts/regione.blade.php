@@ -11,7 +11,6 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="description">
     <meta content="" name="author">
-    <meta name="csrf-token" content="LThRShcEdk9UxInaZ6o0eKZZvr9fyXzIKbBX4xPn">
 
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="{{ asset('regione/css') }}" rel="stylesheet" type="text/css">
@@ -83,9 +82,9 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 text-right" style="line-height:4rem;">
                     <span class="d-inline-block ms-3">Accesso delegato</span>
-                    <a href=""
+                    <a href="{{ route('simulatore.home') }}"
                         class="d-inline-block ms-3 text-danger text-truncate"
-                        title="VGROUP ONLUS">Disconnetti</a>&nbsp;<i class="me-3 fa fa-sign-out text-danger"></i>
+                        title="VGROUP ONLUS" onclick="return confirm('Sei sicuro di voler uscire dal simulatore?')">Esci dal simulatore</a>&nbsp;<i class="me-3 fa fa-sign-out text-danger"></i>
                 </div>
             </div>
             <div class="row" style="border-top:solid 1px rgb(240,240,240);">
