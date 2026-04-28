@@ -22,10 +22,10 @@ class SimulatorClassroom extends Model
     ];
 
     protected $casts = [
-        'data_avvio' => 'date:d/m/Y',
-        'data_fine' => 'date:d/m/Y',
-        'data_avvio_stage' => 'date:d/m/Y',
-        'data_fine_stage' => 'date:d/m/Y',
+        'data_avvio' => 'date',
+        'data_fine' => 'date',
+        'data_avvio_stage' => 'date',
+        'data_fine_stage' => 'date',
     ];
 
 
