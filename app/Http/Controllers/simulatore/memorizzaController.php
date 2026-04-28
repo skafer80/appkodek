@@ -209,6 +209,7 @@ class memorizzaController extends Controller
     {
         $request->merge([
             't_codice_fiscale' => strtoupper(trim((string) $request->input('t_codice_fiscale'))),
+            'captcha_code' => $request->input('pdoeiekijfjhfdghjj'),
         ]);
 
         $isCreate = empty($request->input('partecipante_id'));
