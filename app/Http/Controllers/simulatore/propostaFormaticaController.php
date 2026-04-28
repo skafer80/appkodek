@@ -526,6 +526,11 @@ class propostaFormaticaController extends Controller
 
         $verificaOk = empty($errori);
 
+        if ($verificaOk && ! $SimulatorPlayer->end_time) {
+            $SimulatorPlayer->end_time = now();
+            $SimulatorPlayer->save();
+        }
+
         return view('simulatore.verifica', compact('percorso', 'SimulatorPlayer', 'controlli', 'errori', 'verificaOk'));
     }
 

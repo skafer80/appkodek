@@ -27,6 +27,15 @@
                             <br><strong>Verifica superata!</strong><br>
                             Tutti i controlli sulla P.E. sono stati completati correttamente.
                         </div>
+                        <div class="alert alert-info text-center mt-2">
+                            <i class="fa fa-clock-o me-1"></i>
+                            <strong>Inizio simulazione:</strong>
+                            {{ $SimulatorPlayer->start_time ? $SimulatorPlayer->start_time->format('d/m/Y H:i:s') : '—' }}
+                            &nbsp;&nbsp;&nbsp;
+                            <i class="fa fa-flag-checkered me-1"></i>
+                            <strong>Verifica completata:</strong>
+                            {{ $SimulatorPlayer->end_time ? $SimulatorPlayer->end_time->format('d/m/Y H:i:s') : '—' }}
+                        </div>
                     @endif
 
                     <div id="esito_verifica" class="mb-3">

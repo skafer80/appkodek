@@ -13,6 +13,20 @@ class SimulatorPlayer extends Model
         'kind',
     ];
 
+    protected $casts = [
+        'start_time' => 'datetime',
+        'end_time'   => 'datetime',
+    ];
+
+    protected static function booted(): void
+    {
+        static::creating(function (self $player) {
+            if (empty($player->start_time)) {
+                $player->start_time = now();
+            }
+        });
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
