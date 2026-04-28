@@ -27,14 +27,28 @@
                             <br><strong>Verifica superata!</strong><br>
                             Tutti i controlli sulla P.E. sono stati completati correttamente.
                         </div>
+                        @php
+                            $tempoTrascorso = null;
+
+                            if ($SimulatorPlayer->created_at && $SimulatorPlayer->end_time) {
+                                $intervallo = $SimulatorPlayer->created_at->diff($SimulatorPlayer->end_time);
+                                $giorni = $intervallo->days > 0 ? $intervallo->days . 'g ' : '';
+                                $tempoTrascorso = $giorni . $intervallo->format('%H:%I:%S');
+                            }
+                        @endphp
+
                         <div class="alert alert-info text-center mt-2">
                             <i class="fa fa-clock-o me-1"></i>
                             <strong>Inizio simulazione:</strong>
-                            {{ $SimulatorPlayer->start_time ? $SimulatorPlayer->created_at->format('d/m/Y H:i:s') : '—' }}
+                            {{ $SimulatorPlayer->created_at ? $SimulatorPlayer->created_at->format('d/m/Y H:i:s') : '—' }}
                             &nbsp;&nbsp;&nbsp;
                             <i class="fa fa-flag-checkered me-1"></i>
                             <strong>Verifica completata:</strong>
                             {{ $SimulatorPlayer->end_time ? $SimulatorPlayer->end_time->format('d/m/Y H:i:s') : '—' }}
+                            <br>
+                            <i class="fa fa-hourglass-half me-1"></i>
+                            <strong>Tempo trascorso:</strong>
+                            {{ $tempoTrascorso ?? '—' }}
                         </div>
                     @endif
 
