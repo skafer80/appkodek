@@ -454,7 +454,7 @@ class propostaFormaticaController extends Controller
 
         foreach ($moduli->groupBy('gruppo_moduli_id') as $moduliGruppo) {
             $gruppo = $moduliGruppo->first()->gruppoModuli;
-            $oreAttese = $gruppo->getOreAula();
+            $oreAttese = (int) $gruppo->getOreAula();
             $oreInserite = $moduliGruppo->sum(fn ($m) => (int) ($salvataggiModuli->get($m->id)->ore_aula ?? 0));
 
             if ($oreInserite !== $oreAttese) {
