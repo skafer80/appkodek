@@ -81,7 +81,7 @@
                         </div>
                     </div>
 
-                    <table class="table table-striped table-bordered table-hover dataTable" id="sample_1">
+                    <table class="table table-striped table-bordered table-hover dataTable">
                         <thead>
                             <tr>
                                 <th>N.</th>
