@@ -61,11 +61,11 @@
                                             <br>
                                             <input
                                                 type="text"
-                                                name="captcha_code"
+                                                name="pdoeiekijfjhfdghjj"
                                                 class="text-center"
                                                 style="text-transform:none!important;width:250px;padding:9px;border:solid 2px black;"
                                                 placeholder="Digita i caratteri sopra"
-                                                value="{{ old('captcha_code') }}"
+                                                value="{{ old('pdoeiekijfjhfdghjj') }}"
                                                 required
                                             >
                                         </div>
