@@ -4,13 +4,15 @@ namespace App\Http\Controllers\simulatore;
 
 use App\Http\Controllers\Controller;
 use App\Models\classroom;
-use App\Models\SimulatorClassroom;
-use App\Models\SimulatorPlayer;
-use App\Models\SimulatorImpresa;
-use App\Models\SimulatorPersonale;
 use App\Models\Comune;
+use App\Models\SimulatorClassroom;
+use App\Models\SimulatorImpresa;
+use App\Models\SimulatorPartecipante;
+use App\Models\SimulatorPersonale;
+use App\Models\SimulatorPlayer;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class memorizzaController extends Controller
 {
@@ -50,7 +52,7 @@ class memorizzaController extends Controller
         return redirect()->route('simulatore.showDettagliPercorso', [$SimulatorPlayer->id, $classroom->id])->with('success', 'Dettagli percorso memorizzati con successo.');
     }
 
-    public function dettagliStage(SimulatorPlayer $SimulatorPlayer, Classroom $classroom, Request $request)
+    public function dettagliStage(SimulatorPlayer $SimulatorPlayer, classroom $classroom, Request $request)
     {
         $validated = $request->validate([
             'd_avvio_stage' => ['required', 'date_format:d/m/Y', 'after_or_equal:27/04/2026', 'before_or_equal:20/11/2026'],
@@ -83,13 +85,13 @@ class memorizzaController extends Controller
         return redirect()->route('simulatore.showStage', [$SimulatorPlayer->id, $classroom->id])->with('success', 'Dettagli stage memorizzati con successo.');
     }
 
-    public function dettagliImpresa(SimulatorPlayer $SimulatorPlayer, Classroom $classroom, Request $request)
+    public function dettagliImpresa(SimulatorPlayer $SimulatorPlayer, classroom $classroom, Request $request)
     {
         $comune = Comune::whereRaw('LOWER(comune) = ?', [
-            strtolower(trim($request->input('sede_legale_comune')))
+            strtolower(trim($request->input('sede_legale_comune'))),
         ])->first();
 
-        if (!$comune) {
+        if (! $comune) {
             abort(422, 'Comune non trovato');
         }
 
@@ -109,7 +111,7 @@ class memorizzaController extends Controller
 
     }
 
-    public function dettagliPersonale(SimulatorPlayer $SimulatorPlayer, Classroom $classroom, Request $request)
+    public function dettagliPersonale(SimulatorPlayer $SimulatorPlayer, classroom $classroom, Request $request)
     {
         $simulatorClassroom = SimulatorClassroom::where('simulator_player_id', $SimulatorPlayer->id)
             ->where('classroom_id', $classroom->id)
@@ -203,8 +205,69 @@ class memorizzaController extends Controller
         return redirect()->route('simulatore.showPersonale', [$SimulatorPlayer->id, $classroom->id])->with('success', 'Personale non docente salvato con successo.');
     }
 
+    public function dettagliPartecipante(SimulatorPlayer $SimulatorPlayer, classroom $classroom, Request $request)
+    {
+        $validated = $request->validate([
+            'partecipante_id' => ['nullable', 'integer', 'exists:simulator_partecipanti,id'],
+            't_codice_fiscale' => [
+                'required',
+                'string',
+                'size:16',
+                Rule::unique('simulator_partecipanti', 't_codice_fiscale')
+                    ->where(fn ($query) => $query
+                        ->where('simulator_player_id', $SimulatorPlayer->id)
+                        ->where('classroom_id', $classroom->id)
+                    )
+                    ->ignore($request->input('partecipante_id')),
+            ],
+            'b_disabile' => ['required', 'in:Y,N'],
+            't_r_provincia' => ['required', 'string', 'size:2'],
+            't_r_comune' => ['required', 'string', 'max:255'],
+            't_d_provincia' => ['nullable', 'string', 'size:2'],
+            't_d_comune' => ['nullable', 'string', 'max:255'],
+            'i_tipo_condizione_occupazionale_id' => ['required', 'in:8,10,12'],
+        ], [
+            't_codice_fiscale.required' => 'Inserire il codice fiscale.',
+            't_codice_fiscale.size' => 'Il codice fiscale deve avere 16 caratteri.',
+            't_codice_fiscale.unique' => 'Esiste gia un partecipante con questo codice fiscale per questa edizione.',
+            'b_disabile.required' => 'Specificare se il partecipante e disabile/categoria protetta.',
+            't_r_provincia.required' => 'Selezionare la provincia di residenza.',
+            't_r_comune.required' => 'Selezionare il comune di residenza.',
+            'i_tipo_condizione_occupazionale_id.required' => 'Selezionare la condizione occupazionale.',
+        ]);
+
+        $partecipante = null;
+        if (! empty($validated['partecipante_id'])) {
+            $partecipante = SimulatorPartecipante::findOrFail($validated['partecipante_id']);
+
+            if ($partecipante->simulator_player_id !== $SimulatorPlayer->id || $partecipante->classroom_id !== $classroom->id) {
+                abort(403, 'Azione non autorizzata');
+            }
+        }
+
+        $payload = [
+            'simulator_player_id' => $SimulatorPlayer->id,
+            'classroom_id' => $classroom->id,
+            't_codice_fiscale' => strtoupper(trim($validated['t_codice_fiscale'])),
+            'b_disabile' => $validated['b_disabile'] === 'Y',
+            't_r_provincia' => strtoupper(trim($validated['t_r_provincia'])),
+            't_r_comune' => trim($validated['t_r_comune']),
+            't_d_provincia' => filled($validated['t_d_provincia'] ?? null) ? strtoupper(trim($validated['t_d_provincia'])) : null,
+            't_d_comune' => filled($validated['t_d_comune'] ?? null) ? trim($validated['t_d_comune']) : null,
+            'i_tipo_condizione_occupazionale_id' => (int) $validated['i_tipo_condizione_occupazionale_id'],
+        ];
+
+        if ($partecipante) {
+            $partecipante->update($payload);
+        } else {
+            SimulatorPartecipante::create($payload);
+        }
+
+        return redirect()->route('simulatore.showPartecipanti', [$SimulatorPlayer->id, $classroom->id])->with('success', 'Partecipante salvato con successo.');
+    }
+
     public function eliminaImpresa(SimulatorPlayer $SimulatorPlayer, SimulatorImpresa $impresa)
-     {
+    {
         if ($impresa->simulator_player_id !== $SimulatorPlayer->id) {
             abort(403, 'Azione non autorizzata');
         }
@@ -234,7 +297,19 @@ class memorizzaController extends Controller
         return redirect()->route('simulatore.showPersonale', [$SimulatorPlayer->id, $simulatorClassroom->classroom_id])->with('success', 'Personale non docente eliminato con successo.');
     }
 
-    public function dettagliDatiEconomici(SimulatorPlayer $SimulatorPlayer, Classroom $classroom, Request $request)
+    public function eliminaPartecipante(SimulatorPlayer $SimulatorPlayer, SimulatorPartecipante $partecipante)
+    {
+        if ($partecipante->simulator_player_id !== $SimulatorPlayer->id) {
+            abort(403, 'Azione non autorizzata');
+        }
+
+        $classroom = classroom::findOrFail($partecipante->classroom_id);
+        $partecipante->delete();
+
+        return redirect()->route('simulatore.showPartecipanti', [$SimulatorPlayer->id, $classroom->id])->with('success', 'Partecipante eliminato con successo.');
+    }
+
+    public function dettagliDatiEconomici(SimulatorPlayer $SimulatorPlayer, classroom $classroom, Request $request)
     {
         $validated = $request->validate([
             'ore_presunte_fascia_a' => ['required', 'integer', 'min:162', 'max:202'],

@@ -10,8 +10,8 @@
                 <div class="portlet-title">
                     <div class="col-md-3 text-left">
                         <ol class="breadcrumb">
-                            <a href="{{ route('simulatore.index', $SimulatorPlayer->id) }}" class="btn blue btn-sm"><i class="fa fa-long-arrow-left fa-5x""
-                                    aria-hidden=" true"></i>&nbsp;Indietro</a>
+                            <a href="{{ route('simulatore.index', $SimulatorPlayer->id) }}" class="btn blue btn-sm"><i
+                                    class="fa fa-long-arrow-left fa-5x"" aria-hidden=" true"></i>&nbsp;Indietro</a>
                         </ol>
                     </div>
                     <div class="col-md-12 text-center">
@@ -72,7 +72,7 @@
                                 <th>{{ $gruppo['categoria']->nome }}</th>
                                 <th>{{ $gruppo['totale_ore_aula_moduli'] }}</th>
                                 <th>{{ $gruppo['totale_ore_fad_moduli'] }}</th>
-                                <th>70</th>
+                                <th>{{ $gruppo['totale_ore_stage'] }}</th>
                                 <th></th>
                             </tr>
 
@@ -87,8 +87,8 @@
                                     <td>-</td>
                                     <td class="text-right">
                                         <button class="btn btn-sm btn-warning editinformationconoscenza"
-                                                data-href="{{ route('simulatore.getModulo', [$SimulatorPlayer->id, 'id' => $modulo->id]) }}"><span
-                                                    class="glyphicon glyphicon-pencil"></span></button>
+                                            data-href="{{ route('simulatore.getModulo', [$SimulatorPlayer->id, 'id' => $modulo->id]) }}"><span
+                                                class="glyphicon glyphicon-pencil"></span></button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -97,19 +97,26 @@
                             <tr class="bg-grey-50-i">
                                 <td></td>
                                 <th class="text-right">Totale Modulo MD{{ $gruppo['categoria']->id }}</th>
-                                {{--                                 @php
+
+                                @php
                                     $warning = 'bg-green';
+                                    $sommaOreAulaUtente = $gruppo['moduli']->sum('ore_aula_utente');
+                                    $sommaOreFadUtente = $gruppo['moduli']->sum('ore_fad_utente');
+
                                     if (
-                                        $subjects->where('gruppo', $gruppo['categoria']->id)->sum('ore_conoscenza') != 192 ||
-                                        $subjects->where('gruppo', $gruppo['categoria']->id)->sum('ore_fad_conoscenza') != 0
+
+                                        $sommaOreAulaUtente != $gruppo['totale_ore_aula_moduli'] ||
+                                        $sommaOreFadUtente != $gruppo['totale_ore_fad_moduli']
+
+
                                     ) {
                                         $warning = 'bg-red';
                                     }
-                                @endphp --}}
-                                <th class="shadow">{{ $gruppo['totale_ore_aula'] }}</th>
-                                <th class="shadow">{{ $gruppo['totale_ore_fad'] }}</th>
+                                @endphp
+                                <th class="{{ $warning  }} shadow">{{ $gruppo['totale_ore_aula'] }}</th>
+                                <th class="{{ $warning  }} shadow">{{ $gruppo['totale_ore_fad'] }}</th>
 
-                                <th class="bg-green shadow">70</th>
+                                <th class="bg-green shadow">{{ $gruppo['totale_ore_stage'] }}</th>
                                 <td></td>
                             </tr>
 
@@ -122,21 +129,30 @@
             <tr class="bg-black-75-i text-white">
                 <td></td>
                 <th class="text-right">Totale (escluso le competenze trasversali)</th>
-                {{--                 @php
+                @php
                     $warning = 'bg-green';
-                    if ($subjects->sum('ore_conoscenza') != 350 || $subjects->sum('ore_fad_conoscenza') != 0) {
+                    $totalOreAulaUtente = 0;
+                    $totalOreFadUtente = 0;
+                    $totalOreAulaModuli = 0;
+                    $totalOreFadModuli = 0;
+
+                    foreach ($moduliRaggruppati as $g) {
+                        $totalOreAulaUtente += $g['moduli']->sum('ore_aula_utente');
+                        $totalOreFadUtente += $g['moduli']->sum('ore_fad_utente');
+                        $totalOreAulaModuli += $g['totale_ore_aula_moduli'];
+                        $totalOreFadModuli += $g['totale_ore_fad_moduli'];
+                    }
+
+                    if ( $totalOreAulaUtente != $totalOreAulaModuli || $totalOreFadUtente != $totalOreFadModuli ) {
                         $warning = 'bg-red';
                     }
-                @endphp --}}
-                {{--                 <th class="{{ $warning }} shadow">
-                    {{ $subjects->where('gruppo', 36348)->sum('ore_conoscenza') }}</th>
+                @endphp
+               <th class="{{ $warning }} shadow">
+                    {{ $totalOreAulaUtente }}</th>
                 <th class="{{ $warning }} shadow">
-                    {{ $subjects->where('gruppo', 36348)->sum('ore_fad_conoscenza') }}</th>
+                    {{ $totalOreFadUtente }}</th>
 
-                <th class="bg-green shadow">280</th> --}}
-                <th class="shadow">{{ $totaleOreAula }}</th>
-                <th class="shadow">{{ $totaleOreFad }}</th>
-                <th></th>
+                <th class="bg-green shadow">{{ collect($moduliRaggruppati)->sum('totale_ore_stage') }}</th>
                 <td></td>
             </tr>
             </tbody>
@@ -163,8 +179,8 @@
                         <h4 class="modal-title" id="informationSourceModalLabel">Modifica modulo</h4>
                     </div>
                     <div class="modal-body">
-                        <form method="POST" action="{{ route('simulatore.editModuli', $SimulatorPlayer->id) }}" accept-charset="UTF-8"
-                            id="informationSourceForm">
+                        <form method="POST" action="{{ route('simulatore.editModuli', $SimulatorPlayer->id) }}"
+                            accept-charset="UTF-8" id="informationSourceForm">
                             @csrf
                             <input name="id_corso" type="hidden" value="5598">
                             <input name="formazione_id" type="hidden" value="{{ $id }}">

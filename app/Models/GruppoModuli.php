@@ -9,6 +9,7 @@ class GruppoModuli extends Model
     protected $table = 'gruppo_modulis';
     protected $fillable = [
         'nome',
+        'ore_stage',
     ];
 
     public function moduli()

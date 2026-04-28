@@ -57,6 +57,9 @@ Route::prefix('play/{SimulatorPlayer}')->group(function () {
     Route::get('/simulatore/dettagli-percorso/{id}', [propostaFormaticaController::class, 'showDettagliPercorso'])->name('simulatore.showDettagliPercorso');
     Route::get('/simulatore/dati-economici/{id}', [propostaFormaticaController::class, 'showDatiEconomici'])->name('simulatore.showDatiEconomici');
     Route::get('/simulatore/stage/{id}', [propostaFormaticaController::class, 'showStage'])->name('simulatore.showStage');
+    Route::get('/simulatore/partecipanti/{id}', [propostaFormaticaController::class, 'showPartecipanti'])->name('simulatore.showPartecipanti');
+    Route::get('/simulatore/partecipanti/{id}/nuovo', [propostaFormaticaController::class, 'showCreatePartecipante'])->name('simulatore.showCreatePartecipante');
+    Route::get('/simulatore/partecipanti/{id}/dettaglio/{partecipante}', [propostaFormaticaController::class, 'showDettaglioPartecipante'])->name('simulatore.showDettaglioPartecipante');
     Route::get('/simulatore/personale/{id}', [propostaFormaticaController::class, 'showPersonale'])->name('simulatore.showPersonale');
     Route::get('/simulatore/personale/{id}/nuovo', [propostaFormaticaController::class, 'showCreatePersonale'])->name('simulatore.showCreatePersonale');
     Route::get('/simulatore/personale/{id}/dettaglio/{personale}', [propostaFormaticaController::class, 'showDettaglioPersonale'])->name('simulatore.showDettaglioPersonale');
@@ -64,10 +67,12 @@ Route::prefix('play/{SimulatorPlayer}')->group(function () {
 
     Route::post('/simulatore/memorizza-dettagli-percorso/{classroom}', [memorizzaController::class, 'dettagliPercorso'])->name('simulatore.memorizzaDettagliPercorso');
     Route::post('/simulatore/memorizza-dettagli-stage/{classroom}', [memorizzaController::class, 'dettagliStage'])->name('simulatore.memorizzaDettagliStage');
+    Route::post('/simulatore/memorizza-partecipante/{classroom}', [memorizzaController::class, 'dettagliPartecipante'])->name('simulatore.memorizzaPartecipante');
     Route::post('/simulatore/memorizza-personale/{classroom}', [memorizzaController::class, 'dettagliPersonale'])->name('simulatore.memorizzaDettagliPersonale');
     Route::post('/simulatore/memorizza-impresa/{classroom}', [memorizzaController::class, 'dettagliImpresa'])->name('simulatore.memorizzaDettagliImpresa');
     Route::post('/simulatore/dati-economici/{classroom}', [memorizzaController::class, 'dettagliDatiEconomici'])->name('simulatore.memorizzaDatiEconomici');
 
+    Route::delete('/simulatore/elimina-partecipante/{partecipante}', [memorizzaController::class, 'eliminaPartecipante'])->name('simulatore.eliminaPartecipante');
     Route::delete('/simulatore/elimina-personale/{personale}', [memorizzaController::class, 'eliminaPersonale'])->name('simulatore.eliminaPersonale');
     Route::delete('/simulatore/elimina-impresa/{impresa}', [memorizzaController::class, 'eliminaImpresa'])->name('simulatore.eliminaImpresa');
 });

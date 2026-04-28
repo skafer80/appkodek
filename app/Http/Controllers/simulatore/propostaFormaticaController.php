@@ -8,8 +8,10 @@ use App\Models\classroom;
 use App\Models\formazione;
 use App\Models\Moduli;
 use App\Models\SimulatorImpresa;
+use App\Models\Comune;
 use App\Models\SimulatorClassroom;
 use App\Models\SimulatorModuli;
+use App\Models\SimulatorPartecipante;
 use App\Models\SimulatorPersonale;
 use App\Models\SimulatorPlayer;
 
@@ -48,6 +50,7 @@ class propostaFormaticaController extends Controller
                     return [
                         'categoria' => $categoria,
                         'moduli' => $moduliGruppo,
+                        'totale_ore_stage' => $categoria->ore_stage,
                         'totale_ore_aula_moduli' => $moduliGruppo->sum('ore_aula'),
                         'totale_ore_fad_moduli' => $moduliGruppo->sum('ore_fad'),
                         'totale_ore_aula' => $moduliGruppo->sum('ore_aula_utente'),
@@ -217,6 +220,68 @@ class propostaFormaticaController extends Controller
         $allRuoliPresenti = $ruoliMancanti->isEmpty();
 
         return view('simulatore.showPersonale', compact('percorso', 'SimulatorPlayer', 'personale', 'ruoliMancanti', 'allRuoliPresenti'));
+    }
+
+    public function showPartecipanti(SimulatorPlayer $SimulatorPlayer, $id)
+    {
+        $percorso = classroom::findOrFail($id);
+
+        $partecipanti = SimulatorPartecipante::where('simulator_player_id', $SimulatorPlayer->id)
+            ->where('classroom_id', $percorso->id)
+            ->orderBy('created_at')
+            ->get();
+
+        $minimoRichiesto = 8;
+        $massimoConsentito = 10;
+
+        return view('simulatore.showPartecipanti', compact('percorso', 'SimulatorPlayer', 'partecipanti', 'minimoRichiesto', 'massimoConsentito'));
+    }
+
+    public function showCreatePartecipante(SimulatorPlayer $SimulatorPlayer, $id)
+    {
+        $percorso = classroom::findOrFail($id);
+        $province = Comune::query()
+            ->whereNotNull('sigla')
+            ->select('sigla')
+            ->distinct()
+            ->orderBy('sigla')
+            ->pluck('sigla');
+
+        $comuniBySigla = Comune::query()
+            ->whereNotNull('sigla')
+            ->select('sigla', 'comune')
+            ->orderBy('comune')
+            ->get()
+            ->groupBy('sigla')
+            ->map(fn ($items) => $items->pluck('comune')->values());
+
+        return view('simulatore.partecipanteForm', compact('percorso', 'SimulatorPlayer', 'province', 'comuniBySigla'));
+    }
+
+    public function showDettaglioPartecipante(SimulatorPlayer $SimulatorPlayer, $id, SimulatorPartecipante $partecipante)
+    {
+        $percorso = classroom::findOrFail($id);
+
+        if ($partecipante->simulator_player_id !== $SimulatorPlayer->id || $partecipante->classroom_id !== $percorso->id) {
+            abort(403, 'Azione non autorizzata');
+        }
+
+        $province = Comune::query()
+            ->whereNotNull('sigla')
+            ->select('sigla')
+            ->distinct()
+            ->orderBy('sigla')
+            ->pluck('sigla');
+
+        $comuniBySigla = Comune::query()
+            ->whereNotNull('sigla')
+            ->select('sigla', 'comune')
+            ->orderBy('comune')
+            ->get()
+            ->groupBy('sigla')
+            ->map(fn ($items) => $items->pluck('comune')->values());
+
+        return view('simulatore.partecipanteForm', compact('percorso', 'SimulatorPlayer', 'partecipante', 'province', 'comuniBySigla'));
     }
 
     public function showCreatePersonale(SimulatorPlayer $SimulatorPlayer, $id)
