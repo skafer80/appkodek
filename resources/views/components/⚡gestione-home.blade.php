@@ -11,6 +11,7 @@ new class extends Component {
         public $email;
         public bool $showHome = false;
         public bool $showRegistrati = false;
+        public $game;
 
         public function verifyEmail()
         {
@@ -20,6 +21,7 @@ new class extends Component {
                 $this->name = $user->name;
                 $this->showHome = true;
                 $this->showRegistrati = false;
+                $this->game = SimulatorPlayer::where('user_id', $user->id)->get();
             } else {
                 $this->showHome = false;
                 $this->showRegistrati = true;
@@ -253,6 +255,26 @@ new class extends Component {
                 <div class="gh-actions">
                     <button class="gh-btn gh-btn-primary" type="button" wire:click="NewPlayer">Crea Nuovo Allenamento</button>
                 </div>
+
+                <table class="table table-sm mt-3">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Data</th>
+                            <th>Stato</th>
+                            <th>Tempo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($game as $partita)
+                            <tr>
+                                <td><a href="{{ route('simulatore.index', ['SimulatorPlayer' => $partita->id]) }}">Sessione #{{ $partita->id }}</a></td>
+                                <td>{{ $partita->created_at->format('d/m/Y H:i') }}</td>
+                                <td>{{ $partita->end_time ? 'Completata' : 'In corso' }}</td>
+                                <td>{{ $partita->end_time ? $partita->end_time->diffForHumans($partita->created_at) : '-' }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
             </div>
         @endif
     </div>
