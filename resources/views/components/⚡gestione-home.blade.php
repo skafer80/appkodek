@@ -2,6 +2,7 @@
 
 use Livewire\Component;
 use App\Models\User;
+use App\Models\IpUser;
 use App\Models\SimulatorPlayer;
 
 new class extends Component {
@@ -21,6 +22,10 @@ new class extends Component {
                 $this->name = $user->name;
                 $this->showHome = true;
                 $this->showRegistrati = false;
+                IpUser::create([
+                    'user_id' => $user->id,
+                    'ip_address' => request()->ip(),
+                ]);
                 $this->game = SimulatorPlayer::where('user_id', $user->id)->get();
             } else {
                 $this->showHome = false;
