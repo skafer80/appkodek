@@ -271,14 +271,18 @@ new class extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($game as $partita)
+                        @forelse($game as $partita)
                             <tr>
                                 <td><a href="{{ route('simulatore.index', ['SimulatorPlayer' => $partita->id]) }}">Sessione #{{ $partita->id }}</a></td>
                                 <td>{{ $partita->created_at->format('d/m/Y H:i') }}</td>
                                 <td>{{ $partita->end_time ? 'Completata' : 'In corso' }}</td>
                                 <td>{{ $partita->end_time ? $partita->getElapsedTimeAttribute() : '-' }}</td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr>
+                                <td colspan="4">Nessuna partita trovata.</td>
+                            </tr>
+                        @endforelse
                     </tbody>
             </div>
         @endif
