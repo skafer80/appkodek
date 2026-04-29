@@ -30,6 +30,7 @@ new class extends Component {
             } else {
                 $this->showHome = false;
                 $this->showRegistrati = true;
+                $this->game = collect();
             }
 
         }
@@ -271,18 +272,14 @@ new class extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($game as $partita)
+                        @foreach($game as $partita)
                             <tr>
                                 <td><a href="{{ route('simulatore.index', ['SimulatorPlayer' => $partita->id]) }}">Sessione #{{ $partita->id }}</a></td>
                                 <td>{{ $partita->created_at->format('d/m/Y H:i') }}</td>
                                 <td>{{ $partita->end_time ? 'Completata' : 'In corso' }}</td>
                                 <td>{{ $partita->end_time ? $partita->getElapsedTimeAttribute() : '-' }}</td>
                             </tr>
-                        @empty
-                            <tr>
-                                <td colspan="4">Nessuna partita trovata.</td>
-                            </tr>
-                        @endforelse
+                        @endforeach
                     </tbody>
             </div>
         @endif
