@@ -58,10 +58,10 @@ new class extends Component {
         {
             $user = User::where('email', $this->email)->first();
 
-            $player = SimulatorPlayer::firstOrCreate(
-                ['user_id' => $user->id],
-                ['kind' => 'manuale']
-            );
+            $player = SimulatorPlayer::create([
+                'user_id' => $user->id,
+                'kind' => 'manuale'
+            ]);
 
             if ($user) {
                 return redirect()->route('simulatore.index', ['SimulatorPlayer' => $player->id]);
@@ -274,7 +274,7 @@ new class extends Component {
                     <tbody>
                         @foreach($game as $partita)
                             <tr>
-                                <td><a href="{{ route('simulatore.index', ['SimulatorPlayer' => $partita->id]) }}">Sessione #{{ $partita->id }}</a></td>
+                                <td><a href="{{ route('simulatore.index', ['SimulatorPlayer' => $partita->id]) }}">Allenamento #{{ $partita->id }}</a></td>
                                 <td>{{ $partita->created_at->format('d/m/Y H:i') }}</td>
                                 <td>{{ $partita->end_time ? 'Completata' : 'In corso' }}</td>
                                 <td>{{ $partita->end_time ? $partita->getElapsedTimeAttribute() : '-' }}</td>

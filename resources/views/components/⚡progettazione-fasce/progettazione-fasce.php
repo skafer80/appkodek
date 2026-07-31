@@ -6,9 +6,9 @@ use Livewire\Component;
 new class extends Component
 {
     public $classeSelezionata = null;
-    public int $fasciaA = 0;
-    public int $fasciaB = 0;
-    public int $fasciaC = 0;
+    public int $fasciaA = 162;
+    public int $fasciaB = 162;
+    public int $fasciaC = 80;
     public bool $loaded = false;
 
     public function mount($classeSelezionata = null, ModuliApiService $service): void
