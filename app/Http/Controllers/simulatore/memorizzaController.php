@@ -49,6 +49,8 @@ class memorizzaController extends Controller
             'totale_giornate' => $validated['giornate_aula_previste'],
         ]);
 
+        dd($classroom);
+
         return redirect()->route('simulatore.showDettagliPercorso', [$SimulatorPlayer->id, $classroom->id])->with('success', 'Dettagli percorso memorizzati con successo.');
     }
 
