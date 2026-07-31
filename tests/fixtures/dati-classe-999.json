@@ -1,10 +1,10 @@
 {
     "classeId": "999",
-    "DataAvvio": "20/05/2026",
-    "DataFine": "05/11/2026",
+    "DataAvvio": "19/05/2026",
+    "DataFine": "18/11/2026",
     "Importo": "15000.00",
     "NumeroGiorniPrevisti": 150,
-    "DataAvvioStage": "01/10/2026",
+    "DataAvvioStage": "19/05/2026",
     "DataFineStage": "31/10/2026",
     "NumeroGiorniStage": 20,
     "DenominazioneStage": "Azienda Test S.r.l.",
