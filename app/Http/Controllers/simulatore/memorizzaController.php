@@ -51,7 +51,7 @@ class memorizzaController extends Controller
 
 
 
-        return redirect()->route('simulatore.showDettagliPercorso', [$SimulatorPlayer->id, $classroom->classroom->id])->with('success', 'Dettagli percorso memorizzati con successo.');
+        return redirect()->route('simulatore.showDettagliPercorso', [$SimulatorPlayer->id, $classroom->classroom_id])->with('success', 'Dettagli percorso memorizzati con successo.');
     }
 
     public function dettagliStage(SimulatorPlayer $SimulatorPlayer, classroom $classroom, Request $request)
@@ -84,7 +84,7 @@ class memorizzaController extends Controller
             'totale_giornate_stage' => $validated['i_giornate_stage'],
         ]);
 
-        return redirect()->route('simulatore.showStage', [$SimulatorPlayer->id, $classroom->id])->with('success', 'Dettagli stage memorizzati con successo.');
+        return redirect()->route('simulatore.showStage', [$SimulatorPlayer->id, $classroom->classroom_id])->with('success', 'Dettagli stage memorizzati con successo.');
     }
 
     public function dettagliImpresa(SimulatorPlayer $SimulatorPlayer, classroom $classroom, Request $request)
@@ -388,7 +388,7 @@ class memorizzaController extends Controller
             'fascia_c' => $validated['ore_presunte_fascia_c'],
         ]);
 
-        return redirect()->route('simulatore.showDatiEconomici', [$SimulatorPlayer->id, $classroom->id])->with('success', 'Dati economici memorizzati con successo.');
+        return redirect()->route('simulatore.showDatiEconomici', [$SimulatorPlayer->id, $classroom->classroom->id])->with('success', 'Dati economici memorizzati con successo.');
 
     }
 
