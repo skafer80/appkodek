@@ -30,7 +30,7 @@
                     <tr>
                         <th style="background: #f8f9fa;">Fascia C</th>
                         <td class="pg-copy-cell">
-                            0
+                            80
                             <button type="button" class="pg-copy-btn" onclick="pgCopy(this, 0)"><i class="fa fa-copy"></i></button>
                         </td>
                     </tr>
