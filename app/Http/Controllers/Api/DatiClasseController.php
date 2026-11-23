@@ -12,8 +12,8 @@ class DatiClasseController extends Controller
     {
         $classeId = $request->classeId;
 
-        $response = Http::get('https://app.kodek.it/test/dati-classe-' . $classeId . '.json');
-        /* $response = Http::get('https://www.kodek.it/api/dati-classe/' . $classeId); */
+        /* $response = Http::get('https://app.kodek.it/test/dati-classe-' . $classeId . '.json'); */
+        $response = Http::get('https://www.kodek.it/api/dati-classe/' . $classeId);
 
         return response()->json($response->json());
     }

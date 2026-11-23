@@ -24,8 +24,8 @@ class ElencoAllieviClasseController extends Controller
             return response()->json();
         }
 
-            $response = Http::get('https://app.kodek.it/test/elenco-allievi-classe-'.$classeId.'.json');
-        /* $response = Http::get('https://www.kodek.it/api/elenco-allievi-classe/'.$classeId); */
+            /* $response = Http::get('https://app.kodek.it/test/elenco-allievi-classe-'.$classeId.'.json'); */
+            $response = Http::get('https://www.kodek.it/api/elenco-allievi-classe/'.$classeId);
 
         return response()->json($response->json());
     }
