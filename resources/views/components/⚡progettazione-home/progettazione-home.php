@@ -7,7 +7,7 @@ new class extends Component {
     public array $enti = [];
     public string $enteSelezionato = '';
     public $classeSelezionata = null;
-    public string $tabAttiva = 'moduli';
+    public string $tabAttiva = 'allievi';
     public string $passwordSelettori = '';
     public bool $selettoriSbloccati = true;
 
