@@ -32,7 +32,9 @@ class EntiSediClassiController extends Controller
         $requestHttp = Http::acceptJson();
 
         if ($token !== '') {
-            $requestHttp = $requestHttp->withToken($token);
+            $requestHttp = $requestHttp
+                ->withToken($token)
+                ->withHeaders(['X-Kodek-Token' => $token]);
         }
 
         $response = $requestHttp->get('https://www.kodek.it/api/enti-sedi-classi');
