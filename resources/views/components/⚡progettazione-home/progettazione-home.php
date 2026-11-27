@@ -10,10 +10,17 @@ new class extends Component {
     public string $tabAttiva = 'allievi';
     public string $passwordSelettori = '';
     public bool $selettoriSbloccati = true;
+    public ?string $erroreCaricamento = null;
 
     public function mount(ClassiApiService $classiService)
     {
-        $this->enti = $classiService->getClassi();
+        try {
+            $this->enti = $classiService->getClassi();
+        } catch (\Throwable $e) {
+            report($e);
+            $this->enti = [];
+            $this->erroreCaricamento = $e->getMessage();
+        }
 
     }
 
@@ -26,9 +33,7 @@ new class extends Component {
 
         $this->classeSelezionata = null;
 
-        if ($this->tabAttiva !== 'personale') {
-            $this->tabAttiva = 'personale';
-        }
+        $this->tabAttiva = 'allievi';
     }
 
     public function updatedClasseSelezionata(): void
@@ -38,7 +43,7 @@ new class extends Component {
             return;
         }
 
-        $this->tabAttiva = 'moduli';
+        $this->tabAttiva = 'allievi';
     }
 
     public function selezionaTab(string $tab): void
@@ -47,7 +52,7 @@ new class extends Component {
             return;
         }
 
-        $tabsDisponibili = ['dettagli', 'allievi', 'moduli', 'personale', 'stage', 'fasce'];
+        $tabsDisponibili = ['allievi', 'aziende'];
 
         if (!in_array($tab, $tabsDisponibili, true)) {
             return;

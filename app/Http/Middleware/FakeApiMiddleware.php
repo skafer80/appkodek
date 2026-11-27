@@ -12,6 +12,8 @@ use App\Services\Fake\StudentiApiServiceFake;
 use App\Services\ModuliApiService;
 use App\Services\PersonaleApiService;
 use App\Services\StudentiApiService;
+use App\Services\AziendeApiService;
+use App\Services\Fake\AziendeApiServiceFake;
 use Closure;
 use Illuminate\Http\Request;
 
@@ -34,6 +36,7 @@ class FakeApiMiddleware
             app()->bind(ModuliApiService::class, ModuliApiServiceFake::class);
             app()->bind(PersonaleApiService::class, PersonaleApiServiceFake::class);
             app()->bind(StudentiApiService::class, StudentiApiServiceFake::class);
+            app()->bind(AziendeApiService::class, AziendeApiServiceFake::class);
         }
 
         return $next($request);

@@ -14,8 +14,8 @@ class ClasseDto implements Wireable
     public static function fromArray(array $data): self
     {
         return new self(
-            classeId: $data['classeId'],
-            studenti: StudenteDto::collection($data['studente'])
+            classeId: (string) ($data['classeId'] ?? ''),
+            studenti: StudenteDto::collection($data['studente'] ?? [])
         );
     }
 

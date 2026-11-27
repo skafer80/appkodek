@@ -40,4 +40,8 @@ return [
         'password_fake' => env('PROGETTAZIONE_PASSWORD_FAKE', 'prova'),
     ],
 
+    'kodek_export' => [
+        'token' => env('SI1420_EXPORT_TOKEN'),
+    ],
+
 ];

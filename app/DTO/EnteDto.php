@@ -21,10 +21,10 @@ class EnteDto implements Wireable
 
     public static function collection(array $items): array
     {
-        return array_map(
-            fn ($item) => self::fromArray($item),
-            $items
-        );
+        return array_values(array_map(
+            fn (array $item) => self::fromArray($item),
+            array_filter($items, 'is_array')
+        ));
     }
 
     public function toLivewire(): array

@@ -28,10 +28,15 @@ class EntiSediClassiController extends Controller
             ]);
         }
 
-        $classeId = $request->classeId;
-/*         $response = Http::get('https://app.kodek.it/test/enti-sedi-classi.json'); */
-        $response = Http::get('https://www.kodek.it/api/enti-sedi-classi');
+        $token = (string) config('services.kodek_export.token');
+        $requestHttp = Http::acceptJson();
 
-        return response()->json($response->json());
+        if ($token !== '') {
+            $requestHttp = $requestHttp->withToken($token);
+        }
+
+        $response = $requestHttp->get('https://www.kodek.it/api/enti-sedi-classi');
+
+        return response()->json($response->json(), $response->status());
     }
 }

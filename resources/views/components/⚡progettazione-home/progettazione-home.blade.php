@@ -1,11 +1,16 @@
 <div>
     <div class="pg-wrapper">
         <div class="pg-card">
+            @if ($erroreCaricamento)
+                <div class="alert alert-danger" style="margin: 16px;">
+                    {{ $erroreCaricamento }}
+                </div>
+            @endif
             <div class="pg-card-header">
                 <div>
                     <h1>Progettazione dati</h1>
                     @if ($this->classeCorrente)
-                        <br class="pg-hint" style="margin-top: 4px;">
+                        <p class="pg-hint" style="margin-top: 4px;">
                             <strong>Ente:</strong> {{ $enteSelezionato }} |
                             <strong>Classe:</strong> {{ $this->classeCorrente->nome }} |
                             <strong>Priorita:</strong> {{ $this->classeCorrente->ordine + 1 }} <br>
@@ -63,36 +68,9 @@
                             </div>
                         </div>
 
-                        <div class="pg-print-wrap">
-                            @if ($classeSelezionata)
-                                <a href="{{ route('progettazione.stampa', ['classeId' => $classeSelezionata]) }}"
-                                    target="_blank" class="btn btn-outline-secondary btn-sm"
-                                    title="Apri versione stampabile della classe">
-                                    <i class="fa fa-print"></i> Stampa classe
-                                </a>
-                            @else
-                                <button type="button" class="btn btn-outline-secondary btn-sm" disabled>
-                                    <i class="fa fa-print"></i> Stampa classe
-                                </button>
-                            @endif
-                        </div>
                     </div>
 
                     <ul class="nav nav-tabs pg-tabs-row">
-                        <li class="nav-item">
-                            <button type="button"
-                                class="nav-link py-1 px-2 {{ $tabAttiva === 'moduli' ? 'active' : '' }}"
-                                wire:click="selezionaTab('moduli')" @disabled(!$classeSelezionata)>
-                                Moduli
-                            </button>
-                        </li>
-                        <li class="nav-item">
-                            <button type="button"
-                                class="nav-link py-1 px-2 {{ $tabAttiva === 'dettagli' ? 'active' : '' }}"
-                                wire:click="selezionaTab('dettagli')" @disabled(!$classeSelezionata)>
-                                Dettagli
-                            </button>
-                        </li>
                         <li class="nav-item">
                             <button type="button"
                                 class="nav-link py-1 px-2 {{ $tabAttiva === 'allievi' ? 'active' : '' }}"
@@ -100,26 +78,11 @@
                                 Allievi
                             </button>
                         </li>
-
                         <li class="nav-item">
                             <button type="button"
-                                class="nav-link py-1 px-2 {{ $tabAttiva === 'personale' ? 'active' : '' }}"
-                                wire:click="selezionaTab('personale')" @disabled(!$enteSelezionato)>
-                                Personale
-                            </button>
-                        </li>
-                        <li class="nav-item">
-                            <button type="button"
-                                class="nav-link py-1 px-2 {{ $tabAttiva === 'stage' ? 'active' : '' }}"
-                                wire:click="selezionaTab('stage')" @disabled(!$classeSelezionata)>
-                                Stage
-                            </button>
-                        </li>
-                        <li class="nav-item">
-                            <button type="button"
-                                class="nav-link py-1 px-2 {{ $tabAttiva === 'fasce' ? 'active' : '' }}"
-                                wire:click="selezionaTab('fasce')" @disabled(!$classeSelezionata)>
-                                Fasce
+                                class="nav-link py-1 px-2 {{ $tabAttiva === 'aziende' ? 'active' : '' }}"
+                                wire:click="selezionaTab('aziende')" @disabled(!$classeSelezionata)>
+                                Aziende
                             </button>
                         </li>
                     </ul>
@@ -127,24 +90,15 @@
             </div>
         </div>
 
-        @if ($tabAttiva === 'personale')
-            <livewire:progettazione-personale :ente-selezionato="$enteSelezionato" :key="'progettazione-personale-' . ($enteSelezionato ?: 'none')" />
-        @elseif ($classeSelezionata)
+        @if ($classeSelezionata)
             @if ($tabAttiva === 'allievi')
                 <livewire:progettazione-allievi :classe-selezionata="$classeSelezionata" :key="'progettazione-allievi-' . ($classeSelezionata ?: 'none')" />
-            @elseif ($tabAttiva === 'moduli')
-                <livewire:progettazione-moduli :classe-selezionata="$classeSelezionata" :key="'progettazione-moduli-' . ($classeSelezionata ?: 'none')" />
-            @elseif ($tabAttiva === 'dettagli')
-                <livewire:progettazione-dettagli :classe-selezionata="$classeSelezionata" :key="'progettazione-dettagli-' . ($classeSelezionata ?: 'none')" />
-            @elseif ($tabAttiva === 'stage')
-                <livewire:progettazione-stage :classe-selezionata="$classeSelezionata" :key="'progettazione-stage-' . ($classeSelezionata ?: 'none')" />
-            @elseif ($tabAttiva === 'fasce')
-                <livewire:progettazione-fasce :classe-selezionata="$classeSelezionata" :key="'progettazione-fasce-' . ($classeSelezionata ?: 'none')" />
+            @elseif ($tabAttiva === 'aziende')
+                <livewire:progettazione-aziende :classe-selezionata="$classeSelezionata" :key="'progettazione-aziende-' . ($classeSelezionata ?: 'none')" />
             @endif
         @else
             <div class="pg-card" style="margin-top: 12px;">
-                <div style="padding: 16px 20px;">Seleziona una classe per attivare i tab: Dettagli, Allievi, Moduli e
-                    Stage. Per il tab Personale basta selezionare l'ente.</div>
+                <div style="padding: 16px 20px;">Seleziona una classe per visualizzare Allievi e Aziende.</div>
             </div>
         @endif
     </div>

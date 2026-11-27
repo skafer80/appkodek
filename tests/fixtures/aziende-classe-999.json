@@ -1,0 +1,17 @@
+[
+    {
+        "classeId": "999",
+        "numeroAllievi": 5,
+        "nTutorAziendali": 1,
+        "rischio": "BASSO",
+        "denominazione": "Azienda Test S.r.l.",
+        "codiceFiscale": "01234567890",
+        "partitaIva": "01234567890",
+        "codiceAteco": "62.01.00",
+        "indirizzo": "Via Roma",
+        "comune": "Palermo",
+        "provincia": "PA",
+        "cap": "90100",
+        "numeroCivico": "10"
+    }
+]

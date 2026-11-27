@@ -3,7 +3,7 @@
         <div class="pg-card-header">
             <div>
                 <h1>Allievi per classe</h1>
-                <p class="pg-hint">Componente figlio: mostra gli allievi della classe selezionata nel contenitore padre.</p>
+                <p class="pg-hint">Dati anagrafici, percorso, documento e genitore degli allievi.</p>
             </div>
             @if ($studenti)
                 <div class="pg-selects">
@@ -14,71 +14,60 @@
         </div>
 
         @if (!$classeSelezionata)
-            <div style="padding: 16px 20px;">Seleziona prima una classe dal contenitore principale.</div>
+            <div style="padding: 16px 20px;">Seleziona prima una classe.</div>
         @elseif ($studenti)
-            <div class="pg-table-wrap">
-                <table class="pg-table">
-                    <thead>
-                        <tr>
-                            <th>Data selezione</th>
-                            <th>Nome</th>
-                            <th>Cognome</th>
-                            <th>Sesso</th>
-                            <th>Cat. protetta / Disabilità</th>
-                            <th>Data di nascita</th>
-                            <th>Prov. nascita</th>
-                            <th>Comune nascita</th>
-                            <th>Codice fiscale</th>
-                            <th>Cittadinanza</th>
-                            <th>Prov. residenza</th>
-                            <th>Comune residenza</th>
-                            <th>Titolo di studio</th>
-                            <th>Stato soggetto</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($studenti as $studente)
-                            <tr>
-                                <td class="pg-copy-cell">
-                                    {{ $studente->data_selezione }}
-                                    <button type="button" class="pg-copy-btn" onclick="pgCopy(this, {{ json_encode($studente->data_selezione) }})"><i class="fa fa-copy"></i></button>
-                                </td>
-                                <td class="pg-copy-cell">
-                                    {{ $studente->nome }}
-                                    <button type="button" class="pg-copy-btn" onclick="pgCopy(this, {{ json_encode($studente->nome) }})"><i class="fa fa-copy"></i></button>
-                                </td>
-                                <td class="pg-copy-cell">
-                                    {{ $studente->cognome }}
-                                    <button type="button" class="pg-copy-btn" onclick="pgCopy(this, {{ json_encode($studente->cognome) }})"><i class="fa fa-copy"></i></button>
-                                </td>
-                                <td>{{ $studente->sesso }}</td>
-                                <td class="pg-copy-cell">
-                                    {{ $studente->categoria_protetta_disabilita }}
-                                    <button type="button" class="pg-copy-btn" onclick="pgCopy(this, {{ json_encode($studente->categoria_protetta_disabilita) }})"><i class="fa fa-copy"></i></button>
-                                </td>
-                                <td class="pg-copy-cell">
-                                    {{ $studente->data_di_nascita }}
-                                    <button type="button" class="pg-copy-btn" onclick="pgCopy(this, {{ json_encode($studente->data_di_nascita) }})"><i class="fa fa-copy"></i></button>
-                                </td>
-                                <td>{{ $studente->prov_nascita }}</td>
-                                <td>{{ $studente->comune_di_nascita }}</td>
-                                <td class="pg-copy-cell">
-                                    {{ $studente->codice_fiscale }}
-                                    <button type="button" class="pg-copy-btn" onclick="pgCopy(this, {{ json_encode($studente->codice_fiscale) }})"><i class="fa fa-copy"></i></button>
-                                </td>
-                                <td class="pg-copy-cell">
-                                    {{ $studente->cittadinanza }}
-                                    <button type="button" class="pg-copy-btn" onclick="pgCopy(this, {{ json_encode($studente->cittadinanza) }})"><i class="fa fa-copy"></i></button>
-                                </td>
-                                <td>{{ $studente->prov_residenza }}</td>
-                                <td>{{ $studente->comune_di_residenza }}</td>
-                                <td>{{ $studente->titolo_di_studio }}</td>
-                                <td>{{ $studente->stato_soggetto }}</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+            @foreach ($studenti as $studente)
+                <div style="padding: 16px 20px; border-top: 1px solid #e5e7eb;">
+                    <h2 style="font-size: 1rem; margin-bottom: 12px;">{{ $loop->iteration }}. {{ $studente->cognome }} {{ $studente->nome }}</h2>
+                    <div class="pg-table-wrap">
+                        <table class="pg-table">
+                            <thead><tr>
+                                <th>Nome</th><th>Cognome</th><th>Codice fiscale</th><th>CF provvisorio</th>
+                                <th>Data nascita</th><th>Provincia nascita</th><th>Comune nascita</th><th>Sesso</th>
+                                <th>Cittadinanza</th><th>Disabile</th><th>Competenze corso</th>
+                            </tr></thead>
+                            <tbody><tr>
+                                @foreach (['nome', 'cognome', 'codice_fiscale', 'cf_provvisorio', 'data_di_nascita', 'prov_nascita', 'comune_di_nascita', 'sesso', 'cittadinanza', 'soggetto_disabile', 'competenze_tecniche_corso'] as $campo)
+                                    @php($valore = is_bool($studente->{$campo}) ? ($studente->{$campo} ? 'Sì' : 'No') : $studente->{$campo})
+                                    <td class="pg-copy-cell">{{ $valore ?? '-' }}<button type="button" class="pg-copy-btn" onclick="pgCopy(this, {{ json_encode($valore) }})"><i class="fa fa-copy"></i></button></td>
+                                @endforeach
+                            </tr></tbody>
+                        </table>
+                    </div>
+
+                    <div class="pg-table-wrap" style="margin-top: 12px;">
+                        <table class="pg-table">
+                            <thead><tr>
+                                <th>Tipo documento</th><th>Numero documento</th><th>Rilasciato da</th><th>Data rilascio</th><th>Scadenza</th>
+                                <th>Continuità</th><th>Apprendista</th><th>Annualità</th><th>Grado provenienza</th>
+                                <th>Percorso provenienza</th><th>N. percorso</th><th>Qualifica terzi</th><th>N. qualifica</th>
+                                <th>Data qualifica</th><th>Scuola provenienza</th><th>Subordine 1</th><th>Subordine 2</th>
+                            </tr></thead>
+                            <tbody><tr>
+                                @foreach (['doc_tipologia', 'doc_numero', 'doc_rilasciato_da', 'doc_data_rilascio', 'doc_scadenza', 'allievo_continuita', 'allievo_apprendista', 'annualita_provenienza', 'provenienza_scuola_grado', 'percorso_provenienza', 'percorso_provenienza_n', 'qualifica_terzi', 'qualifica_terzi_n', 'qualifica_terzi_data', 'provenienza_scuola_nome', 'subordine1', 'subordine2'] as $campo)
+                                    @php($valore = is_bool($studente->{$campo}) ? ($studente->{$campo} ? 'Sì' : 'No') : $studente->{$campo})
+                                    <td class="pg-copy-cell">{{ $valore ?? '-' }}<button type="button" class="pg-copy-btn" onclick="pgCopy(this, {{ json_encode($valore) }})"><i class="fa fa-copy"></i></button></td>
+                                @endforeach
+                            </tr></tbody>
+                        </table>
+                    </div>
+
+                    <div class="pg-table-wrap" style="margin-top: 12px;">
+                        <table class="pg-table">
+                            <thead><tr>
+                                <th>Genitore nome</th><th>Genitore cognome</th><th>Codice fiscale</th><th>Nato a</th><th>Nato il</th><th>Sesso</th>
+                                <th>Email</th><th>Telefono</th><th>Indirizzo</th><th>N. civico</th><th>CAP</th><th>Comune</th><th>Provincia</th>
+                                <th>Tipo documento</th><th>Numero documento</th><th>Rilasciato da</th><th>Data rilascio</th><th>Scadenza</th>
+                            </tr></thead>
+                            <tbody><tr>
+                                @foreach (['genitore_nome', 'genitore_cognome', 'genitore_cf', 'genitore_nato_a', 'genitore_nato_il', 'genitore_sesso', 'genitore_email', 'genitore_telefono', 'genitore_indirizzo', 'genitore_numero_civico', 'genitore_cap', 'genitore_comune', 'genitore_provincia', 'genitore_doc_tipologia', 'genitore_doc_numero', 'genitore_doc_rilasciato_da', 'genitore_doc_data_rilascio', 'genitore_doc_scadenza'] as $campo)
+                                    <td class="pg-copy-cell">{{ $studente->{$campo} ?? '-' }}<button type="button" class="pg-copy-btn" onclick="pgCopy(this, {{ json_encode($studente->{$campo}) }})"><i class="fa fa-copy"></i></button></td>
+                                @endforeach
+                            </tr></tbody>
+                        </table>
+                    </div>
+                </div>
+            @endforeach
         @else
             <div style="padding: 16px 20px;">Nessun allievo disponibile per la classe selezionata.</div>
         @endif
