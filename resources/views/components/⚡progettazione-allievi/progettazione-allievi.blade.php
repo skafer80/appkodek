@@ -37,8 +37,7 @@
             'allievo_continuita' => 'Continuità', 'allievo_apprendista' => 'Apprendista',
             'annualita_provenienza' => 'Annualità provenienza',
             'provenienza_scuola_grado' => 'Grado provenienza', 'percorso_provenienza' => 'Percorso provenienza',
-            'percorso_provenienza_n' => 'N. percorso', 'qualifica_terzi' => 'Qualifica terzi',
-            'qualifica_terzi_n' => 'N. qualifica', 'qualifica_terzi_data' => 'Data qualifica',
+            'qualifica_terzi' => 'Qualifica terzi', 'qualifica_terzi_data' => 'Data qualifica',
             'provenienza_scuola_nome' => 'Scuola provenienza', 'subordine1' => 'Subordine 1',
             'subordine2' => 'Subordine 2',
         ];
